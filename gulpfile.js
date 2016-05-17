@@ -17,16 +17,6 @@ var scripts = [
 ];
 
 /**
-* A list of all css files to build. You really shouldn't ever have to
-* change this.
-*/
-var css = [
-
-  './css/*'
-
-];
-
-/**
 * All bower javascript files. Add to this list to install more dependencies
 */
 var bowerJs = [
@@ -70,6 +60,7 @@ var bowerCss = [
 ********************************************************************************
 */
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minify = require('gulp-minify-css');
@@ -121,8 +112,9 @@ gulp.task('build-bower-css', function () {
 /**
 * Build programmer-defined css files
 */
-gulp.task('build-css', function () {
-  return gulp.src(css)
+gulp.task('build-sass', function () {
+  return gulp.src('./sass/**/*.scss')
+    .pipe(sass())
     .pipe(concat('styles.min.css'))
     .pipe(minify())
     .pipe(gulp.dest('./dist/styles/'));
@@ -163,9 +155,9 @@ gulp.task('watch', ['build'], function () {
     console.log(filename + ' was ' + event.type + ', running tasks...');
   });
 
-  gulp.watch(css,
+  gulp.watch('./sass/**/*',
     [
-      'build-css'
+      'build-sass'
     ]
   ).on('change', function (event) {
     var parts = event.path.split('/');
@@ -185,7 +177,7 @@ gulp.task('build',
     'build-scripts',
     'build-bower-css',
     'font-awesome-icons',
-    'build-css'
+    'build-sass'
   ], function () {
 
   });

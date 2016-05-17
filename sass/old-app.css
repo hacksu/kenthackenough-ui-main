@@ -160,12 +160,6 @@ fieldset legend {
   height: 2rem;
 }
 
-#splash {
-  padding-top: 3rem;
-  padding-bottom: 4rem;
-  margin-top: -32px;
-}
-
 nav a {
   font-family: 'Oswald';
   color: white;
