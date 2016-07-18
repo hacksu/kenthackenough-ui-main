@@ -50,7 +50,7 @@ angular
     };
 
     /**
-    * An object with an array of possible dietary restrictions,
+    * An object with an arrayd of possible dietary restrictions,
     * an array of selected restrictions, and a function to toggle a
     * selection.
     */

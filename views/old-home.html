@@ -41,8 +41,8 @@
       <div class="white small" ng-repeat="e in home.errors">{{e}}</div>
       <div ng-if="!home.user">
         <br>
-        <!-- <a class="apply" ng-click="home.loginRegister = true; home.showLogin = false">Apply</a> | -->
-        <!-- <a class="apply" ng-click="home.loginRegister = true; home.showLogin = true">Login</a> -->
+        <a class="apply" ng-click="home.register = true; home.showLogin = false">Apply</a> |
+        <a class="apply" ng-click="home.register = true; home.showLogin = true">Login</a>
       </div>
       <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
       <div ng-if="home.user && home.application.status == 'approved'" class="align-center" ng-click="home.apply.toggleGoing()">

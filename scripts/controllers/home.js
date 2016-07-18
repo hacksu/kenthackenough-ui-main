@@ -71,7 +71,7 @@ angular
       },
 
       /**
-      * Login a user
+      * Login a userlogin
       */
       login: function () {
         var self = this;

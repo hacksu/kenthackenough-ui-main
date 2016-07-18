@@ -1,5 +1,5 @@
 angular
-  .module('khe', ['ngCookies', 'btford.socket-io', 'ui.router', 'ngAnimate', 'angularMoment'])
+  .module('khe', ['ngCookies', 'btford.socket-io', 'ui.router', 'ngAnimate', 'angularMoment', 'puElasticInput'])
   .constant('angularMomentConfig', {timezone: 'America/New_York'})
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $state, $route) {
     $locationProvider.html5Mode(true);

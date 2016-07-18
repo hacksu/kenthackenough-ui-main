@@ -123,9 +123,9 @@ gulp.task('build-sass', function () {
 /**
 * Move over font-awesome icons so they're next to the fonts directory
 */
-gulp.task('font-awesome-icons', function() { 
-  return gulp.src('./bower_components/font-awesome/fonts/*') 
-    .pipe(gulp.dest('./dist/fonts/')); 
+gulp.task('font-awesome-icons', function() {
+  return gulp.src('./bower_components/font-awesome/fonts/*')
+    .pipe(gulp.dest('./dist/fonts/'));
 });
 
 /**

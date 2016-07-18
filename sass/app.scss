@@ -1,13 +1,7 @@
-//Color Pallette
-$lightBlue: #4D7ABD;
-$darkBlue: #2B3F66;
-$teal: #5AC2AE;
-$orange: #F7961D; 
-$pink: #D21C5A;
-$black: #111;
+@import 'colors';
 
 body {
-	background-color: #000;
+	background-image: linear-gradient( to bottom, $black, $darkBlue ); 
 }
 
 * {
@@ -18,4 +12,8 @@ h1, h2 {
 	font-family: 'Oswald', sans-serif;
 }
 
-
+img {
+	display: block;
+	width: 100%;
+	z-index: 20;
+}
