@@ -21,12 +21,16 @@ h2 {
 
 	-webkit-transition: opacity 3s; /* Safari */
   	transition: opacity 3s;
+	font-weight: bold;
+	line-height: 1;
+	margin: 30.987px;
 }
 
 p {
 	font-size: 18pt;
 	color: #5AC2AE;
 	line-height: 0.7;
+
 
 	opacity: 0;
 
