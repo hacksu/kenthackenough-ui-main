@@ -23,7 +23,8 @@ h2 {
   	transition: opacity 3s;
 	font-weight: bold;
 	line-height: 1;
-	margin: 30.987px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 p {
@@ -143,7 +144,7 @@ a {
 	opacity: 0;
 }
 
-#newsletter-sign-up:hover, #newsletter-sign-up:input:focus {
+#newsletter-sign-up:hover, #newsletter-sign-up:focus {
 	outline: none;
 	color:#5AC2AE;
 	border-color:#D21C5A;
