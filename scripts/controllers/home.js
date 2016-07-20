@@ -115,7 +115,12 @@ angular
       }
 
     };
+    view.test = function () {
+      console.log("test");
 
+    }
+
+    //  Functionality related to mailing list
     view.mail = {
 
       email: null,
@@ -139,6 +144,7 @@ angular
 
     };
 
+    // functionality to create a ticket.
     view.contact = {
 
       new: {},

@@ -1,134 +1,138 @@
-<img src="img/blue_logo.svg" id="logo">
-<canvas id="waves"></canvas>
-<div id="info">
-  <h2>October 7-9th, 2016</h2>
-  <h2>Kent State University Library</h2>
-  <p><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
-  <a target="_blank" href="/SponsorshipPacket.pdf"><div class="btn">Sponsor Info</div></a><br>
-  <input type="email" placeholder="MAILING LIST" id="newsletter-sign-up" spellcheck="false" />
+<div class="home">
+  <img src="img/blue_logo.svg" class="fade" id="logo">
+  <canvas id="waves"></canvas>
+  <div id="info" class="fade">
 
-  <footer>
-  <div id="media">
+    <h2>October 7-9th, 2016</h2>
+    <h2>Kent State University Library</h2>
+
+    <p><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
+
+    <a target="_blank" href="/SponsorshipPacket.pdf"><div class="btn">Sponsor Info</div></a><br>
+    <div ng-if="!home.user">
+      <div ng-click="home.loginRegister=true"><div class="btn">Login/Apply</div></div><br>
+    </div>
+    <div id="login" ng-if="home.loginRegister && !home.user">
+      <input type="email" placeholder="EMAIL" id="newsletter-sign-up" spellcheck="false" />
+      <input type="email" placeholder="PASSOWRD" id="newsletter-sign-up" spellcheck="false" />
+      <div ng-click="home.loginRegister=true"><div class="btn">Register</div></div>
+    </div>
+
+    <footer>
+      <div id="media">
+
+      </div>
+      <div id='powered'>
+        <h4>Powered by</h4>
+        <a href="http://hacksu.cs.kent.edu/"><img src="img/Hacksu_Color.svg" id="hacksu"></a>
+      </div>
+    </footer>
 
   </div>
-  <div id='powered'>
-    <h4>Powered by</h4>
-    <a href="http://hacksu.cs.kent.edu/"><img src="img/Hacksu_Color.svg" id="hacksu"></a>
-  </div>
-</footer>
-</div>
-<script type="text/javascript">
-  /**
-   * Provides requestAnimationFrame in a cross browser way.
-   * @author paulirish / http://paulirish.com/
-   */
-  if ( !window.requestAnimationFrame ) {
-    window.requestAnimationFrame = ( function() {
-      return window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
-        window.setTimeout( callback, 1000 / 60 );
-      };
-    } )();
-  }
-</script>
-<script type="text/javascript">
-  $(function () {
-    var newsletter = $("#newsletter-sign-up");
-    newsletter.keyup(function (e) {
-      if (e.keyCode == 13) {
-        $.post({
-          url: "https://api.khe.io/v1.0/news",
-          data: JSON.stringify({email: newsletter.val()}),
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          success: function(data) {
-            newsletter.attr("placeholder", "See you soon");
-            newsletter.attr("disabled", true);
-          },
-          error: function(data) {
-            newsletter.attr("placeholder", "Oops. Something went wrong! Try that again?");
-            newsletter.keyup(function (e) {
-            })
-          }
-        });
-        console.log(newsletter.val());
-        newsletter.val("");
-      }
+  <script type="text/javascript">
+    /**
+     * Provides requestAnimationFrame in a cross browser way.
+     * @author paulirish / http://paulirish.com/
+     */
+    if ( !window.requestAnimationFrame ) {
+      window.requestAnimationFrame = ( function() {
+        return window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+          window.setTimeout( callback, 1000 / 60 );
+        };
+      } )();
+    }
+  </script>
+  <script type="text/javascript">
+    $(function () {
+      var newsletter = $("#newsletter-sign-up");
+      newsletter.keyup(function (e) {
+        if (e.keyCode == 13) {
+          $.post({
+            url: "https://api.khe.io/v1.0/news",
+            data: JSON.stringify({email: newsletter.val()}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+              newsletter.attr("placeholder", "See you soon");
+              newsletter.attr("disabled", true);
+            },
+            error: function(data) {
+              newsletter.attr("placeholder", "Oops. Something went wrong! Try that again?");
+              newsletter.keyup(function (e) {
+              })
+            }
+          });
+          console.log(newsletter.val());
+          newsletter.val("");
+        }
+      });
     });
-  });
-  /* Wave Script
-   * Nicholas Crawford 2016
-   * Adapted from mr doob's code : http://mrdoob.com/lab/javascript/requestanimationframe/
-  */
-  var canvas, context, dt;
-  var stroke = 4;
-  var periods = 3;
-  init();
-  animate();
-  function init() {
-      canvas = document.getElementById('waves');
-      context = canvas.getContext( '2d' );
-      canvas.width = canvas.width * 4;
-      canvas.height = canvas.height * 4;
-      dt = 0;
-  }
-  function animate() {
-      requestAnimationFrame( animate );
-      dt = dt + 1;
-      if (!drawWave('#D21C5A', 9, 2, 0.62, true)) { //Check to see if the slowest wave (Pink) is done drawing
-        $('#logo').css('opacity', '1'); //fade in logo
+    /* Wave Script
+     * Nicholas Crawford 2016
+     * Adapted from mr doob's code : http://mrdoob.com/lab/javascript/requestanimationframe/
+    */
+    var canvas, context, dt;
+    var stroke = 4;
+    var periods = 3;
+    init();
+    animate();
+    function init() {
+        canvas = document.getElementById('waves');
+        context = canvas.getContext( '2d' );
+        canvas.width = canvas.width * 4;
+        canvas.height = canvas.height * 4;
+        dt = 0;
+    }
+    function animate() {
+        requestAnimationFrame( animate );
+        dt = dt + 1;
+        if (!drawWave('#D21C5A', 9, 2, 0.62, true)) { //Check to see if the slowest wave (Pink) is done drawing
+          $('#logo').css('opacity', '1'); //fade in logo
 
-        setTimeout( function(){ //Fade in date
-          $('h2').css('opacity', '1');
-          },500);
+          setTimeout( function(){ //Fade in everything else
+            $('.fade').css('opacity', '1');
+            },500);
 
-        setTimeout( function(){
-          $('p').css('opacity', '1');
-          },750);
-        setTimeout( function(){
-          $('.btn').css('opacity', '1');
-        $('input').css('opacity', '1');
-        $('footer').css('opacity', '1');
-          },1000);
+        } else {
+          drawWave('#4D7ABD', 10, 8, 0.25, true)//Blue
+          drawWave('#F7961D', 11, 4, 0, true);//Orange
+        }
+    }
+    /*
+      Function for drawing a wave
+      Color - A string. Color of the line. Accepts 'rgb(255,255,255)'' or '#FFFFFF'
+      Speed - Speed that the line is drawn across the screen
+      Height - The height of half a period relative to the canvas height. '2' would make a curve that fills the entire canvas in one full period
+      offset - periods to offset by. Probably a decimal ex: '0.25'.
+      leftToRight [NOT READY YET]-  boolean. True will draw the line left to right. False: right to left
+    */
+    function drawWave(color, speed, height, offset, leftToRight) {
+      //Whoa math!
+      var prevX = leftToRight ? ((dt - 1) * speed) : (canvas.width - (dt - 1) * speed);
+        var prevY = Math.sin( (periods * 2) * (prevX / canvas.width) * Math.PI ) * (canvas.height-stroke)/height + canvas.height / 2;
+        var x = leftToRight ? (dt * speed) : (canvas.width - dt * speed);
+        var y = Math.sin( (periods * 2) * (x / canvas.width) * Math.PI ) * (canvas.height-stroke)/height + canvas.height / 2;
 
-      } else {
-        drawWave('#4D7ABD', 10, 8, 0.25, true)//Blue
-        drawWave('#F7961D', 11, 4, 0, true);//Orange
-      }
-  }
-  /*
-    Function for drawing a wave
-    Color - A string. Color of the line. Accepts 'rgb(255,255,255)'' or '#FFFFFF'
-    Speed - Speed that the line is drawn across the screen
-    Height - The height of half a period relative to the canvas height. '2' would make a curve that fills the entire canvas in one full period
-    offset - periods to offset by. Probably a decimal ex: '0.25'.
-    leftToRight [NOT READY YET]-  boolean. True will draw the line left to right. False: right to left
-  */
-  function drawWave(color, speed, height, offset, leftToRight) {
-    //Whoa math!
-    var prevX = leftToRight ? ((dt - 1) * speed) : (canvas.width - (dt - 1) * speed);
-      var prevY = Math.sin( (periods * 2) * (prevX / canvas.width) * Math.PI ) * (canvas.height-stroke)/height + canvas.height / 2;
-      var x = leftToRight ? (dt * speed) : (canvas.width - dt * speed);
-      var y = Math.sin( (periods * 2) * (x / canvas.width) * Math.PI ) * (canvas.height-stroke)/height + canvas.height / 2;
-
-      //offset
-      x = x - (offset * canvas.width / (periods / 2));
-      prevX = prevX - (offset * canvas.width / (periods / 2));
-      //return before drawing if beyond the width of the canvas
-      if (x > canvas.width) {
-        return false;
-      }
-      //Draw those sexy curves ;)
-      context.beginPath();
-      context.lineWidth=stroke;
-      context.strokeStyle = color;
-      context.moveTo( x, y );
-      context.lineTo( prevX, prevY);
-      context.closePath();
-      context.stroke();
-      return true;
-  }
-</script>
+        //offset
+        x = x - (offset * canvas.width / (periods / 2));
+        prevX = prevX - (offset * canvas.width / (periods / 2));
+        //return before drawing if beyond the width of the canvas
+        if (x > canvas.width) {
+          return false;
+        }
+        //Draw those sexy curves ;)
+        context.beginPath();
+        context.lineWidth=stroke;
+        context.strokeStyle = color;
+        context.moveTo( x, y );
+        context.lineTo( prevX, prevY);
+        context.closePath();
+        context.stroke();
+        return true;
+    }
+  </script>
+<div>

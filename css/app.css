@@ -12,18 +12,20 @@ body {
 	font-family: 'Abel', sans-serif;
 }
 
+.fade {
+	opacity: 0;
+
+	-webkit-transition: opacity 3s; /* Safari */
+	transition: opacity 3s;
+}
+
 h2 {
 	font-size: 28pt;
 	color: #F7961D;
-
-	opacity: 0;
 	font-family: 'Abel', sans-serif;
 
-	-webkit-transition: opacity 3s; /* Safari */
-  	transition: opacity 3s;
 	font-weight: bold;
 	line-height: 1;
-	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
@@ -31,12 +33,6 @@ p {
 	font-size: 18pt;
 	color: #5AC2AE;
 	line-height: 0.7;
-
-
-	opacity: 0;
-
-	-webkit-transition: opacity 3s; /* Safari */
-  	transition: opacity 3s;
 }
 
 a {
@@ -48,10 +44,6 @@ footer {
 	position: relative;
 	margin: 20px auto;
 	width: 100%;
-	opacity: 0;
-
-	-webkit-transition: opacity 3s; /* Safari */
-  	transition: opacity 3s;
 }
 
 #media {
@@ -79,16 +71,12 @@ footer {
 a {
 	text-decoration: none;
 	color:inherit;
-	z-index: 100;
+	z-index: 1;
 }
 
 #logo {
 	width: 50%;
 	margin: 8vh auto;
-	opacity: 0;
-
-	-webkit-transition: opacity 3s; /* Safari */
-  	transition: opacity 3s;
 }
 
 #waves {
@@ -98,14 +86,30 @@ a {
 	width: 100%;
 	height: 20vh;
 	max-height: 200px;
+	z-index: 100;
 }
 
 #info {
 	position: relative;
 }
 
+#login {
+	position: absolute;
+	top: 35%;
+	right: 50%;
+	transform: translate(50%, -50%);
+	background: #111;
+	z-index: 50;
+	padding: 30px;
+
+	border: 3px solid #D21C5A;
+	border-radius: 5px;
+	color: #4D7ABD;
+	box-shadow: 0px 0px 30px 0px rgba(210,28,90,1);
+}
+
 .btn {
-	z-index: 100;
+	z-index: 1;
 	position: relative;
 	border: 3px solid #2B3F66;
 	color: #4D7ABD;
@@ -119,14 +123,10 @@ a {
   	text-transform: uppercase;
   	text-align: center;
   	cursor: hand;
-  	-webkit-transition: border-color 0.3s, color 0.3s, opacity 3s; /* Safari */
-  	transition: border-color 0.3s, color 0.3s, opacity 3s;;
-
-  	opacity: 0;
 }
 
 #newsletter-sign-up {
-	z-index: 100;
+	z-index: 1;
 	position: relative;
 	border: 3px solid #2B3F66;
 	background: transparent;
@@ -138,10 +138,6 @@ a {
 	font-size: 1.2rem;
 	line-height: 1;
 	height: 50px;
-	-webkit-transition: border-color 0.3s, color 0.3s, opacity 3s;
-	transition: border-color 0.3s, color 0.3s, opacity 3s;;
-
-	opacity: 0;
 }
 
 #newsletter-sign-up:hover, #newsletter-sign-up:focus {
