@@ -115,10 +115,6 @@ angular
       }
 
     };
-    view.test = function () {
-      console.log("test");
-
-    }
 
     //  Functionality related to mailing list
     view.mail = {

@@ -1,10 +1,12 @@
+<div class="background" ng-click="home.loginRegister=false" ng-if="home.loginRegister && !home.user"> </div>
+
 <div class="home">
   <img src="img/blue_logo.svg" class="fade" id="logo">
   <canvas id="waves"></canvas>
   <div id="info" class="fade">
 
-    <h2>October 7-9th, 2016</h2>
-    <h2>Kent State University Library</h2>
+    <h2 id="date">October 7-9th, 2016</h2>
+    <h2 id="location">Kent State University Library</h2>
 
     <p><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
 
@@ -12,16 +14,17 @@
     <div ng-if="!home.user">
       <div ng-click="home.loginRegister=true"><div class="btn">Login/Apply</div></div><br>
     </div>
+    </div>
     <div id="login" ng-if="home.loginRegister && !home.user">
-      <input type="email" placeholder="EMAIL" id="newsletter-sign-up" spellcheck="false" />
-      <input type="email" placeholder="PASSOWRD" id="newsletter-sign-up" spellcheck="false" />
-      <div ng-click="home.loginRegister=true"><div class="btn">Register</div></div>
+      <div>
+        <a href="forgot">login</a>
+        <input type="email" ng-model="home.person.email" placeholder="EMAIL" class="neon-input" spellcheck="false" />
+        <input type="password" ng-model="home.person.password"  placeholder="PASSOWRD" class="neon-input" spellcheck="false" />
+        <div class="btn" ng-click="home.person.register()">REGISTER</div>
+      </div>
     </div>
 
     <footer>
-      <div id="media">
-
-      </div>
       <div id='powered'>
         <h4>Powered by</h4>
         <a href="http://hacksu.cs.kent.edu/"><img src="img/Hacksu_Color.svg" id="hacksu"></a>
