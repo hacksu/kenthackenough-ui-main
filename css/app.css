@@ -30,7 +30,7 @@ body {
 	z-index: 2;
 }
 
-h2 {
+#date, #location {
 	font-size: 28pt;
 	color: #F7961D;
 	font-family: 'Abel', sans-serif;
@@ -52,9 +52,11 @@ a {
 }
 
 footer {
-	position: relative;
+	position: absolute;
 	margin: 20px auto;
 	width: 100%;
+	bottom:0;
+	left:0;
 }
 
 #media {
@@ -140,10 +142,10 @@ a {
 	position: relative;
 	border: 3px solid #2B3F66;
 	background: transparent;
-	color: #5AC2AE;
-	width: 246px;
+	color: #5AC2AE !important;
+	width: 306px;
 	border-radius: 5px;
-	padding: 15px 15px;
+	padding: 0px 15px 0px 15px;
 	margin: 15px auto 0 auto;
 	font-size: 1.2rem;
 	line-height: 1;
