@@ -5,43 +5,38 @@
   <canvas id="waves"></canvas>
   <div id="info center" class="fade">
 
-    <h2 id="date center">October 7-9th, 2016</h2>
-    <h2 id="location center">Kent State University Library</h2>
+    <h2 id="date">October 7-9th, 2016</h2>
+    <h2 id="location">Kent State University Library</h2>
 
-    <p><a class="center-link center" href="mailto:staff@khe.io">staff@khe.io</a></p>
+    <p><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
 
-    <a class="center-link center" target="_blank" href="/SponsorshipPacket.pdf"><div class="btn center">Sponsor Info</div></a><br>
+    <a class="center-link" target="_blank" href="/SponsorshipPacket.pdf"><div class="btn center">Sponsor Info</div></a><br>
     <div ng-if="!home.user">
       <div ng-click="home.loginRegister=true"><div class="btn center">Login/Apply</div></div><br>
     </div>
-    <label class="neon-input center" />
-    </div>
-    <div id="login" ng-if="home.loginRegister && !home.user">
-      <div>
-          <a>login</a> <br/>
-
-          <div class="labeled-input">
-            <input name="email"
-                   id="email"
-                   type="text"
-                   ng-model="home.person.email"
-                   class="neon-input"
-                   spellcheck="false"
-                   required />
-            <label for="email">EMAIL</label>
-          </div>
-          <div class="labeled-input">
-            <input name="password"
-                   id="password"
-                   type="password"
-                   ng-model="home.person.password"
-                   class="neon-input"
-                   spellcheck="false"
-                   required />
-            <label for="password">PASSWORD</label>
-          </div>
-          <div class="btn" ng-click="home.person.register()">REGISTER</div>
+  </div>
+  <div id="login" ng-if="home.loginRegister && !home.user">
+      <div class="labeled-input">
+        <input name="email"
+               id="email"
+               type="text"
+               ng-model="home.person.email"
+               class="neon-input"
+               spellcheck="false"
+               required />
+        <label for="email">EMAIL</label>
       </div>
+      <div class="labeled-input">
+        <input name="password"
+               id="password"
+               type="password"
+               ng-model="home.person.password"
+               class="neon-input"
+               spellcheck="false"
+               required />
+        <label for="password">PASSWORD</label>
+      </div>
+      <div class="btn" ng-click="home.person.register()">REGISTER</div>
     </div>
 
     <footer>
