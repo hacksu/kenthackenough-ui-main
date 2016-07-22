@@ -64,8 +64,11 @@ angular
           $location.path('/apply');
         }).
         error(function (data) {
+          console.log(data);
           if (data) {
             self.errors = data.errors || ['An internal error has occurred'];
+          } else {
+            self.errors = ["Can't connect"];
           }
         });
       },

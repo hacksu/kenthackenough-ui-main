@@ -74,7 +74,7 @@ a {
 	line-height: 1;
 	font-size: 1.2rem;
 	-webkit-transition: top 0.5s, font-size 0.5s; /* Safari */
-	transition: top 0.5s;
+	transition: top 0.5s, font-size 0.5s;
 	z-index: 70;
 }
 .neon-input:focus + label, .neon-input:valid + label {
@@ -193,6 +193,19 @@ a {
 	line-height: 50px;
 	padding-right: 10px;
 	color: white;
+}
+
+.error {
+	color: white;
+	padding-top: 15px;
+}
+
+.errors {
+	padding: 15px;
+	padding-top: 0;
+	background-color: gray;
+	width: inherit;
+	padding:
 }
 
 .btn {

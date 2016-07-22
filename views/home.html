@@ -43,6 +43,9 @@
       </div>
       <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
     </div>
+    <div class="errors" ng-if="home.person.errors">
+      <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
+    </div>
   </div>
 
     <footer>
