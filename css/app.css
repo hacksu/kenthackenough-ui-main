@@ -47,8 +47,49 @@ p {
 }
 
 a {
+	color:  #5AC2AE !important;
+	text-align: left;
+	position: relative;
+	float: left;
+}
+
+.labeled-input {
+	position: relative;
+	padding-top: 20px;
+}
+.labeled-input > input {
+	margin-left: 0;
+	margin-right: 0;
+	text-align: left;
+}
+
+.labeled-input > label {
+	display: block;
+	position: absolute;
+	color: #4D7ABD;
+	top: 52px;
+	transition: 0.5s;
+	text-align: center;
+	left: 0;
+	right: 0;
+	line-height: 1;
+	font-size: 1.2rem;
+	z-index: 70;
+}
+.neon-input:focus + label, .neon-input:valid + label {
+	top: 10px;
+}
+
+.neon-input:focus + label, .neon-input:hover + label {
+	color: #5AC2AE;
+}
+
+
+.center-link {
 	position: relative;
 	display: inline-block;
+	float: none;;
+	text-align: center;
 }
 
 footer {
@@ -113,7 +154,9 @@ a {
 	transform: translate(50%, -50%);
 	background: #111;
 	z-index: 50;
-	padding: 30px;
+	padding: 25px;
+	min-width: 500px;
+	min-height: 250px;
 
 	border: 3px solid #D21C5A;
 	border-radius: 5px;
@@ -150,6 +193,7 @@ a {
 	font-size: 1.2rem;
 	line-height: 1;
 	height: 50px;
+	z-index: 50;
 }
 
 .neon-input:hover, .neon-input:focus {
