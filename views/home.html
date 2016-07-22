@@ -15,7 +15,12 @@
       <div ng-click="home.loginRegister=true"><div class="btn center">Login/Apply</div></div><br>
     </div>
   </div>
-  <div id="login" ng-if="home.loginRegister && !home.user">
+  <div class="prompt" id="login" ng-if="home.loginRegister && !home.user">
+    <div class="title-bar">
+      <h1>REGISTER</h1>
+      <a ng-click="home.login=true">Already registed? Login</a>
+    </div>
+    <div class="content">
       <div class="labeled-input">
         <input name="email"
                id="email"
@@ -36,8 +41,9 @@
                required />
         <label for="password">PASSWORD</label>
       </div>
-      <div class="btn" ng-click="home.person.register()">REGISTER</div>
+      <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
     </div>
+  </div>
 
     <footer>
       <div id='powered'>
