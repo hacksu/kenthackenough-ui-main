@@ -90,7 +90,11 @@ angular
           getApplication();
         }).
         error(function (data) {
-          self.errors = data.errors || ['An internal error has occurred'];
+          if (data) {
+            self.errors = data.errors || ['An internal error has occurred'];
+          } else {
+            self.errors = ["Can't connect"];
+          }
         });
       },
 
