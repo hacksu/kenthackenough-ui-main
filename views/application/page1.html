@@ -2,11 +2,11 @@
     <h1>Apply to Kent Hack Enough</h1>
 </header>
 <div class="container">
-    <div class="row text-center align-middle">
+    <div class="row text-center align-middle" ng-hide="fadeHeader">
         <input type="text" placeholder="[Name]" ng-model="application.name" pu-elastic-input>
         <h2>'s New Hit Single</h2>
     </div>
     <div class="text-center row align-middle">
-        <button ui-sref="apply.page2"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+        <button ui-sref="apply.page2" ng-click="fadeHeader = true"><span><i class="fa fa-arrow-right"></i></span> Next</button>
     </div>
 </div>

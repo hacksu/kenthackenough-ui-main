@@ -182,6 +182,17 @@ gulp.task('build',
 
   });
 
+gulp.task('buildfast',
+  [
+    'lint',
+    'build-scripts',
+    'build-bower-css',
+    'font-awesome-icons',
+    'build-sass'
+  ], function () {
+
+  });
+
 /**
 * Default task is just a help page
 */

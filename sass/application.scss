@@ -22,9 +22,39 @@
   animation: fadeIn 0.2s both ease;
 }
 
+#application h1.ng-enter {
+   animation: moveFadeIn 3s ease-out forwards;
+   animation-iteration-count: 3;
+   
+   /* Safari and Chrome */
+   -webkit-animation:mymove 3s;
+    -webkit-animation-iteration-count:3;
+}
+
+@keyframes moveFadeIn {
+    from {top:-2rem; opacity: 0;}
+    to {top:0rem; opacity: 1}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */ {
+    from {top:-2rem; opacity: 0;}
+    to {top:0rem; opacity: 1}
+}
+
+
 /* leave animation */
 #application-views.ng-leave {
   -webkit-animation: fadeOut 0.2s both ease;
+  -moz-animation: fadeOut 0.2s both ease;
+  animation: fadeOut 0.2s both ease;
+}
+
+#application-views.ng-leave-stagger {
+     transition-delay: 0.2s;
+}
+
+#application h1.ng-leave {
+    -webkit-animation: fadeOut 0.2s both ease;
   -moz-animation: fadeOut 0.2s both ease;
   animation: fadeOut 0.2s both ease;
 }
@@ -100,7 +130,8 @@
 
 #application h2 {
     color: white;
-    font-weight: normal;
+    font-family: 'Abel', sans-serif;
+    font-weight: 400;
     display: inline-block;
 }
 
@@ -132,6 +163,7 @@
     color: $lightBlue;
     display: inline-block;
     padding-right: 0;
+    height: 4rem;
 }
 
 #application button {
@@ -156,6 +188,111 @@
 #application button:hover {
 	color: $darkBlue;
 	border-color: $darkBlue;
+}
+
+//Page 2
+#track-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#track-area {
+    width: 100vw;
+    height: 1000vh;
+    background-color: $black;
+    
+    ul {
+        list-style: none;
+        margin-left: 0;
+        float: left;
+    }
+    
+    .measure-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: no-wrap;
+    }
+    
+    .measure {
+        flex: 1 0 auto;
+        background-color: $black;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        border-style: inset;
+        &::before {
+            display: block;
+            position: relative;
+            left: -25%;
+            width: 1px;
+            background-color: white;
+        }
+        
+        &::after {
+            display: block;
+            position: relative;
+            right: -25%;
+            width: 1px;
+            background-color: white;
+        }
+        
+        p {
+            color: white;
+        }
+    }
+}
+
+
+#application .track {
+    color: white;
+    height: 5rem;
+    border: 1px solid $black;
+    background-color: #000;
+    border-radius: 3px;
+    border-style: inset;
+    
+    a, p {
+        color: white;
+        text-align: center;
+        line-height: 5rem;
+    }
+    
+    &.answer {
+        
+    }
+}
+
+#keyboard-piano {
+    position: fixed;
+    top: 100%;
+    
+}
+
+#loop-selector {
+    z-index: 300;
+    position: fixed;
+    top: 35vh;
+    left: 25vw;
+    width: 50vw;
+    height: 30vh;
+    background-color: $black;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    
+    .loop {
+        flex: 1 0 auto;
+        color: white;
+        margin: 40px 30px;
+        background-color: rgba($pink, 0.7);
+        border: 2px solid $pink;
+        border-radius: 3px;
+        
+        
+    }
 }
 
 #application .checkbox {

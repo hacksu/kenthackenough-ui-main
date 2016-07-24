@@ -1,15 +1,90 @@
 <header>
-    <h1>Apply to Kent Hack Enough</h1>
+    <h1>{{application.name | application:'name'}}'s New Hit Single</h1>
 </header>
-<div id="track-area">
-    <div class="track row">
-        <div class="track-sidebar medium-4">
-            <div class="number medium-2">
-                <p>1.</p>
+<div id="track-wrapper">
+    <div id="track-area">
+        <ul id="question-labels" class="medium-3">
+            <li><p>Tracks</p></li>
+            <li class="track">
+                <p>Gender</p>
+            </li>
+            <li class="track">
+                <p>School Name</p>
+
+            </li>
+            <li class="track">
+                <p>Major</p>
+            </li>
+            <li class="track">
+                <p>Phone Number</p>
+            </li>
+            <li class="track">
+                <p>Dietary Restriction</p>
+            </li>
+        </ul>
+        <ul id="answers" class="medium-9">
+            <div class="measure-wrapper">
+                <div class="measure"><p>1</p></div>
+                <div class="measure"><p>2</p></div>
+                <div class="measure"><p>3</p></div>
+                <div class="measure"><p>4</p></div>
+                <div class="measure"><p>5</p></div>
+                <div class="measure"><p>6</p></div>
+                <div class="measure"><p>7</p></div>
+                <div class="measure"><p>8</p></div>
             </div>
-            <div class="label medium-10">
-                <p>State University</p>
+            <li class="answer track">
+                <a ng-click="open('gender')">Click Here to Answer</a>
+            </li>
+            <li class="answer track">
+                <a ng-click="open('school')">Click Here to Answer</a>
+            </li>
+            <li class="answer track">
+                <a ng-click="open('major')">Click Here to Answer</a>
+            </li>
+            <li class="answer track">
+                <p>Click Here to Answer</p>
+            </li>
+            <li class="answer track">
+                <p>Click Here to Answer</p>
+            </li>
+        </ul>
+        <div id="mixer">
+            <div class="row">
+                <div class="fader">
+                    <p>Age</p>
+                    
+                </div>
             </div>
+            <div class="row">
+                <div class="knob">
+                    <p>Shirt Size</p>
+                </div>
+                <div class="knob">
+                    <p>Class Standing</p>
+                </div>
+
+                <div class="knob">
+                    <p>First Hackathon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="keyboard-piano" ng-if="display.school">
+
+    </div>
+    <div id="phone-drumpad">
+
+    </div>
+    <div id="loop-selector" ng-if="display.gender">
+        <div class="loop">
+            <h3>Male</h3>
+        </div>
+        <div class="loop">
+            <h3>Female</h3>
+        </div>
+        <div class="loop">
+            <h3>Other</h3>
         </div>
     </div>
 </div>
