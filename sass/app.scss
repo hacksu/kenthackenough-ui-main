@@ -1,8 +1,8 @@
 @import 'colors';
 
 body {
-	background-image: linear-gradient( to bottom, $black, black );
-	background-color: black;
+	background-image: linear-gradient( to bottom, black, $black);
+	background-color: $black;
 	background-repeat: no-repeat;
 }
 
