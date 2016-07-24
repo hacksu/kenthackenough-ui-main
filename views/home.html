@@ -1,194 +1,148 @@
 <div id="top">
-	<div class="row" id="logo">
-	    <div class="small-12 columns align-center show-for-large-up">
-	      <img src="/img/blue_logo.svg" alt="Kent Hack Enough" >
-	    </div>
-	    <div class="small-8 medium-6 small-offset-2 medium-offset-3 end columns hide-for-large-up">
-	    	<img src="/img/shortLogo.png" alt="Kent Hack Enough" >
-	    </div>
-</div> <!-- top -->
-	    
-<div class="small-12 medium-8 medium-offset-2 large-4 large-offset-4 columns align-center">
-      
-      <div class="white small" ng-repeat="e in home.errors">{{e}}</div>
-      <div ng-if="!home.user">
-        <br>
-        <a class="apply" ng-click="home.register = true; home.showLogin = false">Apply</a> |
-        <a class="apply" ng-click="home.register = true; home.showLogin = true">Login</a>
-      </div>
-      
-      <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
-      <div ng-if="home.user && home.application.status == 'approved'" class="align-center" ng-click="home.apply.toggleGoing()">
-        <span ng-if="!home.application.going" class="white">Click the button below to RSVP!</span>
-        <span ng-if="home.application.going" class="white">You are coming to Kent Hack Enough!</span>
-        <button class="apply">
+    <div class="row" id="logo">
+        <div class="small-12 columns align-center show-for-large-up">
+            <img src="/img/blue_logo.svg" alt="Kent Hack Enough">
+        </div>
+        <div class="small-8 medium-6 small-offset-2 medium-offset-3 end columns hide-for-large-up">
+            <img src="/img/shortLogo.png" alt="Kent Hack Enough">
+        </div>
+    </div>
+    <canvas id="waves"></canvas>
+</div>
+<!-- top -->
+
+<div class="row">
+    <div class="white small" ng-repeat="e in home.errors">{{e}}</div>
+    <div ng-if="!home.user">
+        <a class="apply btn medium-3 medium-offset-3 " ng-click="home.register = true; home.showLogin = false">Apply</a>
+        <a class="apply btn medium-3 medium-offset-1" ng-click="home.register = false; home.showLogin = true">Login</a>
+    </div>
+    <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
+</div>
+
+    <div class="row">
+        <div class="small-12 columns" ng-if="!home.showLogin">
+            <h2>Sign Up</h2>
+            <div class="switch">
+                <a ng-click="home.showLogin = true" class="white">Already created an account?</a>
+            </div>
+            <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
+            <form ng-submit="home.person.register()">
+                <label>Email</label>
+                <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
+
+                <label>Password</label>
+                <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
+                <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
+            </form>
+        </div>
+
+        <div class="small-12 columns" ng-if="home.showLogin">
+            <h2>Login</h2>
+            <div class="switch">
+                <a ng-click="home.showLogin = false" class="white">Create an account</a> |
+                <a ui-sref="recover" class="white">Forgot your password?</a>
+            </div>
+            <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
+            <form ng-submit="home.person.login()">
+                <label>Email</label>
+                <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
+                <label>Password</label>
+                <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
+                <button><span><i class="fa fa-arrow-right"></i></span>Sign In</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+<div ng-if="home.user && home.application.status == 'approved'" class="align-center" ng-click="home.apply.toggleGoing()">
+    <span ng-if="!home.application.going" class="white">Click the button below to RSVP!</span>
+    <span ng-if="home.application.going" class="white">You are coming to Kent Hack Enough!</span>
+    <button class="apply">
           <span ng-if="!home.application.going" class="white oswald">RSVP</span>
           <span ng-if="home.application.going" class="white oswald">Un-RSVP</span>
         </button>
-      </div>
-      
-      <div ng-if="home.user" class="align-center">
-        <a href="/account" class="white">Change Email/Password</a> |
-        <a ng-click="home.person.logout()" class="white">Logout</a>
-        <br><br>
-      </div>
-
-    </div>
-
-
-<div id="login" ng-if="true">
-    <div class="row">
-      <div class="small-12 columns" ng-if="!home.showLogin">
-        <h2>Sign Up</h2>
-        <div class="switch">
-          <a ng-click="home.showLogin = true" class="white">Already created an account?</a>
-        </div>
-        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
-        <form ng-submit="home.person.register()">
-          <label>
-            Email
-            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
-          </label>
-          <label>
-            Password
-            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
-          </label>
-          <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
-        </form>
-      </div>
-      <div class="small-12 columns" ng-if="home.showLogin">
-        <h2>Login</h2>
-        <div class="switch">
-          <a ng-click="home.showLogin = false" class="white">Create an account</a> |
-          <a ui-sref="recover" class="white">Forgot your password?</a>
-        </div>
-        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
-        <form ng-submit="home.person.login()">
-          <label>
-            Email
-            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
-          </label>
-          <label>
-            Password
-            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
-          </label>
-          <button><span><i class="fa fa-arrow-right"></i></span>Sign In</button>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="background" ng-click="home.loginRegister=false" ng-if="home.loginRegister && !home.user"> </div>
+<div ng-if="home.user" class="align-center">
+    <a href="/account" class="white">Change Email/Password</a> |
+    <a ng-click="home.person.logout()" class="white">Logout</a>
+    <br><br>
+</div>
 
-<div class="home">
-  <img src="img/blue_logo.svg" class="fade center" id="logo">
-  <canvas id="waves"></canvas>
-  <div id="info center" class="fade">
+
+<div id="info center" class="fade">
 
     <h2 id="date">October 7-9th, 2016</h2>
     <h2 id="location">Kent State University Library</h2>
 
     <p><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
 
-    <a class="center-link" target="_blank" href="/SponsorshipPacket.pdf"><div class="btn center">Sponsor Info</div></a><br>
-    <div ng-if="!home.user">
-      <div ng-click="home.loginRegister=true"><div class="btn center">Login/Apply</div></div><br>
-    </div>
-  </div>
-  <div class="prompt" id="login" ng-if="home.loginRegister && !home.user">
-    <div class="title-bar" ng-if="!home.login">
-      <h1>REGISTER</h1>
-      <a ng-click="home.login=true">Already registed? Login</a>
-    </div>
-    <div class="title-bar" ng-if="home.login">
-      <h1>LOGIN</h1>
-      <a ng-click="home.login=false">Don't have an account? Register</a>
-    </div>
-    <div class="content">
-      <div class="labeled-input">
-        <input name="email"
-               id="email"
-               type="text"
-               ng-model="home.person.email"
-               class="neon-input"
-               spellcheck="false"
-               required />
-        <label for="email">EMAIL</label>
-      </div>
-      <div class="labeled-input">
-        <input name="password"
-               id="password"
-               type="password"
-               ng-model="home.person.password"
-               class="neon-input"
-               spellcheck="false"
-               required />
-        <label for="password">PASSWORD</label>
-      </div>
-      <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
-      <div ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</div>
-    </div>
-    <div class="errors" ng-if="home.person.errors">
-      <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
-    </div>
-  </div>
+    <a class="center-link" target="_blank" href="/SponsorshipPacket.pdf">
+        <div class="btn center">Sponsor Info</div>
+    </a><br>
 
-    <footer>
-      <div id='powered'>
+</div>
+
+<footer>
+    <div id='powered'>
         <h4>Powered by</h4>
         <a href="http://hacksu.cs.kent.edu/"><img src="img/Hacksu_Color.svg" id="hacksu"></a>
-      </div>
-    </footer>
+    </div>
+</footer>
 
-  </div>
-  <script type="text/javascript">
+<script type="text/javascript">
     /**
      * Provides requestAnimationFrame in a cross browser way.
      * @author paulirish / http://paulirish.com/
      */
-    if ( !window.requestAnimationFrame ) {
-      window.requestAnimationFrame = ( function() {
-        return window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
-          window.setTimeout( callback, 1000 / 60 );
-        };
-      } )();
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = (function() {
+            return window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
     }
-  </script>
-  <script type="text/javascript">
+</script>
+<script type="text/javascript">
     /* Wave Script
      * Nicholas Crawford 2016
      * Adapted from mr doob's code : http://mrdoob.com/lab/javascript/requestanimationframe/
-    */
+     */
     var canvas, context, dt;
     var stroke = 4;
     var periods = 3;
     init();
     animate();
+
     function init() {
         canvas = document.getElementById('waves');
-        context = canvas.getContext( '2d' );
+        context = canvas.getContext('2d');
         canvas.width = canvas.width * 4;
         canvas.height = canvas.height * 4;
         dt = 0;
     }
+
     function animate() {
-        requestAnimationFrame( animate );
+        requestAnimationFrame(animate);
         dt = dt + 1;
         if (!drawWave('#D21C5A', 9, 2, 0.62, true)) { //Check to see if the slowest wave (Pink) is done drawing
-          $('#logo').css('opacity', '1'); //fade in logo
+            // $('#logo').css('opacity', '1'); //fade in logo
 
-          setTimeout( function(){ //Fade in everything else
-            $('.fade').css('opacity', '1');
-            },500);
+            setTimeout(function() { //Fade in everything else
+                // $('.fade').css('opacity', '1');
+            }, 500);
 
-        } else {
-          drawWave('#4D7ABD', 10, 8, 0.25, true)//Blue
-          drawWave('#F7961D', 11, 4, 0, true);//Orange
+        }
+        else {
+            drawWave('#4D7ABD', 10, 8, 0.25, true) //Blue
+            drawWave('#F7961D', 11, 4, 0, true); //Orange
         }
     }
     /*
@@ -200,28 +154,27 @@
       leftToRight [NOT READY YET]-  boolean. True will draw the line left to right. False: right to left
     */
     function drawWave(color, speed, height, offset, leftToRight) {
-      //Whoa math!
-      var prevX = leftToRight ? ((dt - 1) * speed) : (canvas.width - (dt - 1) * speed);
-        var prevY = Math.sin( (periods * 2) * (prevX / canvas.width) * Math.PI ) * (canvas.height-stroke)/height + canvas.height / 2;
+        //Whoa math!
+        var prevX = leftToRight ? ((dt - 1) * speed) : (canvas.width - (dt - 1) * speed);
+        var prevY = Math.sin((periods * 2) * (prevX / canvas.width) * Math.PI) * (canvas.height - stroke) / height + canvas.height / 2;
         var x = leftToRight ? (dt * speed) : (canvas.width - dt * speed);
-        var y = Math.sin( (periods * 2) * (x / canvas.width) * Math.PI ) * (canvas.height-stroke)/height + canvas.height / 2;
+        var y = Math.sin((periods * 2) * (x / canvas.width) * Math.PI) * (canvas.height - stroke) / height + canvas.height / 2;
 
         //offset
         x = x - (offset * canvas.width / (periods / 2));
         prevX = prevX - (offset * canvas.width / (periods / 2));
         //return before drawing if beyond the width of the canvas
         if (x > canvas.width) {
-          return false;
+            return false;
         }
         //Draw those sexy curves ;)
         context.beginPath();
-        context.lineWidth=stroke;
+        context.lineWidth = stroke;
         context.strokeStyle = color;
-        context.moveTo( x, y );
-        context.lineTo( prevX, prevY);
+        context.moveTo(x, y);
+        context.lineTo(prevX, prevY);
         context.closePath();
         context.stroke();
         return true;
     }
-  </script>
-<div>
+</script>
