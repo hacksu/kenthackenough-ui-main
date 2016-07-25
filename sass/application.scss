@@ -202,6 +202,10 @@
     height: 1000vh;
     background-color: $black;
     
+    p {
+        margin: 0.3rem 0;
+    }
+    
     ul {
         list-style: none;
         margin-left: 0;
@@ -216,29 +220,43 @@
     }
     
     .measure {
+        position: relative;
         flex: 1 0 auto;
         background-color: $black;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
+        border: 1px solid white;
+        border-top: none;
+        border-bottom: none;
         border-style: inset;
-        &::before {
+        
+        &:before {
+            content: "";
             display: block;
-            position: relative;
-            left: -25%;
+            position: absolute;
+            left: 25%;
+            bottom: 0;
             width: 1px;
+            height: 50%;
             background-color: white;
         }
         
-        &::after {
+        &:after {
+            content: "";
             display: block;
-            position: relative;
-            right: -25%;
-            width: 1px;
-            background-color: white;
+            position: absolute;
+            right: 25%;
+            bottom: 0;
+            width: 25%;
+            height: 50%;
+            background-color: transparent;
+            border: 1px solid white;
+            border-style: inset;
+            border-top: none;
+            border-bottom: none;
         }
         
         p {
-            color: white;
+            text-align: left;
+            padding-left: 0.5rem;
         }
     }
 }
@@ -251,11 +269,13 @@
     background-color: #000;
     border-radius: 3px;
     border-style: inset;
+    text-align: center;
     
     a, p {
         color: white;
         text-align: center;
         line-height: 5rem;
+        width: 100%;
     }
     
     &.answer {
@@ -275,7 +295,7 @@
     top: 35vh;
     left: 25vw;
     width: 50vw;
-    height: 30vh;
+    height: 50vh;
     background-color: $black;
     border: 1px solid black;
     border-radius: 5px;
@@ -284,13 +304,19 @@
     flex-wrap: no-wrap;
     
     .loop {
-        flex: 1 0 auto;
+        flex: 0 0 auto;
+        width: 10vw;
+        height: 10vw;
         color: white;
         margin: 40px 30px;
         background-color: rgba($pink, 0.7);
         border: 2px solid $pink;
         border-radius: 3px;
         
+        h3 {
+            color: white;
+            line-height: 30vh;
+        }
         
     }
 }
