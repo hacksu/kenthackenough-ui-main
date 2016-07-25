@@ -4,6 +4,7 @@ body {
 	background-image: linear-gradient( to bottom, black, $black);
 	background-color: $black;
 	background-repeat: no-repeat;
+	margin: 0;
 }
 
 * {
@@ -34,7 +35,7 @@ body {
 }
 
 .background {
-	position: absolute;
+	position: fixed;
 	min-width: 100%;
 	min-height: 100%;
 	top: 0px;
@@ -54,13 +55,7 @@ body {
 	margin-bottom: 40px;
 }
 
-#login {
-    position: absolute;
-    top: 20%;
-    z-index: 300;
-}
-
-p {
+#contact-email {
 	font-size: 18pt;
 	color: $teal;
 	line-height: 0.7;
@@ -76,10 +71,8 @@ a {
 
 .labeled-input {
 	position: relative;
-}
-
-.labeled-input > input {
-	margin-top: 26;
+	-webkit-box-sizing: content-box !important;
+	box-sizing: content-box !important;
 }
 
 .labeled-input > label {
@@ -115,7 +108,7 @@ a {
 }
 
 footer {
-	position: absolute;
+	position: relative;
 	margin: 20px auto;
 	width: 100%;
 	bottom:0;
@@ -156,8 +149,8 @@ a {
 }
 
 #waves {
-  	position: relative;
-  	margin: 20px auto 50px;
+  position: relative;
+  margin: 20px auto 50px;
 	display: block;
 	width: 100%;
 	height: 20vh;
@@ -170,7 +163,7 @@ a {
 }
 
 .prompt {
-	position: absolute;
+	position: fixed;
 	top: 35%;
 	right: 50%;
 	transform: translate(50%, -50%);
@@ -203,6 +196,7 @@ a {
 	min-width: 30px;
 	display: inline;
 	line-height: 50px;
+	font-size: 2rem;
 	color: white;
 }
 
@@ -234,54 +228,47 @@ a {
 	width: 246px;
 	display: block;
 	border-radius: 5px;
-  	padding: 15px 45px;
-  	margin: 15px auto 0 auto;
-  	font-size: 1.2rem;
-  	line-height: 1;
-  	text-transform: uppercase;
-  	text-align: center;
-  	cursor: hand;
+  padding: 15px 45px;
+  margin: 15px auto 0 auto;
+  font-size: 1.2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: hand;
+	-webkit-box-sizing: content-box !important;
+	box-sizing: content-box !important;
 }
 
 .neon-input {
-	z-index: 1;
-	position: relative;
-	border: 3px solid $lightBlue;
-	background: transparent;
+	z-index: 1 !important;
+	position: relative !important;
+	border: 3px solid $lightBlue !important;
+	background: transparent !important;
 	color: $teal !important;
-	width: 306px;
-	border-radius: 5px;
-	padding: 0px 15px 0px 15px;
-	margin: 15px auto 0 auto;
-	font-size: 1.2rem;
-	line-height: 1;
-	height: 50px;
-	z-index: 50;
+	width: 306px !important;
+	border-radius: 5px !important;
+	padding: 0px 15px 0px 15px !important;
+	margin: 15px auto 0 auto !important;
+	font-size: 1.2rem !important;
+	line-height: 1 !important;
+	height: 50px !important;
+	z-index: 50  !important;
+	font-family: Arial !important;
+	-webkit-box-sizing: content-box !important;
+	box-sizing: content-box !important;
+	display: inline-block !important;
 }
 
 .neon-input:hover, .neon-input:focus {
-	outline: none;
-	color:$teal;
-	border-color:$pink;
+	outline: none !important;
+	color:$teal !important;
+	border-color:$pink!important;
 }
 
-
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-	text-align: center;
-	padding-top: 3px;
-	color: $lightBlue;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	text-align: center;
-	color: $lightBlue;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-	text-align: center;
-	color: $lightBlue;
-}
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-	text-align: center;
-	color: $lightBlue;
+.info-section {
+	text-align:  left;
+	color: white;
+	margin: 40px;
 }
 
 .btn:hover {
