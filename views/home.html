@@ -127,11 +127,6 @@
         requestAnimationFrame( animate );
         dt = dt + 1;
         if (!drawWave('#D21C5A', 9, 2, 0.62, true)) { //Check to see if the slowest wave (Pink) is done drawing
-          $('#logo').css('opacity', '1'); //fade in logo
-
-          setTimeout( function(){ //Fade in everything else
-            $('.fade').css('opacity', '1');
-            },500);
 
         } else {
           drawWave('#4D7ABD', 10, 8, 0.25, true)//Blue
