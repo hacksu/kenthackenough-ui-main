@@ -29,8 +29,8 @@
              required />
       <label for="password">PASSWORD</label>
     </div>
-    <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
-    <div ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</div>
+    <a ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</a>
+    <a ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</a>
   </div>
   <div class="errors" ng-if="home.person.errors">
     <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
@@ -53,10 +53,12 @@
 
     <a class="center-link" target="_blank" href="/SponsorshipPacket.pdf"><div class="btn center">Sponsor Info</div></a><br>
     <div ng-if="!home.user">
-      <div ng-click="home.loginRegister=true"><div class="btn center">Login/Apply</div></div><br>
+      <a class="center-link" ng-click="home.loginRegister=true"><div class="btn center">Apply</div></a><br>
+      <a class="center-link" ng-click="home.loginRegister=true; home.login=true;"><div class="btn center">Login</div></a><br>
     </div>
     <div ng-if="home.user">
-      <div ng-click="home.loginRegister=true"><div class="btn center">Logout</div></div><br>
+      <a class="center-link" ui-sref="apply.page1"><div class="btn center">Application</div></a><br>
+      <a class="center-link" ng-click="home.person.logout()"><div class="btn center">Logout</div></a><br>
     </div>
   </div>
 
