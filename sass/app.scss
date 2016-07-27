@@ -15,11 +15,6 @@ h1, h2 {
 	font-family: 'Oswald', sans-serif;
 }
 
-img {
-	display: block;
-	width: 100%;
-	z-index: 20;
-}
 
 body {
 	background-color: $black;
@@ -28,7 +23,7 @@ body {
 }
 
 .fade {
-	//opacity: 0;
+	opacity: 0;
 
 	-webkit-transition: opacity 3s; /* Safari */
 	transition: opacity 3s;
@@ -107,17 +102,28 @@ a {
 	text-align: center;
 }
 
+h1, h2, h3, h4, h5 {
+	font-family: 'Abel', sans-serif;
+	color: $lightBlue;
+}
+
 footer {
 	position: relative;
 	margin: 20px auto;
 	width: 100%;
 	bottom:0;
 	left:0;
+	font-family: 'Abel', sans-serif;
 }
 
 #media {
 	margin-left: 20px;
 	float: left;
+}
+
+#powered > h4 {
+	margin-top: 19px;
+	margin-bottom: 19px;
 }
 
 #powered {
@@ -144,8 +150,8 @@ a {
 }
 
 #logo {
-	width: 50%;
 	margin: 8vh auto;
+	height: auto;
 }
 
 #waves {
@@ -269,6 +275,7 @@ a {
 	text-align:  left;
 	color: white;
 	margin: 40px;
+	padding-top: 50px;
 }
 
 .btn:hover {
