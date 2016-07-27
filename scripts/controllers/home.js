@@ -101,16 +101,18 @@ angular
       /**
       * Logout
       */
-      logout: function () {
-        Models.user.removeMe();
-        view.user = Models.user.getMe();
-      },
 
       clear: function () {
         view.login = false;
         view.loginRegister = false;
         this.errors = null;
-      }
+      },
+
+      logout: function () {
+        Models.user.removeMe();
+        view.user = Models.user.getMe();
+        this.clear();
+      },
 
     };
 
