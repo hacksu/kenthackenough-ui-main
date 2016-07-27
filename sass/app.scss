@@ -240,7 +240,7 @@ a {
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  cursor: hand;
+  cursor: pointer !important;
 	-webkit-box-sizing: content-box !important;
 	box-sizing: content-box !important;
 }

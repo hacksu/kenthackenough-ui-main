@@ -29,8 +29,8 @@
              required />
       <label for="password">PASSWORD</label>
     </div>
-    <a ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</a>
-    <a ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</a>
+    <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
+    <div ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</div>
   </div>
   <div class="errors" ng-if="home.person.errors">
     <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
