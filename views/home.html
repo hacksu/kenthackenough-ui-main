@@ -39,12 +39,12 @@
 
 <div class="home">
   <div class="row">
-    <div class="small-12 small-centered medium-10 columns">
+    <div class="small-12 small-centered columns">
       <img src="img/blue_logo.svg" class="fade center" id="logo" alt="Kent Hack Enough">
     </div>
   </div>
   <canvas id="waves"></canvas>
-  <div id="info center" class="fade">
+  <div id="info-center" class="fade">
 
     <h2 id="date">October 7-9th, 2016</h2>
     <h2 id="location">Kent State University Library</h2>
@@ -54,6 +54,9 @@
     <a class="center-link" target="_blank" href="/SponsorshipPacket.pdf"><div class="btn center">Sponsor Info</div></a><br>
     <div ng-if="!home.user">
       <div ng-click="home.loginRegister=true"><div class="btn center">Login/Apply</div></div><br>
+    </div>
+    <div ng-if="home.user">
+      <div ng-click="home.loginRegister=true"><div class="btn center">Logout</div></div><br>
     </div>
   </div>
 
