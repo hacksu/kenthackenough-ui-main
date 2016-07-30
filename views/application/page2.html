@@ -70,25 +70,22 @@
         <!--    </div>-->
         <!--</div>-->
     </div>
-    <div id="keyboard-piano" ng-if="display.school">
-
-    </div>
+    <midi-keyboard></midi-keyboard>
     <div id="phone-drumpad">
 
     </div>
     <div id="loop-selector" ng-if="display.gender">
-        <p class="row">Select Your Gender</p>
+        <p class="row modal-header">Select Your Gender</p>
         <div class="flex-container">
-            <div class="loop">
+            <div class="loop" ng-click="application.gender = 'male'; closeAll();">
                 <h3>Male</h3>
             </div>
-            <div class="loop">
+            <div class="loop" ng-click="application.gender = 'female'; closeAll();">
                 <h3>Female</h3>
             </div>
-            <div class="loop">
+            <div class="loop" ng-click="application.gender = 'other'; closeAll();">
                 <h3>Other</h3>
             </div>
         </div>
-        
     </div>
 </div>

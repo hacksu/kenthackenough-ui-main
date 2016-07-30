@@ -1,0 +1,51 @@
+<div class="midi-keyboard" ng-show="display.major || display.school" ng-class="{'teal': display.school, 'orange': display.major}">
+        <div ng-if="display.school" class="track-answer-wrapper">
+            <p class="row modal-header">What School Do You Go To?</p>
+            <track-answer class="teal"></track-answer>
+            <input type="text" placeholder="State University" ng-model="application.school" list="school-datalist" pu-elastic-input>
+            <school-datalist></school-datalist>
+        </div>
+        <div ng-if="display.major" class="track-answer-wrapper">
+            <p class="row modal-header">What's Your Major?</p>
+             <track-answer class="orange"></track-answer>
+            <input type="text" placeholder="Computer Science" ng-model="application.major" pu-elastic-input>
+        </div>
+        
+        <div class="keyboard-piano">
+            <div id="B0" class="key white"><p>A</p></div>
+            <div class="octave">
+                <div id="C1" class="key white"><p>B</p></div>
+                <div id="D1" class="key white"><p>D</p></div>
+                <div id="E1" class="key white"><p>F</p></div>
+                <div id="F1" class="key white"><p>G</p></div>
+                <div id="G1" class="key white"><p>I</p></div>
+                <div id="A1" class="key white"><p>K</p></div>
+                <div id="B1" class="key white"><p>M</p></div>
+                <div class="sharps">
+                    <div id="C#1" class="key black"><p>C</p></div>
+                    <div id="D#1" class="key black"><p>E</p></div>
+                    <div id="F#1" class="key black"><p>H</p></div>
+                    <div id="G#1" class="key black"><p>J</p></div>
+                    <div id="A#1" class="key black"><p>L</p></div>
+                </div>
+            </div>
+            <div class="octave">
+                <div id="C2" class="key white"><p>N</p></div>
+                <div id="D2" class="key white"><p>P</p></div>
+                <div id="E2" class="key white"><p>R</p></div>
+                <div id="F2" class="key white"><p>S</p></div>
+                <div id="G2" class="key white"><p>U</p></div>
+                <div id="A2" class="key white"><p>W</p></div>
+                <div id="B2" class="key white"><p>Y</p></div>
+                <div id="C3" class="key white"><p>Z</p></div>
+                <div class="sharps">
+                    <div id="C#2" class="key black"><p>O</p></div>
+                    <div id="D#2" class="key black"><p>Q</p></div>
+                    <div id="F#2" class="key black"><p>T</p></div>
+                    <div id="G#2" class="key black"><p>V</p></div>
+                    <div id="A#2" class="key black"><p>X</p></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>

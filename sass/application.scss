@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
   left: 0;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* enter animation */
@@ -192,14 +192,14 @@
 
 //Page 2
 #track-wrapper {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
 #track-area {
-    width: 100vw;
-    height: 1000vh;
+    width: 100%;
+    height: 100%;
     background-color: $black;
     
     p {
@@ -285,10 +285,11 @@
     }
 }
 
-#keyboard-piano {
-    position: fixed;
-    top: 100%;
-    
+.modal-header {
+    width: 100%;
+    background-color: $black;
+    padding: 0.35rem 0;
+    z-index: 400;
 }
 
 #loop-selector {
@@ -309,12 +310,6 @@
         justify-content: space-around;
     }
     
-    p {
-        width: 100%;
-        background-color: $black;
-        padding: 0.25rem 0;
-    }
-    
     .loop {
         flex: 0 0 auto;
         width: 10vw;
@@ -325,7 +320,17 @@
         margin: 40px 30px;
         background-color: rgba($pink, 0.7);
         border: 2px solid $pink;
-        border-radius: 3px;
+        border-radius: 5px;
+        cursor: pointer;
+        cursor: hand;
+        
+        -webkit-transition: border-color 300ms, background-color 300ms;
+        transition: border-color 300ms, background-color 300ms;
+        
+        &:hover {
+            border-color: white;
+            background-color: $pink;
+        }
         
         h3 {
             color: white;
@@ -336,6 +341,170 @@
         
     }
 }
+
+//Midi controller
+.midi-keyboard {
+    z-index: 300;
+    position: fixed;
+    top: 10rem;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: auto;
+    height: auto;
+    background-color: black;
+    border: 2px solid $black;
+    border-radius: 5px;
+    
+}
+
+.keyboard-piano {
+    width: 100%;
+    .octave {
+        display: inline-block;
+        float: left;
+        position: relative;
+    }
+    
+    .sharps {
+        z-index: 350;
+        position: absolute;
+        top:0;
+        
+        @for $i from 1 through 5 {
+            .key:nth-child(#{$i}) {
+                @if ($i == 1) {
+                    margin-left: 1.5vw;
+                } @elseif ($i == 3) {
+                    margin-left: 3vw;
+                } @else {
+                    margin-left: 0.9vw;
+                }
+            }
+            
+        }
+        
+    }
+    
+    .key {
+        display: inline-block;
+        float: left;
+        position: relative;
+        &.white {
+            height: 10rem;
+            width: 3vw;
+            min-width: 2rem;
+            background-color: lighten($black, 20%);
+            border-right: 1px inset black;
+        }
+        
+        &.black {
+            height: 7rem;
+            width: 2.5vw;
+            min-width: 1.8rem;
+            background-color: $black;
+        }
+        
+        p {
+            position: absolute;
+            bottom: 0;
+            margin: 0 0 0.5rem 0;
+            width: 100%;
+        }
+    }
+}
+
+//Colored Divs
+.midi-keyboard {
+    
+    input[type="text"] {
+        z-index: 400;
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+    
+    &.teal {
+        
+        * {
+            color: $teal !important;
+        }
+        
+        border-color: $teal;
+        
+        input[type="text"] {
+            color: $teal;
+            
+            &::-webkit-input-placeholder {
+               color: $teal;
+            }
+            
+            &:-moz-placeholder { /* Firefox 18- */
+               color: $teal;
+            }
+            
+            &::-moz-placeholder {  /* Firefox 19+ */
+               color: $teal;
+            }
+            
+            &:-ms-input-placeholder {
+               color: $teal;
+            }
+        }
+        
+        
+    }
+    
+    &.orange {
+        * {
+            color: $orange !important;
+        }
+        border-color: $orange;
+        
+        input[type="text"] {
+            color: $orange;
+            
+            &::-webkit-input-placeholder {
+               color: $orange;
+            }
+            
+            &:-moz-placeholder { /* Firefox 18- */
+               color: $orange;
+            }
+            
+            &::-moz-placeholder {  /* Firefox 19+ */
+               color: $orange;
+            }
+            
+            &:-ms-input-placeholder {
+               color: $orange;
+            }
+        }
+        
+       
+    }
+}
+
+.track-answer-wrapper {
+    position: relative;
+}
+
+track-answer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    z-index: -1;
+    &.orange {
+        background-color: darken($orange, 40%);
+    }
+    
+    &.teal {
+        background-color: darken($teal, 40%);
+    }
+}
+
 
 #application .checkbox {
   z-index: 200;
@@ -398,6 +567,10 @@
 
 #application .agreements {
   padding: 1rem 0 1rem 0;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 #application .agreements input[type="checkbox"] {

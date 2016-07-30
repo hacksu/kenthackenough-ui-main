@@ -20,40 +20,39 @@
     <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
 </div>
 
-    <div class="row">
-        <div class="small-12 columns" ng-if="!home.showLogin">
-            <h2>Sign Up</h2>
-            <div class="switch">
-                <a ng-click="home.showLogin = true" class="white">Already created an account?</a>
-            </div>
-            <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
-            <form ng-submit="home.person.register()">
-                <label>Email</label>
-                <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
-
-                <label>Password</label>
-                <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
-                <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
-            </form>
+<div class="row">
+    <div class="small-12 columns" ng-if="!home.showLogin">
+        <h2>Sign Up</h2>
+        <div class="switch">
+            <a ng-click="home.showLogin = true" class="white">Already created an account?</a>
         </div>
+        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
+        <form ng-submit="home.person.register()">
+            <label>Email</label>
+            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
 
-        <div class="small-12 columns" ng-if="home.showLogin">
-            <h2>Login</h2>
-            <div class="switch">
-                <a ng-click="home.showLogin = false" class="white">Create an account</a> |
-                <a ui-sref="recover" class="white">Forgot your password?</a>
-            </div>
-            <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
-            <form ng-submit="home.person.login()">
-                <label>Email</label>
-                <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
-                <label>Password</label>
-                <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
-                <button><span><i class="fa fa-arrow-right"></i></span>Sign In</button>
-            </form>
-        </div>
+            <label>Password</label>
+            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
+            <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
+        </form>
     </div>
 
+    <div class="small-12 columns" ng-if="home.showLogin">
+        <h2>Login</h2>
+        <div class="switch">
+            <a ng-click="home.showLogin = false" class="white">Create an account</a> |
+            <a ui-sref="recover" class="white">Forgot your password?</a>
+        </div>
+        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
+        <form ng-submit="home.person.login()">
+            <label>Email</label>
+            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
+            <label>Password</label>
+            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
+            <button><span><i class="fa fa-arrow-right"></i></span>Sign In</button>
+        </form>
+    </div>
+</div>
 
 
 
