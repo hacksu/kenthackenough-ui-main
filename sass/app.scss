@@ -137,10 +137,20 @@ footer {
 	float: left;
 }
 
-#hacksu {
+#powered img {
+	fill: white;
+}
+
+#hacksu, #mlh-logo {
 	display: inline-block;
 	height: 60px;
 	margin-right: 20px;
+}
+
+#mlh-logo {
+	position: relative;
+	top: 10px;
+	height: 50px;
 }
 
 a {
