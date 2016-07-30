@@ -17,9 +17,11 @@ h1, h2 {
 
 
 body {
-	background-color: $black;
-	text-align: center;
 	font-family: 'Abel', sans-serif;
+}
+
+.text-center {
+	text-align: center;
 }
 
 .fade {
@@ -61,7 +63,7 @@ a {
 	color:  $teal;
 	text-align: left;
 	position: relative;
-	float: left;
+	float: none;
 }
 
 .labeled-input {
@@ -128,6 +130,7 @@ footer {
 
 #powered {
 	float: right;
+	padding-top: 50px;
 }
 
 #powered h4 {
@@ -291,4 +294,42 @@ a {
 .btn:hover {
 	color: $teal ;
 	border-color: $pink;
+}
+
+.light-section {
+	background-color: #D0D3D4;
+	padding-top: 30px;
+}
+
+.light-section a {
+	text-decoration: underline;
+}
+
+
+.sponsor-row {
+  margin-top: 2rem;
+	box-sizing: content-box;
+}
+
+.sponsor-row  img {
+  margin:auto;
+  height: 75%;
+  width: 75%;
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  margin-top: 2em;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sponsor-row  img:hover {
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: grayscale(0%);
 }
