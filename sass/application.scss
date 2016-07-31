@@ -99,19 +99,19 @@
   background: #404040;
 }
 
-#application *::-webkit-input-placeholder {
+*::-webkit-input-placeholder {
    color: $lightBlue;
 }
 
-#application *:-moz-placeholder { /* Firefox 18- */
+*:-moz-placeholder { /* Firefox 18- */
    color: $lightBlue;
 }
 
-#application *::-moz-placeholder {  /* Firefox 19+ */
+*::-moz-placeholder {  /* Firefox 19+ */
    color: $lightBlue;
 }
 
-#application *:-ms-input-placeholder {
+*:-ms-input-placeholder {
    color: $lightBlue;
 }
 
@@ -164,6 +164,7 @@
     display: inline-block;
     padding-right: 0;
     height: 4rem;
+    margin: 1rem 0;
 }
 
 #application button {
@@ -201,16 +202,13 @@
     width: 100%;
     height: 100%;
     background-color: $black;
-<<<<<<< HEAD
     
     p {
         color: rgba(white, 0.6);
         margin: 0.3rem 0;
+        text-align: center;
     }
     
-=======
-
->>>>>>> f116940ef62b8fa1a6f385dcdd27834d435c7163
     ul {
         list-style: none;
         margin-left: 0;
@@ -243,7 +241,6 @@
             height: 50%;
             background-color: rgba(white, 0.6);
         }
-<<<<<<< HEAD
         
         &:after {
             content: "";
@@ -258,15 +255,7 @@
             border-style: inset;
             border-top: none;
             border-bottom: none;
-=======
 
-        &::after {
-            display: block;
-            position: relative;
-            right: -25%;
-            width: 1px;
-            background-color: white;
->>>>>>> f116940ef62b8fa1a6f385dcdd27834d435c7163
         }
 
         p {
@@ -285,12 +274,8 @@
     background-color: #000;
     border-radius: 3px;
     border-style: inset;
-<<<<<<< HEAD
     text-align: center;
     
-=======
-
->>>>>>> f116940ef62b8fa1a6f385dcdd27834d435c7163
     a, p {
         color: white;
         text-align: center;
@@ -303,18 +288,12 @@
     }
 }
 
-<<<<<<< HEAD
 .modal-header {
     width: 100%;
     background-color: $black;
     padding: 0.35rem 0;
     z-index: 400;
-=======
-#keyboard-piano {
-    position: fixed;
-    top: 100%;
-
->>>>>>> f116940ef62b8fa1a6f385dcdd27834d435c7163
+    
 }
 
 #loop-selector {
@@ -327,7 +306,6 @@
     background-color: black;
     border: 2px solid $black;
     border-radius: 5px;
-<<<<<<< HEAD
     
     .flex-container {
         display: flex;
@@ -335,13 +313,7 @@
         flex-wrap: nowrap;
         justify-content: space-around;
     }
-    
-=======
-    display: flex;
-    flex-direction: row;
-    flex-wrap: no-wrap;
 
->>>>>>> f116940ef62b8fa1a6f385dcdd27834d435c7163
     .loop {
         flex: 0 0 auto;
         width: 10vw;
@@ -352,7 +324,7 @@
         margin: 40px 30px;
         background-color: rgba($pink, 0.7);
         border: 2px solid $pink;
-<<<<<<< HEAD
+
         border-radius: 5px;
         cursor: pointer;
         cursor: hand;
@@ -387,6 +359,7 @@
     background-color: black;
     border: 2px solid $black;
     border-radius: 5px;
+    text-align: center;
     
 }
 
@@ -428,6 +401,10 @@
             min-width: 2rem;
             background-color: lighten($black, 20%);
             border-right: 1px inset black;
+            
+            &.pressed {
+                background-color: lighten($black, 5%);
+            }
         }
         
         &.black {
@@ -435,6 +412,10 @@
             width: 2.5vw;
             min-width: 1.8rem;
             background-color: $black;
+            
+            &.pressed {
+                background-color: darken($black, 5%);
+            }
         }
         
         p {
@@ -452,7 +433,6 @@
     input[type="text"] {
         z-index: 400;
         font-size: 2rem;
-        margin: 1rem 0;
     }
     
     &.teal {
@@ -535,11 +515,7 @@ track-answer {
     
     &.teal {
         background-color: darken($teal, 40%);
-=======
-        border-radius: 3px;
 
-
->>>>>>> f116940ef62b8fa1a6f385dcdd27834d435c7163
     }
 }
 
