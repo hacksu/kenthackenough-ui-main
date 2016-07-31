@@ -1,97 +1,199 @@
-<div id="top">
-    <div class="row" id="logo">
-        <div class="small-12 columns align-center show-for-large-up">
-            <img src="/img/blue_logo.svg" alt="Kent Hack Enough">
+<div class="background" ng-click="home.person.clear()" ng-if="home.loginRegister && !home.user"> </div>
+<div class="prompt" id="login" ng-if="home.loginRegister && !home.user">
+    <div class="title-bar" ng-if="!home.login">
+        <h1>REGISTER</h1>
+        <a ng-click="home.login=true">Already registed? Login</a>
+    </div>
+    <div class="title-bar" ng-if="home.login">
+        <h1>LOGIN</h1>
+        <a ng-click="home.login=false">Don't have an account? Register</a>
+    </div>
+    <div class="content">
+        <div class="labeled-input">
+            <input name="email" id="email" type="text" ng-model="home.person.email" class="neon-input" spellcheck="false" required />
+            <label for="email">EMAIL</label>
         </div>
-        <div class="small-8 medium-6 small-offset-2 medium-offset-3 end columns hide-for-large-up">
-            <img src="/img/shortLogo.png" alt="Kent Hack Enough">
+        <div class="labeled-input">
+            <input name="password" id="password" type="password" ng-model="home.person.password" class="neon-input" spellcheck="false" required />
+            <label for="password">PASSWORD</label>
+        </div>
+        <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
+        <div ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</div>
+    </div>
+    <div class="errors" ng-if="home.person.errors">
+        <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
+    </div>
+</div>
+
+<div class="home">
+    <div class="row">
+        <div class="small-12 small-centered columns">
+            <img src="img/blue_logo.svg" class="fade center" id="logo" alt="Kent Hack Enough">
         </div>
     </div>
     <canvas id="waves"></canvas>
-</div>
-<!-- top -->
+    <div class="text-center">
 
-<div class="row">
-    <div class="white small" ng-repeat="e in home.errors">{{e}}</div>
-    <div ng-if="!home.user">
-        <a class="apply btn medium-3 medium-offset-3 " ng-click="home.register = true; home.showLogin = false">Apply</a>
-        <a class="apply btn medium-3 medium-offset-1" ng-click="home.register = false; home.showLogin = true">Login</a>
-    </div>
-    <button ng-if="home.user" class="apply" ui-sref="apply.page1">Your Application</button>
-</div>
+        <h2 id="date">October 7-9th, 2016</h2>
+        <h2 id="location">Kent State University Library</h2>
 
-<div class="row">
-    <div class="small-12 columns" ng-if="!home.showLogin">
-        <h2>Sign Up</h2>
-        <div class="switch">
-            <a ng-click="home.showLogin = true" class="white">Already created an account?</a>
+        <p id="contact-email"><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
+
+        <div ng-if="!home.user">
+            <a class="center-link" ng-click="home.loginRegister=true">
+                <div class="btn center">Apply</div>
+            </a><br>
+            <a class="center-link" ng-click="home.loginRegister=true; home.login=true;">
+                <div class="btn center">Login</div>
+            </a><br>
         </div>
-        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
-        <form ng-submit="home.person.register()">
-            <label>Email</label>
-            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
-
-            <label>Password</label>
-            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
-            <button><span><i class="fa fa-arrow-right"></i></span>Register</button>
-        </form>
-    </div>
-
-    <div class="small-12 columns" ng-if="home.showLogin">
-        <h2>Login</h2>
-        <div class="switch">
-            <a ng-click="home.showLogin = false" class="white">Create an account</a> |
-            <a ui-sref="recover" class="white">Forgot your password?</a>
+        <div ng-if="home.user">
+            <a class="center-link" ui-sref="apply.page1">
+                <div class="btn center">Application</div>
+            </a><br>
+            <a class="center-link" ng-click="home.person.logout()">
+                <div class="btn center">Logout</div>
+            </a><br>
         </div>
-        <div class="white small" ng-repeat="e in home.person.errors">{{e}}</div>
-        <form ng-submit="home.person.login()">
-            <label>Email</label>
-            <input type="email" ng-model="home.person.email" placeholder="jdoe@example.edu">
-            <label>Password</label>
-            <input type="password" ng-model="home.person.password" placeholder="1234 :-)">
-            <button><span><i class="fa fa-arrow-right"></i></span>Sign In</button>
-        </form>
     </div>
-</div>
 
-
-
-<div ng-if="home.user && home.application.status == 'approved'" class="align-center" ng-click="home.apply.toggleGoing()">
-    <span ng-if="!home.application.going" class="white">Click the button below to RSVP!</span>
-    <span ng-if="home.application.going" class="white">You are coming to Kent Hack Enough!</span>
-    <button class="apply">
-          <span ng-if="!home.application.going" class="white oswald">RSVP</span>
-          <span ng-if="home.application.going" class="white oswald">Un-RSVP</span>
-        </button>
-</div>
-
-<div ng-if="home.user" class="align-center">
-    <a href="/account" class="white">Change Email/Password</a> |
-    <a ng-click="home.person.logout()" class="white">Logout</a>
-    <br><br>
-</div>
-
-
-<div id="info center" class="fade">
-
-    <h2 id="date">October 7-9th, 2016</h2>
-    <h2 id="location">Kent State University Library</h2>
-
-    <p><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
-
-    <a class="center-link" target="_blank" href="/SponsorshipPacket.pdf">
-        <div class="btn center">Sponsor Info</div>
-    </a><br>
-
-</div>
-
-<footer>
-    <div id='powered'>
-        <h4>Powered by</h4>
-        <a href="http://hacksu.cs.kent.edu/"><img src="img/Hacksu_Color.svg" id="hacksu"></a>
+    <div class="info-section fade">
+        <div class="row">
+            <div class="small-12 columns">
+                <h1>DESIGN. BUILD. PARTY.</h1>
+            </div>
+            <div class="small-12 columns">
+                <h3>ABOUT</h3>
+                <p>
+                    Kent Hack Enough brings hackers from all over the nation together to learn something new, party hard, and create something awesome. With more than 250 highly motivated, creative, and talented participants, Kent Hack Enough is a weekend-long event where students from all areas of interest come together to make something awesome, like an app, website or hardware hack. The entire event is free for students, including food, energy drinks, and swag. In between all the coding, designing, and water pong, our sponsors are available as mentors to provide help and expertise throughout the hacking process.
+                </p>
+            </div>
+            <div class="small-12 large-6 columns">
+                <h3>ATTENDEES</h3>
+                <p>
+                    Kent Hack Enough is free and open to students of all majors. If you are a high school student or a minor, please contact us for more information about how to attend. We’ll send you a waiver for your parents to sign and return before the event, and then you’ll be allowed in. If you’re traveling to Kent, please contact us for more information about travel reimbursement.
+                </p>
+            </div>
+            <div class="small-12 large-6 columns">
+                <h3>RULES</h3>
+                <p>
+                    We require that all entries be created from scratch, during the competition. The use of 3rd party libraries and APIs is allowed and encouraged. Teams are limited to four people. To provide hackers with the best possible environment for learning, networking, and creating we adhere to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" class="white" target="_blank">MLH Code of Conduct</a>.
+                </p>
+            </div>
+        </div>
     </div>
-</footer>
 
+    <div class="light-section fade" id="sponsors">
+        <div class="row">
+            <div class="small-12 columns">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h2>SPONSORS</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <br>
+                        <p>
+                            Interested in sponsoring KHE 2015? Take a look at our
+                            <a target="_blank" href="/SponsorshipPacket.pdf">sponsorship packet</a> and <a href="mailto:staff@khe.io">contact us</a> (staff@khe.io).
+                        </p>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="http://knightfoundation.org/"> <img src="/img/sponsors/knight-foundation.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="https://www.progressive.com/"> <img src="/img/sponsors/progressive.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="https://www.americangreetings.com/"> <img src="/img/sponsors/americangreetings.png" /> </a>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.mimsoftware.com/"> <img src="/img/sponsors/mim.svg" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.smuckers.com/"> <img src="/img/sponsors/smuckers.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="https://www.explorys.com/"><img src="/img/sponsors/explorys.png"></a>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="https://www.onbase.com/"><img src="/img/sponsors/hyland.png"></a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.rosetta.com/"> <img src="/img/sponsors/rosetta.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="http://rovisys.com/"> <img src="/img/sponsors/rovisys.png" /> </a>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.marcusthomasllc.com/"> <img src="/img/sponsors/marcusthomas.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="https://hurricanelabs.com/"> <img src="/img/sponsors/hurricane.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.flashstarts.com/"> <img src="/img/sponsors/flashstarts.png" /> </a>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="https://www.formfire.com"> <img src="/img/sponsors/formfire.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.myboogieboard.com/"> <img src="/img/sponsors/kdi.svg" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center end">
+                        <a href="http://www.oeconnection.com/"> <img src="/img/sponsors/OEC.png" /> </a>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="https://www.mobiledefense.com/"> <img src="/img/sponsors/mobiledefense.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center end">
+                        <a href="https://www.kent.edu/blackstonelaunchpad"> <img src="/img/sponsors/blackstone.svg" /> </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <br><br>
+                        <h2 class="text-center">SUPPORTERS</h2>
+                        <br>
+                    </div>
+                </div>
+                <div class="row sponsor-row">
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.tech-style-lab.org/"> <img src="/img/sponsors/tsl.png" style="width:50%;" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center">
+                        <a href="http://www.library.kent.edu/"> <img src="/img/sponsors/university-library.png" /> </a>
+                    </div>
+                    <div class="small-4 columns text-center end">
+                        <a href="https://www.kent.edu/cs"> <img src="/img/sponsors/cs.png" /> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer row">
+            <div id='powered'>
+                <h4>Powered by</h4>
+                <a href="http://hacksu.cs.kent.edu/" target="_blank"><img src="img/Hacksu_Color.svg" id="hacksu"></a>
+                <a href="http://mlh.io" target="_blank"><img src="/img/mlh-logo.svg" alt="MLH" id="mlh-logo"></a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 <script type="text/javascript">
     /**
      * Provides requestAnimationFrame in a cross browser way.
@@ -132,12 +234,13 @@
         requestAnimationFrame(animate);
         dt = dt + 1;
         if (!drawWave('#D21C5A', 9, 2, 0.62, true)) { //Check to see if the slowest wave (Pink) is done drawing
-            // $('#logo').css('opacity', '1'); //fade in logo
-
+            document.getElementById('logo').style.opacity = 1; //fade in logo
+            var fading_elements = document.getElementsByClassName('fade');
             setTimeout(function() { //Fade in everything else
-                // $('.fade').css('opacity', '1');
+                for (var i = 0; i < fading_elements.length; ++i) {
+                    fading_elements[i].style.opacity = '1';
+                }
             }, 500);
-
         }
         else {
             drawWave('#4D7ABD', 10, 8, 0.25, true) //Blue

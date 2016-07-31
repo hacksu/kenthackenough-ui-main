@@ -7,3 +7,31 @@ $pink: #D21C5A;
 $black: #111;
 
 $color-list: "lightBlue", "darkBlue", "teal", "orange", "pink", "black";
+
+.lightBlue {
+  color: $lightBlue;
+}
+
+.darkBlue {
+  color: $darkBlue;
+}
+
+.teal {
+  color: $teal;
+}
+
+.orange {
+  color: $orange;
+}
+
+.pink {
+  color: $pink;
+}
+
+.black {
+  color: $black;
+}
+
+.white {
+  color: #FFF;
+}

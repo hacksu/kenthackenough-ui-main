@@ -74,7 +74,7 @@ angular
       },
 
       /**
-      * Login a userlogin
+      * Login a user
       */
       login: function () {
         var self = this;
@@ -101,10 +101,18 @@ angular
       /**
       * Logout
       */
+
+      clear: function () {
+        view.login = false;
+        view.loginRegister = false;
+        this.errors = null;
+      },
+
       logout: function () {
         Models.user.removeMe();
         view.user = Models.user.getMe();
-      }
+        this.clear();
+      },
 
     };
 
