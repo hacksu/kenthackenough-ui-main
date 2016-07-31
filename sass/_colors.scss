@@ -6,28 +6,30 @@ $orange: #F7961D;
 $pink: #D21C5A;
 $black: #111;
 
+$color-list: "lightBlue", "darkBlue", "teal", "orange", "pink", "black";
+
 .lightBlue {
-  color: #4D7ABD;
+  color: $lightBlue;
 }
 
 .darkBlue {
-  color: #2B3F66;
+  color: $darkBlue;
 }
 
 .teal {
-  color: #5AC2AE;
+  color: $teal;
 }
 
 .orange {
-  color: #F7961D;
+  color: $orange;
 }
 
 .pink {
-  color: #D21C5A;
+  color: $pink;
 }
 
 .black {
-  color: #111;
+  color: $black;
 }
 
 .white {

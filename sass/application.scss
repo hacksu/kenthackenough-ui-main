@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
   left: 0;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* enter animation */
@@ -99,19 +99,19 @@
   background: #404040;
 }
 
-#application *::-webkit-input-placeholder {
+*::-webkit-input-placeholder {
    color: $lightBlue;
 }
 
-#application *:-moz-placeholder { /* Firefox 18- */
+*:-moz-placeholder { /* Firefox 18- */
    color: $lightBlue;
 }
 
-#application *::-moz-placeholder {  /* Firefox 19+ */
+*::-moz-placeholder {  /* Firefox 19+ */
    color: $lightBlue;
 }
 
-#application *:-ms-input-placeholder {
+*:-ms-input-placeholder {
    color: $lightBlue;
 }
 
@@ -164,6 +164,7 @@
     display: inline-block;
     padding-right: 0;
     height: 4rem;
+    margin: 1rem 0;
 }
 
 #application button {
@@ -192,16 +193,22 @@
 
 //Page 2
 #track-wrapper {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
 #track-area {
-    width: 100vw;
-    height: 1000vh;
+    width: 100%;
+    height: 100%;
     background-color: $black;
-
+    
+    p {
+        color: rgba(white, 0.6);
+        margin: 0.3rem 0;
+        text-align: center;
+    }
+    
     ul {
         list-style: none;
         margin-left: 0;
@@ -216,29 +223,45 @@
     }
 
     .measure {
+        position: relative;
         flex: 1 0 auto;
         background-color: $black;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
+        border: 1px solid rgba(white, 0.6);
+        border-top: none;
+        border-bottom: none;
         border-style: inset;
-        &::before {
-            display: block;
-            position: relative;
-            left: -25%;
+        
+        &:before {
+            content: "";
+            display: none;
+            position: absolute;
+            left: 25%;
+            bottom: 0;
             width: 1px;
-            background-color: white;
+            height: 50%;
+            background-color: rgba(white, 0.6);
         }
+        
+        &:after {
+            content: "";
+            display: none;
+            position: absolute;
+            right: 25%;
+            bottom: 0;
+            width: 25%;
+            height: 50%;
+            background-color: transparent;
+            border: 1px solid rgba(white, 0.6);
+            border-style: inset;
+            border-top: none;
+            border-bottom: none;
 
-        &::after {
-            display: block;
-            position: relative;
-            right: -25%;
-            width: 1px;
-            background-color: white;
         }
 
         p {
-            color: white;
+            color: rgba(white, 0.6);;
+            text-align: left;
+            padding-left: 0.5rem;
         }
     }
 }
@@ -251,11 +274,13 @@
     background-color: #000;
     border-radius: 3px;
     border-style: inset;
-
+    text-align: center;
+    
     a, p {
         color: white;
         text-align: center;
         line-height: 5rem;
+        width: 100%;
     }
 
     &.answer {
@@ -263,37 +288,237 @@
     }
 }
 
-#keyboard-piano {
-    position: fixed;
-    top: 100%;
-
+.modal-header {
+    width: 100%;
+    background-color: $black;
+    padding: 0.35rem 0;
+    z-index: 400;
+    
 }
 
 #loop-selector {
     z-index: 300;
     position: fixed;
-    top: 35vh;
+    top: 10rem;
     left: 25vw;
     width: 50vw;
-    height: 30vh;
-    background-color: $black;
-    border: 1px solid black;
+    height: auto;
+    background-color: black;
+    border: 2px solid $pink;
     border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: no-wrap;
+    
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
 
     .loop {
-        flex: 1 0 auto;
+        flex: 0 0 auto;
+        width: 10vw;
+        height: 10vw;
+        min-width: 120px;
+        min-height: 120px;
         color: white;
         margin: 40px 30px;
         background-color: rgba($pink, 0.7);
         border: 2px solid $pink;
-        border-radius: 3px;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        cursor: hand;
+        
+        -webkit-transition: border-color 300ms, background-color 300ms;
+        transition: border-color 300ms, background-color 300ms;
+        
+        &:hover {
+            border-color: white;
+            background-color: $pink;
+        }
+        
+        h3 {
+            color: white;
+            line-height: 10vw;
+            font-family: 'Abel', sans-serif;
+            margin: 0;
+        }
+        
+    }
+}
 
+//Midi controller
+.midi-keyboard {
+    z-index: 300;
+    position: fixed;
+    top: 10rem;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: auto;
+    height: auto;
+    background-color: black;
+    border: 2px solid $black;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+
+.keyboard-piano {
+    width: 100%;
+    .octave {
+        display: inline-block;
+        float: left;
+        position: relative;
+    }
+    
+    .sharps {
+        z-index: 350;
+        position: absolute;
+        top:0;
+        
+        @for $i from 1 through 5 {
+            .key:nth-child(#{$i}) {
+                @if ($i == 1) {
+                    margin-left: 1.5vw;
+                } @elseif ($i == 3) {
+                    margin-left: 3vw;
+                } @else {
+                    margin-left: 0.9vw;
+                }
+            }
+            
+        }
+        
+    }
+    
+    .key {
+        display: inline-block;
+        float: left;
+        position: relative;
+        &.white {
+            height: 10rem;
+            width: 3vw;
+            min-width: 2rem;
+            background-color: lighten($black, 20%);
+            border-right: 1px inset black;
+            
+            &.pressed {
+                background-color: lighten($black, 5%);
+            }
+        }
+        
+        &.black {
+            height: 7rem;
+            width: 2.5vw;
+            min-width: 1.8rem;
+            background-color: $black;
+            
+            &.pressed {
+                background-color: darken($black, 5%);
+            }
+        }
+        
+        p {
+            position: absolute;
+            bottom: 0;
+            margin: 0 0 0.5rem 0;
+            width: 100%;
+        }
+    }
+}
+
+//Colored Divs
+.midi-keyboard {
+    
+    input[type="text"] {
+        z-index: 400;
+        font-size: 2rem;
+    }
+    
+    &.teal {
+        
+        * {
+            color: $teal !important;
+        }
+        
+        border-color: $teal;
+        
+        input[type="text"] {
+            color: $teal;
+            
+            &::-webkit-input-placeholder {
+               color: $teal;
+            }
+            
+            &:-moz-placeholder { /* Firefox 18- */
+               color: $teal;
+            }
+            
+            &::-moz-placeholder {  /* Firefox 19+ */
+               color: $teal;
+            }
+            
+            &:-ms-input-placeholder {
+               color: $teal;
+            }
+        }
+        
+        
+    }
+    
+    &.orange {
+        * {
+            color: $orange !important;
+        }
+        border-color: $orange;
+        
+        input[type="text"] {
+            color: $orange;
+            
+            &::-webkit-input-placeholder {
+               color: $orange;
+            }
+            
+            &:-moz-placeholder { /* Firefox 18- */
+               color: $orange;
+            }
+            
+            &::-moz-placeholder {  /* Firefox 19+ */
+               color: $orange;
+            }
+            
+            &:-ms-input-placeholder {
+               color: $orange;
+            }
+        }
+        
+       
+    }
+}
+
+.track-answer-wrapper {
+    position: relative;
+}
+
+track-answer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    z-index: -1;
+    &.orange {
+        background-color: darken($orange, 40%);
+    }
+    
+    &.teal {
+        background-color: darken($teal, 40%);
 
     }
 }
+
 
 #application .checkbox {
   z-index: 200;
@@ -356,6 +581,10 @@
 
 #application .agreements {
   padding: 1rem 0 1rem 0;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 #application .agreements input[type="checkbox"] {
@@ -441,6 +670,10 @@
 }
 
 @media (min-width: 960px) {
+    
+    #application .measure:before, #application .measure:after {
+        display: block;
+    }
 
   #application header h1 {
     font-size: 2.5rem;
@@ -448,7 +681,6 @@
 
   #application header {
     height: 6rem;
-    margin-bottom: 1rem;
   }
 
   #application  .input {

@@ -1,9 +1,9 @@
 <header>
     <h1>{{application.name | application:'name'}}'s New Hit Single</h1>
 </header>
-<div id="track-wrapper">
+<div id="track-wrapper" class="small-12">
     <div id="track-area">
-        <ul id="question-labels" class="medium-3">
+        <ul id="question-labels" class="small-3">
             <li><p>Tracks</p></li>
             <li class="track">
                 <p>Gender</p>
@@ -22,7 +22,7 @@
                 <p>Dietary Restriction</p>
             </li>
         </ul>
-        <ul id="answers" class="medium-9">
+        <ul id="answers" class="small-9">
             <div class="measure-wrapper">
                 <div class="measure"><p>1</p></div>
                 <div class="measure"><p>2</p></div>
@@ -49,42 +49,43 @@
                 <p>Click Here to Answer</p>
             </li>
         </ul>
-        <div id="mixer">
-            <div class="row">
-                <div class="fader">
-                    <p>Age</p>
+        <!--<div id="mixer">-->
+        <!--    <div class="row">-->
+        <!--        <div class="fader">-->
+        <!--            <p>Age</p>-->
                     
-                </div>
-            </div>
-            <div class="row">
-                <div class="knob">
-                    <p>Shirt Size</p>
-                </div>
-                <div class="knob">
-                    <p>Class Standing</p>
-                </div>
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--    <div class="row">-->
+        <!--        <div class="knob">-->
+        <!--            <p>Shirt Size</p>-->
+        <!--        </div>-->
+        <!--        <div class="knob">-->
+        <!--            <p>Class Standing</p>-->
+        <!--        </div>-->
 
-                <div class="knob">
-                    <p>First Hackathon</p>
-                </div>
-            </div>
-        </div>
+        <!--        <div class="knob">-->
+        <!--            <p>First Hackathon</p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
     </div>
-    <div id="keyboard-piano" ng-if="display.school">
-
-    </div>
+    <midi-keyboard></midi-keyboard>
     <div id="phone-drumpad">
 
     </div>
     <div id="loop-selector" ng-if="display.gender">
-        <div class="loop">
-            <h3>Male</h3>
-        </div>
-        <div class="loop">
-            <h3>Female</h3>
-        </div>
-        <div class="loop">
-            <h3>Other</h3>
+        <p class="row modal-header">Select Your Gender</p>
+        <div class="flex-container">
+            <div class="loop" ng-click="application.gender = 'male'; closeAll();">
+                <h3>Male</h3>
+            </div>
+            <div class="loop" ng-click="application.gender = 'female'; closeAll();">
+                <h3>Female</h3>
+            </div>
+            <div class="loop" ng-click="application.gender = 'other'; closeAll();">
+                <h3>Other</h3>
+            </div>
         </div>
     </div>
 </div>
