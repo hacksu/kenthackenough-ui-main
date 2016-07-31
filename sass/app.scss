@@ -78,7 +78,7 @@ $spacing: 25px;
 	display: block;
 	position: absolute;
 	color: $lightBlue;
-	top: 17px + $spacing;
+	top: 50px/2 - 18px/2 + $spacing;
 	text-align: center;
 	left: 0;
 	right: 0;
@@ -89,7 +89,7 @@ $spacing: 25px;
 	z-index: 70;
 }
 .neon-input:focus + label, .neon-input:valid + label {
-	top: $spacing/2 - 19px/2;
+	top: $spacing/2 - 18px/2;
 }
 
 .neon-input:hover + label {
