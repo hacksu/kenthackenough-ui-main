@@ -72,11 +72,13 @@ a {
 	box-sizing: content-box !important;
 }
 
+$spacing: 25px;
+
 .labeled-input > label {
 	display: block;
 	position: absolute;
 	color: $lightBlue;
-	top: 32px;
+	top: 17px + $spacing;
 	text-align: center;
 	left: 0;
 	right: 0;
@@ -87,9 +89,7 @@ a {
 	z-index: 70;
 }
 .neon-input:focus + label, .neon-input:valid + label {
-	top: 0px;
-	font-size: 15px;
-
+	top: $spacing/2 - 19px/2;
 }
 
 .neon-input:hover + label {
@@ -201,8 +201,17 @@ a {
 }
 
 .prompt > .content {
-	margin: 15px;
-	margin-top: 0px;
+	margin: 20px;
+	margin-top: 0;
+}
+
+.content  .btn {
+	margin-top: $spacing;
+}
+
+.content input {
+	margin-top: $spacing;
+	margin-bottom: 0px;
 }
 
 .title-bar > h1 {
@@ -260,11 +269,11 @@ a {
 	position: relative !important;
 	border: 3px solid $lightBlue !important;
 	background: rgb(250, 250, 250) !important;
-	color: $teal !important;
+	color: $black !important;
 	width: 306px !important;
 	border-radius: 5px !important;
 	padding: 0px 15px 0px 15px !important;
-	margin: 15px auto 0 auto !important;
+	margin: 15px auto 0 auto;
 	font-size: 1.2rem !important;
 	line-height: 1 !important;
 	height: 50px !important;
@@ -277,7 +286,6 @@ a {
 
 .neon-input:hover, .neon-input:focus {
 	outline: none !important;
-	color:$teal !important;
 	border-color:$pink!important;
 }
 
