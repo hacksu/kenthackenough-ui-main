@@ -304,7 +304,7 @@
     width: 50vw;
     height: auto;
     background-color: black;
-    border: 2px solid $black;
+    border: 2px solid $pink;
     border-radius: 5px;
     
     .flex-container {
@@ -324,7 +324,7 @@
         margin: 40px 30px;
         background-color: rgba($pink, 0.7);
         border: 2px solid $pink;
-
+        text-align: center;
         border-radius: 5px;
         cursor: pointer;
         cursor: hand;
