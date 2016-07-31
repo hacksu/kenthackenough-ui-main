@@ -72,11 +72,13 @@ a {
 	box-sizing: content-box !important;
 }
 
+$spacing: 25px;
+
 .labeled-input > label {
 	display: block;
 	position: absolute;
 	color: $lightBlue;
-	top: 52px;
+	top: 17px + $spacing;
 	text-align: center;
 	left: 0;
 	right: 0;
@@ -87,7 +89,7 @@ a {
 	z-index: 70;
 }
 .neon-input:focus + label, .neon-input:valid + label {
-	top: 9px;
+	top: $spacing/2 - 19px/2;
 }
 
 .neon-input:hover + label {
@@ -204,11 +206,11 @@ a {
 }
 
 .content  .btn {
-	margin-top: 35px;
+	margin-top: $spacing;
 }
 
 .content input {
-	margin-top: 35px;
+	margin-top: $spacing;
 	margin-bottom: 0px;
 }
 
