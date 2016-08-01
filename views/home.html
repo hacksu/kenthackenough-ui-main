@@ -232,7 +232,6 @@
     }
 
     function animate() {
-        requestAnimationFrame(animate);
         dt = dt + 1;
         if (!drawWave('#D21C5A', 9, 2, 0.62, true)) { //Check to see if the slowest wave (Pink) is done drawing
             document.getElementById('logo').style.opacity = 1; //fade in logo
@@ -246,6 +245,7 @@
         else {
             drawWave('#4D7ABD', 10, 8, 0.25, true) //Blue
             drawWave('#F7961D', 11, 4, 0, true); //Orange
+            requestAnimationFrame(animate);
         }
     }
     /*
