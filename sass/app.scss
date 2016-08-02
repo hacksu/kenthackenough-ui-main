@@ -184,19 +184,18 @@ a {
 	top: 35%;
 	right: 50%;
 	transform: translate(50%, -50%);
-	background: #111;
+	background: $black;
 	z-index: 50;
 	text-align: left;
-	border: 3px solid $pink;
+	border: 3px solid $darkBlue;
 	border-radius: 5px;
-	box-shadow: 0px 0px 30px 0px rgba(210,28,90,1);
 	overflow: hidden;
 }
 
 .prompt > .title-bar {
 	position: relative;
 	width: inherit;
-	background-color: rgba(255,255,255, 0.5);
+	background-color: $darkBlue;
 	height: 50px;
 	top: -3px;
 }
@@ -309,6 +308,10 @@ a {
 
 .light-section a {
 	text-decoration: underline;
+}
+
+.light-section h2 {
+	color: $black;
 }
 
 
