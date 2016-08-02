@@ -262,6 +262,8 @@ a {
   cursor: pointer !important;
 	-webkit-box-sizing: content-box !important;
 	box-sizing: content-box !important;
+	-webkit-transition: border-color 0.3s, color 0.3s; /* Safari */
+	transition: border-color 0.3s, color 0.3s;
 }
 
 .neon-input {
@@ -282,6 +284,8 @@ a {
 	-webkit-box-sizing: content-box !important;
 	box-sizing: content-box !important;
 	display: inline-block !important;
+	-webkit-transition: border-color 0.3s, color 0.3s; /* Safari */
+	transition: border-color 0.3s, color 0.3s;
 }
 
 .neon-input:hover, .neon-input:focus {
