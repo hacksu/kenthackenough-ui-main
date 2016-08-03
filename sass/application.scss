@@ -1,3 +1,8 @@
+@import 'colors';
+
+$prompt-prompt: $lightBlue;
+$prompt-button: $darkBlue;
+
 #application {
   width: 100vw;
   height: 100vh;
@@ -113,8 +118,8 @@
 }
 
 #application article a {
-  color: red;
-  border-bottom: 1px dashed red;
+  color: $orange;
+  border-bottom: 1px dashed $prompt-button;
   padding-bottom: 0.2rem;
   cursor: pointer;
 }
@@ -131,7 +136,7 @@
 }
 
 #application .alert-box {
-  background-color: red;
+  background-color: $prompt-prompt;
   border: 1px solid #BE0000;
 }
 
@@ -152,7 +157,7 @@
 #application article .text input,
 #application article .select select {
   z-index: 200;
-  background-color: red;
+  background-color: $prompt-prompt;
   color: white;
   font-family: 'Droid Serif';
   border: none;
@@ -166,12 +171,12 @@
 #application article label {
   position: absolute;
   top: 5rem;
-  color: #CC0000;
+  color: white;
   font-size: 0.8rem;
   z-index: 200;
   margin-top: 3rem;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-  background-color: red;
+  background-color: $prompt-prompt;
   border-top: 1px dashed #CC0000;
   width: 90vw;
   height: 1.8rem;
@@ -180,7 +185,7 @@
 #application article button {
   z-index: 200;
   position: absolute;
-  background: #CC0000;
+  background: $darkBlue;
   top: 5rem;
   height: 4.81rem;
   width: 22vw;
@@ -205,7 +210,7 @@
 
 #application article .checkbox {
   z-index: 200;
-  background: red;
+  background: $prompt-prompt;
   position: absolute;
   top: 5rem;
   left: 5vw;
@@ -305,7 +310,7 @@
 #application #resume-upload {
   background-color: white;
   width: 90;
-  border: 1px dashed red;
+  border: 1px dashed $prompt-button;
   text-align: center;
   font-size: 1rem;
   padding: 3rem;
