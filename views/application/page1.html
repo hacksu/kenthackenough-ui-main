@@ -1,12 +1,109 @@
 <header>
-    <h1>Apply to Kent Hack Enough</h1>
+  <h1>Apply to Kent Hack Enough</h1>
 </header>
-<div class="container">
-    <div class="row text-center align-middle" ng-hide="fadeHeader">
-        <input type="text" placeholder="[Name]" ng-model="application.name" pu-elastic-input>
-        <h2>'s New Hit Single</h2>
-    </div>
-    <div class="text-center row align-middle">
-        <button ng-show="application.name" ui-sref="apply.page2" ng-click="fadeHeader = true"><span><i class="fa fa-arrow-right"></i></span> Next</button>
-    </div>
+<div class="page-indicator">
+  <i ui-sref="apply.page1" class="fa fa-circle"></i>
+  <i ui-sref="apply.page2" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page3" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page4" class="fa fa-circle-o"></i>
 </div>
+<article class="tall">
+  <h2 class="white">BASIC INFO <span class="small white">[Complete the sentence]</span></h2>
+  I am
+  <a ng-click="open('name')">{{application.name | application:'name'}}</a>,
+  <div class="input text" ng-if="display.name">
+    <input type="text" placeholder="John Doe" ng-model="application.name">
+    <label>Your full name</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  a
+  <a ng-click="open('gender')">{{application.gender | application:'gender'}}</a>
+  <div class="input select" ng-if="display.gender">
+    <select ng-model="application.gender">
+      <option value="male">male</option>
+      <option value="female">female</option>
+      <option value="other">other</option>
+    </select>
+    <label>Your gender</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  student at
+  <a ng-click="open('school')">{{application.school | application:'school'}}</a>
+  <div class="input text" ng-if="display.school">
+    <input type="text" placeholder="State University" ng-model="application.school" list="school-datalist">
+    <school-datalist></school-datalist>
+    <label>Your school (choose from autocomplete)</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  where I study
+  <a ng-click="open('major')">{{application.major | application:'major'}}</a>.
+  <div class="input text" ng-if="display.major">
+    <input type="text" placeholder="Computer Science" ng-model="application.major">
+    <label>Your major</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  You can reach me at
+  <a ng-click="open('phone')">{{application.phone | application:'phone'}}</a>.
+  <div class="input text" ng-if="display.phone">
+    <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone">
+    <label>Your phone number</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  I wear a
+  <a ng-click="open('shirt')">{{application.shirt | application:'shirt'}}</a>
+  <div class="input select" ng-if="display.shirt">
+    <select ng-model="application.shirt">
+      <option value="S">small</option>
+      <option value="M">medium</option>
+      <option value="L">large</option>
+      <option value="XL">x-large</option>
+    </select>
+    <label>Your shirt size</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  t-shirt. I am a
+  <a ng-click="open('age')">{{application.age | application:'age'}}</a>
+  <div class="input text" ng-if="display.age">
+    <input type="number" placeholder="21" ng-model="application.age">
+    <label>Your age</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  year-old
+  <a ng-click="open('year')">{{application.year | application:'year'}}</a>,
+  <div class="input select" ng-if="display.year">
+    <select ng-model="application.year">
+      <option value="Freshman">Freshman</option>
+      <option value="Sophomore">Sophomore</option>
+      <option value="Junior">Junior</option>
+      <option value="Senior">Senior</option>
+      <option value="High School">High Schooler</option>
+      <option value="Graduate Student">Graduate Student</option>
+    </select>
+    <label>Your year in school</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  and KHE
+  <a ng-click="open('first')">{{application.first | application:'first'}}</a>
+  <div class="input select" ng-if="display.first">
+    <select ng-model="application.first">
+      <option value="true">is</option>
+      <option value="false">is not</option>
+    </select>
+    <label>Is KHE your first hackathon?</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  my first hackathon.
+</article>
+<footer>
+  <div data-alert class="alert-box alert" ng-if="application.errors">
+    <ul>
+      <li ng-repeat="e in application.errors">{{e}}</li>
+    </ul>
+    <br>
+    <a class="white large" ui-sref="apply.page1">Basic Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page2">Additional Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page3">Agreements</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page4">Summary</a>
+  </div>
+  <button ui-sref="apply.page2"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+</footer>

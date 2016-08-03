@@ -1,162 +1,78 @@
 <header>
-    <h1>{{application.name | application:'name'}}'s New Hit Single</h1>
+  <h1>Apply to Kent Hack Enough</h1>
 </header>
-<div id="track-wrapper" class="small-12">
-    <div id="track-area">
-        <ul id="question-labels" class="small-3">
-            <li>
-                <p>Tracks</p>
-            </li>
-            <li class="track">
-                <p>Gender</p>
-            </li>
-            <li class="track">
-                <p>School Name</p>
+<div class="page-indicator">
+  <i ui-sref="apply.page1" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page2" class="fa fa-circle"></i>
+  <i ui-sref="apply.page3" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page4" class="fa fa-circle-o"></i>
+</div>
+<article class="short">
+  <h2 class="white">ADDITIONAL INFO</h2>
+  <span class="small white">Dietary restrictions:</span>
+  <a ng-click="open('dietary')" class="small">{{application.diet.selected | application:'dietary'}}</a>
+  <div class="input checkbox" ng-if="display.dietary">
+    <p ng-repeat="restriction in application.diet.possible"
+       ng-click="application.diet.toggleSelection(restriction)"
+       ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}"
+       class="item"> {{restriction}} </p>
+    <label>Dietary restrictions</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  <br>
+  <span class="small white">Will you require travel reimbursement?</span>
+  <a class="small" ng-click="open('travel')">{{application.travel | application:'travel'}}</a>
+  <div class="input select" ng-if="display.travel">
+    <select ng-model="application.travel">
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </select>
+    <label>Travel reimbursement?</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  <br>
+  <span class="white small">GitHub/LinkedIn/Personal Website link (optional):</span>
+  <a ng-click="open('link')" class="small">{{application.link | application:'link'}}</a>
+  <div class="input text" ng-if="display.link">
+    <input type="text" placeholder="github.com/username" ng-model="application.link">
+    <label>A link to something you've done</label>
+    <button ng-click="closeAll()"></button>
+  </div>
+  <br><br>
+  <span ng-if="application.resume" class="small white"><i class="fa fa-check white"></i> Resume uploaded. Upload a new one to replace it (optional):</span>
+  <span class="small white" ng-if="!application.resume">Upload your resume (optional):</span>
+  <div id="resume-upload" class="dropzone">
+    <div class="dz-message">Drop files here or click to upload</div>
+  </div>
+  <input type="text" ng-model="application.resume" id="resume-filename" style="display:none;">
+</article>
+<footer>
+  <div data-alert class="alert-box alert" ng-if="application.errors">
+    <ul>
+      <li ng-repeat="e in application.errors">{{e}}</li>
+    </ul>
+    <br>
+    <a class="white large" ui-sref="apply.page1">Basic Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page2">Additional Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page3">Agreements</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page4">Summary</a>
+  </div>
+  <button ui-sref="apply.page3"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+</footer>
 
-            </li>
-            <li class="track">
-                <p>Major</p>
-            </li>
-            <li class="track">
-                <p>Phone Number</p>
-            </li>
-            <li class="track">
-                <p>Dietary Restriction</p>
-            </li>
-        </ul>
-        <ul id="answers" class="small-9">
-            <div class="measure-wrapper">
-                <div class="measure">
-                    <p>1</p>
-                </div>
-                <div class="measure">
-                    <p>2</p>
-                </div>
-                <div class="measure">
-                    <p>3</p>
-                </div>
-                <div class="measure">
-                    <p>4</p>
-                </div>
-                <div class="measure">
-                    <p>5</p>
-                </div>
-                <div class="measure">
-                    <p>6</p>
-                </div>
-                <div class="measure">
-                    <p>7</p>
-                </div>
-                <div class="measure">
-                    <p>8</p>
-                </div>
-            </div>
-            <li class="answer track" ng-class="{'pink': application.gender, '': !application.gender}">
-                <a ng-click="open('gender')">
-                    <span ng-show="!application.gender">Click Here to Answer</span>
-                    <h2 class="pink" ng-if="application.gender">{{application.gender}}</h2>
-                </a>
-            </li>
-            <li class="answer track" ng-class="{'teal': application.school, '': !application.school}">
-                <a ng-click="open('school')">
-                    <span ng-show="!application.school">Click Here to Answer</span>
-                    <h2 class="teal" ng-if="application.school">{{application.school}}</h2>
-                </a>
-            </li>
-            <li class="answer track" ng-class="{'orange': application.major, '': !application.major}">
-                <a ng-click="open('major')">
-                    <span ng-show="!application.major">Click Here to Answer</span>
-                    <h2 class="orange" ng-if="application.major">{{application.major}}</h2>
-                </a>
-            </li>
-            <li class="answer track" ng-class="{'darkBlue': application.phone, '': !application.phone}">
-                <a ng-click="open('phone')">
-                    <span ng-show="!application.phone">Click Here to Answer</span>
-                    <h2 class="darkBlue" ng-if="application.phone">{{application.phone}}</h2>
-                </a>
-            </li>
-            <li class="answer track" ng-class="{'lightBlue': application.diet.selection, '': !application.diet.selection}">
-                <a ng-click="open('diet')">
-                    <span ng-show="!application.diet.selection">Click Here to Answer</span>
-                    <h2 class="lightBlue">{{application.diet.selection}}</h2>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <midi-keyboard></midi-keyboard>
-    <div id="phone-drumpad" class="darkBlue" ng-if="display.phone" ng-enter="closeAll()">
-        <p class="row modal-header">Enter Your Phone Number</p>
-        <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone" pu-elastic-input>
-        <div class="flex-container">
-            <div class="drum-pad loop">
-                <h3>7</h3></div>
-            <div class="drum-pad loop">
-                <h3>8</h3></div>
-            <div class="drum-pad loop">
-                <h3>9</h3></div>
-        </div>
-        <div class="flex-container">
-            <div class="drum-pad loop">
-                <h3>4</h3></div>
-            <div class="drum-pad loop">
-                <h3>5</h3></div>
-            <div class="drum-pad loop">
-                <h3>6</h3></div>
-        </div>
-        <div class="flex-container">
-            <div class="drum-pad loop">
-                <h3>1</h3></div>
-            <div class="drum-pad loop">
-                <h3>2</h3></div>
-            <div class="drum-pad loop">
-                <h3>3</h3></div>
-        </div>
-        <div class="flex-container">
-            <div class="drum-pad loop">
-                <h3>0</h3></div>
-        </div>
-    </div>
-    <div class="loop-selector pink" ng-if="display.gender">
-        <p class="row modal-header">Select Your Gender</p>
-        <div class="flex-container">
-            <div class="loop" ng-click="application.gender = 'male'; closeAll();">
-                <h3>Male</h3>
-            </div>
-            <div class="loop" ng-click="application.gender = 'female'; closeAll();">
-                <h3>Female</h3>
-            </div>
-            <div class="loop" ng-click="application.gender = 'other'; closeAll();">
-                <h3>Other</h3>
-            </div>
-        </div>
-    </div>
-    <div class="loop-selector lightBlue" ng-if="display.diet">
-        <p class="row modal-header">Have Any Dietary Restrictions?</p>
-        <div class="flex-container">
-            <div class="loop" ng-click="application.diet.selection = 'None'; closeAll();">
-                <h3>None</h3>
-            </div>
-            <div class="loop" ng-click="application.diet.selection = 'Vegetarian'; closeAll();">
-                <h3>Vegetarian</h3>
-            </div>
-            <div class="loop" ng-click="application.diet.selection = 'Vegan'; closeAll();">
-                <h3>Vegan</h3>
-            </div>
-        </div>
-        <div class="flex-container">
-            <div class="loop" ng-click="application.diet.selection = 'Kosher'; closeAll();">
-                <h3>Kosher</h3>
-            </div>
-            <div class="loop" ng-click="application.diet.selection = 'Gluten Free'; closeAll();">
-                <h3>Gluten Free</h3>
-            </div>
-            <div class="loop" ng-click="application.diet.selection = 'Other'; closeAll();">
-                <h3>Other</h3>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="text-center row align-middle">
-    <button  ui-sref="apply.page3"><span><i class="fa fa-arrow-right"></i></span> Next</button>
-</div>
-<!--ng-show="application.gender && application.phone && application.school && application.major"-->
+<script>
+  jQuery(document).ready(function ($) {
+    var resume = new Dropzone('div#resume-upload', {
+      url: config.api + '/users/application/resume',
+      maxFiles: 1,
+      acceptedFiles: 'application/pdf,.pdf,.doc,.docx',
+      addRemoveLinks: false,
+      uploadMultiple: false,
+      createImageThumbnails: true,
+      paramName: 'resume',
+      success: function (file, response) {
+        $('#resume-filename').val(response.filename).trigger('input');
+      }
+    });
+  });
+</script>

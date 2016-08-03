@@ -1,23 +1,31 @@
 <header>
-    <h1>{{application.name | application:'name'}}'s New Hit Single</h1>
+  <h1>Apply to Kent Hack Enough</h1>
 </header>
-<div id="mixer">
-    <div class="row">
-        <div class="fader-wrapper medium-4 small-12">
-            <p>Age</p>
-            <input ng-init="application.age = 1" type="range" name="age" min="1" max="99" ng-model="application.age">
-            <h3>{{application.age}}</h3>
-        </div>
-        <div class="fader-wrapper medium-4 small-12">
-            <p>Class Standing</p>
-            <input ng-init="yearIndex = 0" type="range" name="age" min="0" max="3" ng-model="yearIndex">
-            <h3>{{application.yearNames[yearIndex]}}</h3>
-        </div>
-        <div class="fader-wrapper medium-4 small-12">
-            <p>T-Shirt Size</p>
-            <input ng-init="shirtIndex = 0" type="range" name="age" min="0" max="3" ng-model="shirtIndex">
-            <h3>{{application.shirtSizes[shirtIndex]}}</h3>
-        </div>
-    </div>
-    <button ui-sref="apply.page4" ng-click="application.shirt = application.shirtSizes[shirtIndex]; application.year = application.yearNames[yearIndex];"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+<div class="page-indicator">
+  <i ui-sref="apply.page1" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page2" class="fa fa-circle-o"></i>
+  <i ui-sref="apply.page3" class="fa fa-circle"></i>
+  <i ui-sref="apply.page4" class="fa fa-circle-o"></i>
 </div>
+<article class="short">
+  <h2 class="white">AGREEMENTS</h2>
+  <div class="agreements">
+    <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
+    <label for="cb-conduct">I agree to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a></label>
+    <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
+    <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
+  </div>
+</article>
+<footer>
+  <div data-alert class="alert-box alert" ng-if="application.errors">
+    <ul>
+      <li ng-repeat="e in application.errors">{{e}}</li>
+    </ul>
+    <br>
+    <a class="white large" ui-sref="apply.page1">Basic Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page2">Additional Info</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page3">Agreements</a> <span class="large">|</span>
+    <a class="white large" ui-sref="apply.page4">Summary</a>
+  </div>
+  <button ui-sref="apply.page4"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+</footer>
