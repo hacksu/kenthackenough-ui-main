@@ -56,6 +56,7 @@ angular
     */
     self.diet = {
       possible: [
+        'None',
         'Vegetarian',
         'Vegan',
         'Kosher',
@@ -72,6 +73,20 @@ angular
         }
       }
     };
+    
+    self.year = {
+        0: 'Freshmen',
+        1: 'Sophomore',
+        2: 'Junior',
+        3: 'Senior'
+    }
+    
+    self.shirt = {
+        0: 'Small',
+        1: 'Medium',
+        2: 'Large',
+        3: 'X-Large'
+    }
 
     /**
     * Pre-populate the form if the user has already submitted

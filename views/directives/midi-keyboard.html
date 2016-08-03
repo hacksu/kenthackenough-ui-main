@@ -1,4 +1,4 @@
-<div class="midi-keyboard" ng-show="display.major || display.school" ng-class="{'teal': display.school, 'orange': display.major}">
+<div class="midi-keyboard" ng-show="display.major || display.school" ng-class="{'teal': display.school, 'orange': display.major}" ng-enter="closeAll()">
         <div ng-if="display.school" class="track-answer-wrapper">
             <p class="row modal-header">What School Do You Go To?</p>
             <track-answer class="teal"></track-answer>
