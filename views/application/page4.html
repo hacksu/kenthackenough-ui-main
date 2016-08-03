@@ -1,186 +1,54 @@
 <header>
-  <h1>Apply to Kent Hack Enough</h1>
+    <h1>{{application.name | application:'name'}}'s New Hit Single</h1>
 </header>
-<div class="page-indicator">
-  <i ui-sref="apply.page1" class="fa fa-circle-o"></i>
-  <i ui-sref="apply.page2" class="fa fa-circle-o"></i>
-  <i ui-sref="apply.page3" class="fa fa-circle-o"></i>
-  <i ui-sref="apply.page4" class="fa fa-circle"></i>
+<div class="row">
+  <h2 class="white medium-12">ADDITIONAL INFO</h2>
+  <span class="small white agreements"><input type="checkbox" ng-model="application.travel"> I need travel reimbursement.</span>
+  <br>
+ </div>
+ <div class="row">
+  <span class="white">GitHub/LinkedIn/Personal Website link (optional):</span>
+  <a ng-click="open('link')" class="small">{{application.link | application:'link'}}</a>
+  <div class="loop-selector darkBlue" ng-if="display.link">
+          <p class="modal-header">A link to something you've done</p>
+    <input type="text" placeholder="github.com/username" ng-model="application.link" pu-elastic-input>
+
+    <button ng-click="closeAll()">Done</button>
+  </div>
+  <br><br>
+  <span ng-if="application.resume" class="small white"><i class="fa fa-check white"></i> Resume uploaded. Upload a new one to replace it (optional):</span>
+  <span class="small white" ng-if="!application.resume">Upload your resume (optional):</span>
+  <div id="resume-upload" class="dropzone">
+    <div class="dz-message">Drop files here or click to upload</div>
+  </div>
+  <input type="text" ng-model="application.resume" id="resume-filename" style="display:none;">
 </div>
-<article class="short">
-  <div class="row">
-    <h2 class="white">SUMMARY</h2>
 
-    <div class="small-12 large-6 columns">
-      <!-- Name -->
-      <span class="small white">Name:</span>
-      <a class="small" ng-click="open('name')">{{application.name | application:'name'}}</a>
-      <br>
-
-      <!-- Gender -->
-      <span class="small white">Gender:</span>
-      <a class="small" ng-click="open('gender')">{{application.gender | application:'gender' | capitalizeFirstLetter}}</a>
-      <br>
-
-      <!-- Phone -->
-      <span class="small white">School:</span>
-      <a class="small" ng-click="open('school')">{{application.school | application:'school'}}</a>
-      <br>
-
-      <!-- Major -->
-      <span class="small white">Major:</span>
-      <a class="small" ng-click="open('major')">{{application.major | application:'major'}}</a>
-      <br>
-
-      <!-- Phone -->
-      <span class="small white">Phone:</span>
-      <a class="small" ng-click="open('phone')">{{application.phone | application:'phone'}}</a>
-      <br>
-
-      <!-- Shirt size -->
-      <span class="small white">Shirt size:</span>
-      <a class="small" ng-click="open('shirt')">{{application.shirt | application:'shirt' | capitalizeFirstLetter}}</a>
-      <br>
-
-      <!-- Age -->
-      <span class="small white">Age:</span>
-      <a class="small" ng-click="open('age')">{{application.age | application:'age'}}</a>
-      <br>
-    </div>
-
-    <div class="small-12 large-6 columns">
-      <!-- Class -->
-      <span class="small white">Class:</span>
-      <a class="small" ng-click="open('year')">{{application.year | application:'year'}}</a>
-      <br>
-
-      <!-- First hackathon? -->
-      <span class="small white">First hackathon?:</span>
-      <a class="small" ng-click="open('first')">{{application.first | application:'firstv2'}}</a>
-      <br>
-
-      <!-- Dietary restrictions -->
-      <span class="small white">Dietary restrictions:</span>
-      <a ng-click="open('dietary')" class="small">{{application.diet.selected | application:'dietary'}}</a>
-      <br>
-
-      <!-- Travel reimbursement? -->
-      <span class="small white">Travel reimbursement?</span>
-      <a class="small" ng-click="open('travel')">{{application.travel | application:'travel'}}</a>
-      <br>
-
-      <!-- Resume -->
-      <span class="small white">Resume (optional):</span>
-      <span ng-if="application.resume" class="small white"><i class="fa fa-check white"></i> Uploaded</span>
-      <span ng-if="!application.resume" class="small white"><i class="fa fa-times white"></i> None</span>
-      <br>
-
-      <!-- Link -->
-      <span class="white small">Link (optional):</span>
-      <a ng-click="open('link')" class="small">{{application.link | application:'link'}}</a>
-    </div>
+<script>
+  jQuery(document).ready(function ($) {
+    var resume = new Dropzone('div#resume-upload', {
+      url: config.api + '/users/application/resume',
+      maxFiles: 1,
+      acceptedFiles: 'application/pdf,.pdf,.doc,.docx',
+      addRemoveLinks: false,
+      uploadMultiple: false,
+      createImageThumbnails: true,
+      paramName: 'resume',
+      success: function (file, response) {
+        $('#resume-filename').val(response.filename).trigger('input');
+      }
+    });
+  });
+</script>
+<div class="row">
+  <h2 class="white">AGREEMENTS</h2>
+  <div class="agreements">
+    <input id="cb-conduct" type="checkbox" ng-model="application.conduct">
+    <label for="cb-conduct">I agree to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a></label>
+    <input id="cb-demographic" type="checkbox" ng-model="application.demographic">
+    <label for="cb-demographic">I agree to allow my demographic information to be used anonymously to improve hackathons</label>
   </div>
-
-  <!-- Actual input boxes -->
-  <div class="input text" ng-if="display.name">
-    <input type="text" placeholder="John Doe" ng-model="application.name">
-    <label>Your full name</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input select" ng-if="display.gender">
-    <select ng-model="application.gender">
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="other">Other</option>
-    </select>
-    <label>Your gender</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input text" ng-if="display.school">
-    <input type="text" placeholder="State University" ng-model="application.school" list="school-datalist">
-    <school-datalist></school-datalist>
-    <label>Your school</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input text" ng-if="display.major">
-    <input type="text" placeholder="Computer Science" ng-model="application.major">
-    <label>Your major</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input text" ng-if="display.phone">
-    <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone">
-    <label>Your phone number</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input select" ng-if="display.shirt">
-    <select ng-model="application.shirt">
-      <option value="S">Small</option>
-      <option value="M">Medium</option>
-      <option value="L">Large</option>
-      <option value="XL">X-Large</option>
-    </select>
-    <label>Your shirt size</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input text" ng-if="display.age">
-    <input type="number" placeholder="21" ng-model="application.age">
-    <label>Your age</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input select" ng-if="display.year">
-    <select ng-model="application.year">
-      <option value="Freshman">Freshman</option>
-      <option value="Sophomore">Sophomore</option>
-      <option value="Junior">Junior</option>
-      <option value="Senior">Senior</option>
-      <option value="High School">High Schooler</option>
-      <option value="Graduate Student">Graduate Student</option>
-    </select>
-    <label>Your year in school</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input select" ng-if="display.first">
-    <select ng-model="application.first">
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select>
-    <label>Is KHE your first hackathon?</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input checkbox" ng-if="display.dietary">
-    <p ng-repeat="restriction in application.diet.possible"
-       ng-click="application.diet.toggleSelection(restriction)"
-       ng-class="{checked: application.diet.selected.indexOf(restriction) > -1}"
-       class="item"> {{restriction}} </p>
-    <label>Dietary restrictions</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input select" ng-if="display.travel">
-    <select ng-model="application.travel">
-      <option value="false">No</option>
-      <option value="true">Yes</option>
-    </select>
-    <label>Travel reimbursement?</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-
-  <div class="input text" ng-if="display.link">
-    <input type="text" placeholder="github.com/username" ng-model="application.link">
-    <label>A link to something you've done</label>
-    <button ng-click="closeAll()"></button>
-  </div>
-  <!-- /Actual input boxes -->
-</article>
+</div>
 <footer>
   <div data-alert class="alert-box alert" ng-if="application.errors">
     <ul>
@@ -192,5 +60,5 @@
     <a class="white large" ui-sref="apply.page3">Agreements</a> <span class="large">|</span>
     <a class="white large" ui-sref="apply.page4">Summary</a>
   </div>
-  <button><span><i class="fa fa-check"></i></span> Apply</button>
+  <button ui-sref="apply.page5"><span><i class="fa fa-arrow-right"></i></span>Next</button>
 </footer>

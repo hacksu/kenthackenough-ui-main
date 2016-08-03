@@ -192,6 +192,18 @@ h2 {
 	border-color: $darkBlue;
 }
 
+#application a {
+    color: $lightBlue;
+    
+    &:hover {
+        color: $darkBlue;
+    }
+}
+
+#application p {
+    color: white;
+}
+
 //Page 2
 #track-wrapper {
 	width: 100%;
@@ -287,6 +299,7 @@ h2 {
 
 	&.answer {
 		h2 {
+		    font-size: 1.5rem;
 			margin: 0;
 			line-height: 5rem;
 			text-transform:capitalize;
@@ -329,6 +342,7 @@ h2 {
 	background-color: black !important;
 	border: 2px solid;
 	border-radius: 5px;
+	text-align: center;
 	
 	.flex-container {
 		display: flex;

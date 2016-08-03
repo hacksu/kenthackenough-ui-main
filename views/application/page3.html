@@ -11,13 +11,13 @@
         <div class="fader-wrapper medium-4 small-12">
             <p>Class Standing</p>
             <input ng-init="yearIndex = 0" type="range" name="age" min="0" max="3" ng-model="yearIndex">
-            <h3>{{application.year[yearIndex]}}</h3>
+            <h3>{{application.yearNames[yearIndex]}}</h3>
         </div>
         <div class="fader-wrapper medium-4 small-12">
             <p>T-Shirt Size</p>
             <input ng-init="shirtIndex = 0" type="range" name="age" min="0" max="3" ng-model="shirtIndex">
-            <h3>{{application.shirt[shirtIndex]}}</h3>
+            <h3>{{application.shirtSizes[shirtIndex]}}</h3>
         </div>
     </div>
-    <button ui-sref="apply.page4"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+    <button ui-sref="apply.page4" ng-click="application.shirt = application.shirtSizes[shirtIndex]; application.year = application.yearNames[yearIndex];"><span><i class="fa fa-arrow-right"></i></span> Next</button>
 </div>
