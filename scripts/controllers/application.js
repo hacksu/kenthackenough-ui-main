@@ -24,6 +24,10 @@ angular
         .state('apply.page4', {
           url: '/4',
           templateUrl: '/views/application/page4.html'
+        })
+        .state('apply.page5', {
+          url: '/5',
+          templateUrl: '/views/application/page5.html'
         });
   }])
   .controller('ApplicationCtrl', ['$scope', '$location', '$filter', 'User', 'Application', function ($scope, $location, $filter, User, Application) {
@@ -56,6 +60,7 @@ angular
     */
     self.diet = {
       possible: [
+        'None',
         'Vegetarian',
         'Vegan',
         'Kosher',
@@ -72,6 +77,20 @@ angular
         }
       }
     };
+    
+    self.yearNames = {
+        0: 'Freshmen',
+        1: 'Sophomore',
+        2: 'Junior',
+        3: 'Senior'
+    }
+    
+    self.shirtSizes = {
+        0: 'Small',
+        1: 'Medium',
+        2: 'Large',
+        3: 'X-Large'
+    }
 
     /**
     * Pre-populate the form if the user has already submitted

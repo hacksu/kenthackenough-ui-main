@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'inputrange';
 
 #application {
   width: 100vw;
@@ -28,17 +29,17 @@
 
    /* Safari and Chrome */
    -webkit-animation:mymove 3s;
-    -webkit-animation-iteration-count:3;
+	-webkit-animation-iteration-count:3;
 }
 
 @keyframes moveFadeIn {
-    from {top:-2rem; opacity: 0;}
-    to {top:0rem; opacity: 1}
+	from {top:-2rem; opacity: 0;}
+	to {top:0rem; opacity: 1}
 }
 
 @-webkit-keyframes mymove /* Safari and Chrome */ {
-    from {top:-2rem; opacity: 0;}
-    to {top:0rem; opacity: 1}
+	from {top:-2rem; opacity: 0;}
+	to {top:0rem; opacity: 1}
 }
 
 
@@ -50,11 +51,11 @@
 }
 
 #application-views.ng-leave-stagger {
-     transition-delay: 0.2s;
+	 transition-delay: 0.2s;
 }
 
 #application h1.ng-leave {
-    -webkit-animation: fadeOut 0.2s both ease;
+	-webkit-animation: fadeOut 0.2s both ease;
   -moz-animation: fadeOut 0.2s both ease;
   animation: fadeOut 0.2s both ease;
 }
@@ -123,16 +124,16 @@
   height: 4.5rem;
 }
 
-#application header h1 {
+header h1 {
   color: white;
   font-size: 1.5rem;
 }
 
-#application h2 {
-    color: white;
-    font-family: 'Abel', sans-serif;
-    font-weight: 400;
-    display: inline-block;
+h2 {
+	color: white;
+	font-family: 'Abel', sans-serif;
+	font-weight: 400;
+	display: inline-block;
 }
 
 #application .alert-box {
@@ -149,31 +150,31 @@
 }
 
 #application label {
-    color: white;
-    font-size: 2rem;
-    cursor: auto;
+	color: white;
+	font-size: 2rem;
+	cursor: auto;
 }
 
-#application input[type="text"] {
-    background: transparent;
-    border: none;
-    font-size: 3rem;
-    font-family: 'Abel', sans-serif;
-    font-weight: normal;
-    color: $lightBlue;
-    display: inline-block;
-    padding-right: 0;
-    height: 4rem;
-    margin: 1rem 0;
+#application input[type="text"], #application input[type="tel"] {
+	background: transparent;
+	border: none;
+	font-size: 3rem;
+	font-family: 'Abel', sans-serif;
+	font-weight: normal;
+	color: $lightBlue;
+	display: inline-block;
+	padding-right: 0;
+	height: 4rem;
+	margin: 1rem 0;
 }
 
 #application button {
-    font-family: 'Abel', sans-serif;
-    font-size: 2rem;
-    z-index: 200;
-    height: 4.81rem;
-    width: 22vw;
-    margin-top: 3rem;
+	font-family: 'Abel', sans-serif;
+	font-size: 2rem;
+	z-index: 200;
+	height: 4.81rem;
+	width: 22vw;
+	margin: 3rem auto;
 
 	border: 3px solid $lightBlue;
 	color: $lightBlue;
@@ -191,334 +192,417 @@
 	border-color: $darkBlue;
 }
 
+#application a {
+    color: $lightBlue;
+    
+    &:hover {
+        color: $darkBlue;
+    }
+}
+
+#application p {
+    color: white;
+}
+
 //Page 2
 #track-wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
 }
 
 #track-area {
-    width: 100%;
-    height: 100%;
-    background-color: $black;
-    
-    p {
-        color: rgba(white, 0.6);
-        margin: 0.3rem 0;
-        text-align: center;
-    }
-    
-    ul {
-        list-style: none;
-        margin-left: 0;
-        float: left;
-    }
+	width: 100%;
+	height: auto;
+	background-color: $black;
+	
+	p {
+		color: rgba(white, 0.6);
+		margin: 0.3rem 0;
+		text-align: center;
+		white-space: nowrap;
+	}
+	
+	ul {
+		list-style: none;
+		margin-left: 0;
+		float: left;
+	}
 
-    .measure-wrapper {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: no-wrap;
-    }
+	.measure-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: no-wrap;
+	}
 
-    .measure {
-        position: relative;
-        flex: 1 0 auto;
-        background-color: $black;
-        border: 1px solid rgba(white, 0.6);
-        border-top: none;
-        border-bottom: none;
-        border-style: inset;
-        
-        &:before {
-            content: "";
-            display: none;
-            position: absolute;
-            left: 25%;
-            bottom: 0;
-            width: 1px;
-            height: 50%;
-            background-color: rgba(white, 0.6);
-        }
-        
-        &:after {
-            content: "";
-            display: none;
-            position: absolute;
-            right: 25%;
-            bottom: 0;
-            width: 25%;
-            height: 50%;
-            background-color: transparent;
-            border: 1px solid rgba(white, 0.6);
-            border-style: inset;
-            border-top: none;
-            border-bottom: none;
+	.measure {
+		position: relative;
+		flex: 1 0 auto;
+		background-color: $black;
+		border: 1px solid rgba(white, 0.6);
+		border-top: none;
+		border-bottom: none;
+		border-style: inset;
+		
+		&:before {
+			content: "";
+			display: none;
+			position: absolute;
+			left: 25%;
+			bottom: 0;
+			width: 1px;
+			height: 50%;
+			background-color: rgba(white, 0.6);
+		}
+		
+		&:after {
+			content: "";
+			display: none;
+			position: absolute;
+			right: 25%;
+			bottom: 0;
+			width: 25%;
+			height: 50%;
+			background-color: transparent;
+			border: 1px solid rgba(white, 0.6);
+			border-style: inset;
+			border-top: none;
+			border-bottom: none;
 
-        }
+		}
 
-        p {
-            color: rgba(white, 0.6);;
-            text-align: left;
-            padding-left: 0.5rem;
-        }
-    }
+		p {
+			color: rgba(white, 0.6);;
+			text-align: left;
+			padding-left: 0.5rem;
+		}
+	}
 }
 
 
 #application .track {
-    color: white;
-    height: 5rem;
-    border: 1px solid $black;
-    background-color: #000;
-    border-radius: 3px;
-    border-style: inset;
-    text-align: center;
-    
-    a, p {
-        color: white;
-        text-align: center;
-        line-height: 5rem;
-        width: 100%;
-    }
+	color: white;
+	height: 5rem;
+	border: 1px solid $black;
+	background-color: #000;
+	border-radius: 3px;
+	border-style: inset;
+	text-align: center;
+	
+	a, p {
+		color: white;
+		text-align: center;
+		line-height: 5rem;
+		width: 100%;
+	}
 
-    &.answer {
-
-    }
+	&.answer {
+		h2 {
+		    font-size: 1.5rem;
+			margin: 0;
+			line-height: 5rem;
+			text-transform:capitalize;
+		}
+	}
 }
 
 .modal-header {
-    width: 100%;
-    background-color: $black;
-    padding: 0.35rem 0;
-    z-index: 400;
-    
+	width: 100%;
+	background-color: $black;
+	padding: 0.35rem 0;
+	z-index: 400;
+	text-align: center;
+	color: white;
+	
 }
 
-#loop-selector {
-    z-index: 300;
-    position: fixed;
-    top: 10rem;
-    left: 25vw;
-    width: 50vw;
-    height: auto;
-    background-color: black;
-    border: 2px solid $pink;
-    border-radius: 5px;
-    
-    .flex-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-    }
+#phone-drumpad {
+	z-index: 300;
+	position: fixed;
+	top: 10rem;
+	left: 30vw;
+	width: 40vw;
+	text-align: center;
+	border: 2px solid $darkBlue;
+	background-color: darken($darkBlue, 30%);
+	
+	p {
+		color: $lightBlue;
+	}
+}
 
-    .loop {
-        flex: 0 0 auto;
-        width: 10vw;
-        height: 10vw;
-        min-width: 120px;
-        min-height: 120px;
-        color: white;
-        margin: 40px 30px;
-        background-color: rgba($pink, 0.7);
-        border: 2px solid $pink;
-        text-align: center;
-        border-radius: 5px;
-        cursor: pointer;
-        cursor: hand;
-        
-        -webkit-transition: border-color 300ms, background-color 300ms;
-        transition: border-color 300ms, background-color 300ms;
-        
-        &:hover {
-            border-color: white;
-            background-color: $pink;
-        }
-        
-        h3 {
-            color: white;
-            line-height: 10vw;
-            font-family: 'Abel', sans-serif;
-            margin: 0;
-        }
-        
-    }
+.loop-selector {
+	z-index: 300;
+	position: fixed;
+	top: 5rem;
+	left: 25vw;
+	width: 50vw;
+	height: auto;
+	background-color: black !important;
+	border: 2px solid;
+	border-radius: 5px;
+	text-align: center;
+	
+	.flex-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-around;
+	}
+	
+	&.lightBlue {
+		.modal-header {color: $lightBlue;}
+		
+		border-color: $lightBlue;
+		.loop {
+			background-color: darken($lightBlue, 20%);
+			border-color: $lightBlue;
+			&:hover {
+				background-color: $lightBlue;
+			}
+		}
+	}
+	
+	 &.pink {
+		 .modal-header {color: $pink;};
+		 
+		 border-color: $pink;
+		 
+		 .loop {
+			 background-color: darken($pink, 30%);
+			 border-color: $pink;
+			 &:hover {
+				background-color: $pink;
+			 }
+		 }
+	}
+
+	.loop {
+		flex: 0 0 auto;
+		width: 10vw;
+		height: 10vw;
+		min-width: 120px;
+		min-height: 120px;
+		color: white;
+		margin: 40px 30px;
+		border: 2px solid transparent;
+		text-align: center;
+		border-radius: 5px;
+		cursor: pointer;
+		cursor: hand;
+		
+		-webkit-transition: border-color 300ms, background-color 300ms;
+		transition: border-color 300ms, background-color 300ms;
+		
+		h3 {
+			color: white;
+			font-size: 2vw;
+			line-height: 10vw;
+			font-family: 'Abel', sans-serif;
+			margin: 0;
+			white-space: nowrap;
+		}
+		
+	}
 }
 
 //Midi controller
 .midi-keyboard {
-    z-index: 300;
-    position: fixed;
-    top: 10rem;
-    left: 50%;
-    transform: translate(-50%,0);
-    width: auto;
-    height: auto;
-    background-color: black;
-    border: 2px solid $black;
-    border-radius: 5px;
-    text-align: center;
-    
+	z-index: 300;
+	position: fixed;
+	top: 10rem;
+	left: 50%;
+	transform: translate(-50%,0);
+	min-width: 50vw; //HACK
+	width: auto;
+	height: auto;
+	background-color: black;
+	border: 2px solid $black;
+	border-radius: 5px;
+	text-align: center;
+	
 }
 
 .keyboard-piano {
-    width: 100%;
-    .octave {
-        display: inline-block;
-        float: left;
-        position: relative;
-    }
-    
-    .sharps {
-        z-index: 350;
-        position: absolute;
-        top:0;
-        
-        @for $i from 1 through 5 {
-            .key:nth-child(#{$i}) {
-                @if ($i == 1) {
-                    margin-left: 1.5vw;
-                } @elseif ($i == 3) {
-                    margin-left: 3vw;
-                } @else {
-                    margin-left: 0.9vw;
-                }
-            }
-            
-        }
-        
-    }
-    
-    .key {
-        display: inline-block;
-        float: left;
-        position: relative;
-        &.white {
-            height: 10rem;
-            width: 3vw;
-            min-width: 2rem;
-            background-color: lighten($black, 20%);
-            border-right: 1px inset black;
-            
-            &.pressed {
-                background-color: lighten($black, 5%);
-            }
-        }
-        
-        &.black {
-            height: 7rem;
-            width: 2.5vw;
-            min-width: 1.8rem;
-            background-color: $black;
-            
-            &.pressed {
-                background-color: darken($black, 5%);
-            }
-        }
-        
-        p {
-            position: absolute;
-            bottom: 0;
-            margin: 0 0 0.5rem 0;
-            width: 100%;
-        }
-    }
+	display: none; //HACK until angular directive works...
+	width: 100%;
+	.octave {
+		display: inline-block;
+		float: left;
+		position: relative;
+	}
+	
+	.sharps {
+		z-index: 350;
+		position: absolute;
+		top:0;
+		
+		@for $i from 1 through 5 {
+			.key:nth-child(#{$i}) {
+				@if ($i == 1) {
+					margin-left: 1.5vw;
+				} @elseif ($i == 3) {
+					margin-left: 3vw;
+				} @else {
+					margin-left: 0.9vw;
+				}
+			}
+			
+		}
+		
+	}
+	
+	.key {
+		display: inline-block;
+		float: left;
+		position: relative;
+		&.white {
+			height: 10rem;
+			width: 3vw;
+			min-width: 2rem;
+			background-color: lighten($black, 20%);
+			border-right: 1px inset black;
+			
+			&.pressed {
+				background-color: lighten($black, 5%);
+			}
+		}
+		
+		&.black {
+			height: 7rem;
+			width: 2.5vw;
+			min-width: 1.8rem;
+			background-color: $black;
+			
+			&.pressed {
+				background-color: darken($black, 5%);
+			}
+		}
+		
+		p {
+			position: absolute;
+			bottom: 0;
+			margin: 0 0 0.5rem 0;
+			width: 100%;
+		}
+	}
+}
+
+.drum-pad {
+	display: none; //HACK until more time...
+	background-color: darken($darkBlue, 10%);
+	border: 2px solid lighten($darkBlue, 10%);
 }
 
 //Colored Divs
 .midi-keyboard {
-    
-    input[type="text"] {
-        z-index: 400;
-        font-size: 2rem;
-    }
-    
-    &.teal {
-        
-        * {
-            color: $teal !important;
-        }
-        
-        border-color: $teal;
-        
-        input[type="text"] {
-            color: $teal;
-            
-            &::-webkit-input-placeholder {
-               color: $teal;
-            }
-            
-            &:-moz-placeholder { /* Firefox 18- */
-               color: $teal;
-            }
-            
-            &::-moz-placeholder {  /* Firefox 19+ */
-               color: $teal;
-            }
-            
-            &:-ms-input-placeholder {
-               color: $teal;
-            }
-        }
-        
-        
-    }
-    
-    &.orange {
-        * {
-            color: $orange !important;
-        }
-        border-color: $orange;
-        
-        input[type="text"] {
-            color: $orange;
-            
-            &::-webkit-input-placeholder {
-               color: $orange;
-            }
-            
-            &:-moz-placeholder { /* Firefox 18- */
-               color: $orange;
-            }
-            
-            &::-moz-placeholder {  /* Firefox 19+ */
-               color: $orange;
-            }
-            
-            &:-ms-input-placeholder {
-               color: $orange;
-            }
-        }
-        
-       
-    }
+	
+	input[type="text"], input[type="tel"] {
+		z-index: 400;
+		font-size: 2rem;
+	}
+	
+	&.teal {
+		
+		* {
+			color: $teal !important;
+		}
+		
+		border-color: $teal;
+		
+		input[type="text"] {
+			color: $teal;
+			
+			&::-webkit-input-placeholder {
+			   color: $teal;
+			}
+			
+			&:-moz-placeholder { /* Firefox 18- */
+			   color: $teal;
+			}
+			
+			&::-moz-placeholder {  /* Firefox 19+ */
+			   color: $teal;
+			}
+			
+			&:-ms-input-placeholder {
+			   color: $teal;
+			}
+		}
+		
+		
+	}
+	
+	&.orange {
+		* {
+			color: $orange !important;
+		}
+		border-color: $orange;
+		
+		input[type="text"] {
+			color: $orange;
+			
+			&::-webkit-input-placeholder {
+			   color: $orange;
+			}
+			
+			&:-moz-placeholder { /* Firefox 18- */
+			   color: $orange;
+			}
+			
+			&::-moz-placeholder {  /* Firefox 19+ */
+			   color: $orange;
+			}
+			
+			&:-ms-input-placeholder {
+			   color: $orange;
+			}
+		}
+	   
+	}
 }
 
 .track-answer-wrapper {
-    position: relative;
+	position: relative;
 }
 
 track-answer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-    width: 100%;
-    height: 100%;
-    
-    z-index: -1;
-    &.orange {
-        background-color: darken($orange, 40%);
-    }
-    
-    &.teal {
-        background-color: darken($teal, 40%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	z-index: -1;
+	&.orange {
+		background-color: darken($orange, 40%);
+	}
+	
+	&.teal {
+		background-color: darken($teal, 40%);
 
-    }
+	}
 }
 
+// Page 3
+#mixer {
+	width: 100%;
+	text-align: center;
+	.row div {
+		color: white;
+		float: left;
+		text-align: center;
+		
+		h3 {
+		    font-size: 2rem;
+		    width: 100%;
+		    color: $lightBlue;
+		    
+		}
+	}
+}
 
 #application .checkbox {
   z-index: 200;
@@ -670,108 +754,108 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media (min-width: 960px) {
-    
-    #application .measure:before, #application .measure:after {
-        display: block;
-    }
+	
+	#application .measure:before, #application .measure:after {
+		display: block;
+	}
 
   #application header h1 {
-    font-size: 2.5rem;
+	font-size: 2.5rem;
   }
 
   #application header {
-    height: 6rem;
+	height: 6rem;
   }
 
   #application  .input {
-    top: 6rem;
+	top: 6rem;
   }
 
   #application  .small {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
   }
 
   #application .tall {
-    line-height: 2;
+	line-height: 2;
   }
 
   #application .short {
-    line-height: 1;
+	line-height: 1;
   }
 
   #application  .text {
-    width: 960px;
+	width: 960px;
   }
 
   #application  .text input {
-    left: auto;
-    width: 760px;
+	left: auto;
+	width: 760px;
   }
 
   #application  .text label {
-    width: 760px;
+	width: 760px;
   }
 
   #application  .text button {
-    width: 200px;
-    margin-left: 760px;
-    right: auto;
+	width: 200px;
+	margin-left: 760px;
+	right: auto;
   }
 
   #application  .select {
-    width: 960px;
+	width: 960px;
   }
 
   #application  .select select {
-    left: auto;
-    width: 760px;
+	left: auto;
+	width: 760px;
   }
 
   #application  .select label {
-    width: 760px;
+	width: 760px;
   }
 
   #application  .select button {
-    width: 200px;
-    margin-left: 760px;
-    right: auto;
+	width: 200px;
+	margin-left: 760px;
+	right: auto;
   }
 
   #application  .checkbox {
-    position: absolute;
-    top: 5rem;
-    left: auto;
-    width: 960px;
+	position: absolute;
+	top: 5rem;
+	left: auto;
+	width: 960px;
   }
 
   #application  .checkbox label {
-    width: 960px;
+	width: 960px;
   }
 
   #application  .agreements {
-    width: 960px;
+	width: 960px;
   }
 
   #application  .agreements label {
-    font-size: 1.5rem;
-    width: 960px;
+	font-size: 1.5rem;
+	width: 960px;
   }
 
   #application footer {
-    width: 960px;
-    margin-top: 2rem;
+	width: 960px;
+	margin-top: 2rem;
   }
 
   #application footer button {
-    width: 960px;
+	width: 960px;
   }
 
   #application footer button span {
-    width: 200px;
+	width: 200px;
   }
 
   #application footer button span i {
-    margin-left: -2.5rem;
+	margin-left: -2.5rem;
   }
 
 }

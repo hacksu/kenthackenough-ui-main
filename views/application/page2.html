@@ -4,7 +4,9 @@
 <div id="track-wrapper" class="small-12">
     <div id="track-area">
         <ul id="question-labels" class="small-3">
-            <li><p>Tracks</p></li>
+            <li>
+                <p>Tracks</p>
+            </li>
             <li class="track">
                 <p>Gender</p>
             </li>
@@ -24,57 +26,97 @@
         </ul>
         <ul id="answers" class="small-9">
             <div class="measure-wrapper">
-                <div class="measure"><p>1</p></div>
-                <div class="measure"><p>2</p></div>
-                <div class="measure"><p>3</p></div>
-                <div class="measure"><p>4</p></div>
-                <div class="measure"><p>5</p></div>
-                <div class="measure"><p>6</p></div>
-                <div class="measure"><p>7</p></div>
-                <div class="measure"><p>8</p></div>
+                <div class="measure">
+                    <p>1</p>
+                </div>
+                <div class="measure">
+                    <p>2</p>
+                </div>
+                <div class="measure">
+                    <p>3</p>
+                </div>
+                <div class="measure">
+                    <p>4</p>
+                </div>
+                <div class="measure">
+                    <p>5</p>
+                </div>
+                <div class="measure">
+                    <p>6</p>
+                </div>
+                <div class="measure">
+                    <p>7</p>
+                </div>
+                <div class="measure">
+                    <p>8</p>
+                </div>
             </div>
-            <li class="answer track">
-                <a ng-click="open('gender')">Click Here to Answer</a>
+            <li class="answer track" ng-class="{'pink': application.gender, '': !application.gender}">
+                <a ng-click="open('gender')">
+                    <span ng-show="!application.gender">Click Here to Answer</span>
+                    <h2 class="pink" ng-if="application.gender">{{application.gender}}</h2>
+                </a>
             </li>
-            <li class="answer track">
-                <a ng-click="open('school')">Click Here to Answer</a>
+            <li class="answer track" ng-class="{'teal': application.school, '': !application.school}">
+                <a ng-click="open('school')">
+                    <span ng-show="!application.school">Click Here to Answer</span>
+                    <h2 class="teal" ng-if="application.school">{{application.school}}</h2>
+                </a>
             </li>
-            <li class="answer track">
-                <a ng-click="open('major')">Click Here to Answer</a>
+            <li class="answer track" ng-class="{'orange': application.major, '': !application.major}">
+                <a ng-click="open('major')">
+                    <span ng-show="!application.major">Click Here to Answer</span>
+                    <h2 class="orange" ng-if="application.major">{{application.major}}</h2>
+                </a>
             </li>
-            <li class="answer track">
-                <p>Click Here to Answer</p>
+            <li class="answer track" ng-class="{'darkBlue': application.phone, '': !application.phone}">
+                <a ng-click="open('phone')">
+                    <span ng-show="!application.phone">Click Here to Answer</span>
+                    <h2 class="darkBlue" ng-if="application.phone">{{application.phone}}</h2>
+                </a>
             </li>
-            <li class="answer track">
-                <p>Click Here to Answer</p>
+            <li class="answer track" ng-class="{'lightBlue': application.diet.selection, '': !application.diet.selection}">
+                <a ng-click="open('diet')">
+                    <span ng-show="!application.diet.selection">Click Here to Answer</span>
+                    <h2 class="lightBlue">{{application.diet.selection}}</h2>
+                </a>
             </li>
         </ul>
-        <!--<div id="mixer">-->
-        <!--    <div class="row">-->
-        <!--        <div class="fader">-->
-        <!--            <p>Age</p>-->
-                    
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--    <div class="row">-->
-        <!--        <div class="knob">-->
-        <!--            <p>Shirt Size</p>-->
-        <!--        </div>-->
-        <!--        <div class="knob">-->
-        <!--            <p>Class Standing</p>-->
-        <!--        </div>-->
-
-        <!--        <div class="knob">-->
-        <!--            <p>First Hackathon</p>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
     </div>
     <midi-keyboard></midi-keyboard>
-    <div id="phone-drumpad">
-
+    <div id="phone-drumpad" class="darkBlue" ng-if="display.phone" ng-enter="closeAll()">
+        <p class="row modal-header">Enter Your Phone Number</p>
+        <input type="tel" placeholder="(555) 555-5555" ng-model="application.phone" pu-elastic-input>
+        <div class="flex-container">
+            <div class="drum-pad loop">
+                <h3>7</h3></div>
+            <div class="drum-pad loop">
+                <h3>8</h3></div>
+            <div class="drum-pad loop">
+                <h3>9</h3></div>
+        </div>
+        <div class="flex-container">
+            <div class="drum-pad loop">
+                <h3>4</h3></div>
+            <div class="drum-pad loop">
+                <h3>5</h3></div>
+            <div class="drum-pad loop">
+                <h3>6</h3></div>
+        </div>
+        <div class="flex-container">
+            <div class="drum-pad loop">
+                <h3>1</h3></div>
+            <div class="drum-pad loop">
+                <h3>2</h3></div>
+            <div class="drum-pad loop">
+                <h3>3</h3></div>
+        </div>
+        <div class="flex-container">
+            <div class="drum-pad loop">
+                <h3>0</h3></div>
+        </div>
     </div>
-    <div id="loop-selector" ng-if="display.gender">
+    <div class="loop-selector pink" ng-if="display.gender">
         <p class="row modal-header">Select Your Gender</p>
         <div class="flex-container">
             <div class="loop" ng-click="application.gender = 'male'; closeAll();">
@@ -88,4 +130,33 @@
             </div>
         </div>
     </div>
+    <div class="loop-selector lightBlue" ng-if="display.diet">
+        <p class="row modal-header">Have Any Dietary Restrictions?</p>
+        <div class="flex-container">
+            <div class="loop" ng-click="application.diet.selection = 'None'; closeAll();">
+                <h3>None</h3>
+            </div>
+            <div class="loop" ng-click="application.diet.selection = 'Vegetarian'; closeAll();">
+                <h3>Vegetarian</h3>
+            </div>
+            <div class="loop" ng-click="application.diet.selection = 'Vegan'; closeAll();">
+                <h3>Vegan</h3>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="loop" ng-click="application.diet.selection = 'Kosher'; closeAll();">
+                <h3>Kosher</h3>
+            </div>
+            <div class="loop" ng-click="application.diet.selection = 'Gluten Free'; closeAll();">
+                <h3>Gluten Free</h3>
+            </div>
+            <div class="loop" ng-click="application.diet.selection = 'Other'; closeAll();">
+                <h3>Other</h3>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="text-center row align-middle">
+    <button  ui-sref="apply.page3"><span><i class="fa fa-arrow-right"></i></span> Next</button>
+</div>
+<!--ng-show="application.gender && application.phone && application.school && application.major"-->
