@@ -300,6 +300,14 @@ a {
 	padding-top: 50px;
 }
 
+.info-section a {
+	text-align: left;
+	position: relative;
+	float: none;
+	text-decoration: underline;
+}
+
+
 .btn:hover {
 	color: $darkBlue ;
 	border-color: $darkBlue;
