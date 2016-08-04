@@ -64,8 +64,11 @@ angular
           $location.path('/apply');
         }).
         error(function (data) {
+          console.log(data);
           if (data) {
             self.errors = data.errors || ['An internal error has occurred'];
+          } else {
+            self.errors = ["Can't connect"];
           }
         });
       },
@@ -87,17 +90,29 @@ angular
           getApplication();
         }).
         error(function (data) {
-          self.errors = data.errors || ['An internal error has occurred'];
+          if (data) {
+            self.errors = data.errors || ['An internal error has occurred'];
+          } else {
+            self.errors = ["Can't connect"];
+          }
         });
       },
 
       /**
       * Logout
       */
+
+      clear: function () {
+        view.login = false;
+        view.loginRegister = false;
+        this.errors = null;
+      },
+
       logout: function () {
         Models.user.removeMe();
         view.user = Models.user.getMe();
-      }
+        this.clear();
+      },
 
     };
 
@@ -116,6 +131,7 @@ angular
 
     };
 
+    //  Functionality related to mailing list
     view.mail = {
 
       email: null,
@@ -139,6 +155,7 @@ angular
 
     };
 
+    // functionality to create a ticket.
     view.contact = {
 
       new: {},
@@ -163,3 +180,4 @@ angular
     };
 
   }]);
+  
