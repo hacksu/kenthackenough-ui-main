@@ -119,7 +119,7 @@ $prompt-button: $darkBlue;
 
 #application article a {
   color: $orange;
-  border-bottom: 1px dashed $prompt-button;
+  border-bottom: 1px dashed $pink;
   padding-bottom: 0.2rem;
   cursor: pointer;
 }
@@ -177,7 +177,7 @@ $prompt-button: $darkBlue;
   margin-top: 3rem;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   background-color: $prompt-prompt;
-  border-top: 1px dashed #CC0000;
+  border-top: 1px dashed $prompt-button;
   width: 90vw;
   height: 1.8rem;
 }
@@ -334,14 +334,15 @@ $prompt-button: $darkBlue;
   text-transform: uppercase;
   font-size: 1.5rem;
   line-height: 0;
+  background-color: $prompt-prompt
 }
 
 #application footer button span {
   position: absolute;
   left: 0;
-  background: rgba(0, 0, 0, 0.2);
   width: 20vw;
   height: 4rem;
+  background-color: $prompt-button;
   top: 0;
 }
 

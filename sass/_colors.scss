@@ -9,29 +9,22 @@ $black: #111;
 $color-list: "lightBlue", "darkBlue", "teal", "orange", "pink", "black";
 
 .lightBlue {
-    background-color: darken($lightBlue, 20%) !important;
-    color: white;
-    border-color: $lightBlue;
+    color: $lightBlue;
 }
 
 .darkBlue {
   color: $lightBlue;
-  background-color: darken($darkBlue, 20%) !important;
 }
 
 .teal {
   color: $teal !important;
-  background-color: darken($teal, 40%) !important;
 }
 
 .orange {
   color: $orange !important;
-  background-color: darken($orange, 40%) !important;
 }
 
 .pink {
-    border-color: $pink;
-    background-color: darken($pink, 30%) !important;
     color: $pink;
 }
 
