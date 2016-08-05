@@ -220,23 +220,28 @@ h1, h2, h3, h4, h5 {
 	margin-bottom: 0px;
 }
 
+
+.title-bar > * {
+	line-height: 50px;
+	color: white;
+	float: right;
+	padding-right: 10px;
+}
+
 .title-bar > h1 {
 	padding-left: 10px;
 	margin: 0;
+	float: left;
 	text-align: left;
 	min-width: 30px;
 	display: inline;
-	line-height: 50px;
 	font-size: 2rem;
-	color: white;
 }
 
 .title-bar > a {
 	position: relative;
 	float: right;
-	line-height: 50px;
-	padding-right: 10px;
-	color: white;
+	text-decoration: underline;
 }
 
 .error {

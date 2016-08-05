@@ -2,11 +2,11 @@
 <div class="prompt" id="login" ng-if="home.loginRegister && !home.user">
     <div class="title-bar" ng-if="!home.login">
         <h1>REGISTER</h1>
-        <a ng-click="home.login=true">Already registed? Login</a>
+        <a ng-click="home.login=true">Login</a>
     </div>
     <div class="title-bar" ng-if="home.login">
         <h1>LOGIN</h1>
-        <a ng-click="home.login=false">Don't have an account? Register</a>
+        <a ng-click="home.login=false">Register</a> <span>|</span> <a ui-sref="recover">Reset Passowrd</a>
     </div>
     <div class="content">
         <div class="labeled-input">
@@ -51,6 +51,9 @@
         <div ng-if="home.user">
             <a class="center-link" ui-sref="apply.page1">
                 <div class="btn center">Application</div>
+            </a><br>
+            <a class="center-link" ui-sref="account">
+                <div class="btn center">EDIT ACCOUNT</div>
             </a><br>
             <a class="center-link" ng-click="home.person.logout()">
                 <div class="btn center">Logout</div>
