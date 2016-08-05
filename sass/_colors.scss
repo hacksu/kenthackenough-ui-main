@@ -35,3 +35,32 @@ $color-list: "lightBlue", "darkBlue", "teal", "orange", "pink", "black";
 .white {
   color: #FFF;
 }
+
+
+.lightBlue-background {
+    background-color: $lightBlue;
+}
+
+.darkBlue-background {
+    background-color: $darkBlue;
+}
+
+.teal-background {
+    background-color: $teal;
+}
+
+.orange-background {
+    background-color: $orange;
+}
+
+.pink-background {
+    background-color: $pink;
+}
+
+.black-background {
+    background-color: $black;
+}
+
+.white-background {
+    background-color: #111;
+}

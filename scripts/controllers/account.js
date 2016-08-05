@@ -85,11 +85,11 @@ angular
         Models.user.recover(self.email).
         success(function (data) {
           self.email = null;
-          self.successes = ['Your password has been reset. You should be receiving an email with a temporary password soon.'];
+          self.successe = true;
         }).
         error(function (data) {
           self.email = null;
-          self.successes = null;
+          self.successe = false;
           self.errors = data.errors;
         });
       }

@@ -15,6 +15,10 @@ h1, h2 {
 	font-family: 'Oswald', sans-serif;
 }
 
+p {
+	font-size: 20px;
+}
+
 
 body {
 	font-family: 'Abel', sans-serif;
@@ -191,11 +195,12 @@ h1, h2, h3, h4, h5 {
 	border: 3px solid $darkBlue;
 	border-radius: 5px;
 	overflow: hidden;
+	padding: 0 !important;
 }
 
 .prompt > .title-bar {
 	position: relative;
-	width: inherit;
+	width: 100%;
 	background-color: $darkBlue;
 	height: 50px;
 	top: -3px;

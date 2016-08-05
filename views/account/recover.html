@@ -1,44 +1,37 @@
 <div id="account">
-  <header>
-    <h1>KHE | Account Recovery</h1>
+  <header class="text-center">
+    <h1>KHE | Account Recovery</h1> <br>
   </header>
   <article>
-    <div class="row">
+    <div class="row" ng-if="!acc.recover.successe">
       <div class="small-12 columns">
-        <div class="alert-box alert" ng-if="acc.recover.errors">
-          <ul>
-            <li ng-repeat="e in acc.recover.errors" class="white">{{e}}</li>
-          </ul>
-        </div>
-        <div class="alert-box success" ng-if="acc.recover.successes">
-          <ul>
-            <li ng-repeat="e in acc.recover.successes" class="white">{{e}}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 columns">
-        <form ng-submit="acc.recover.submit()">
           <div class="row">
-            <div class="small-12 columns">
-              <p class="white">Enter your email address below and click "Recover". An email will be sent to you with a new password. Please log in with that password and change it to something you'll remember.</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="small-12 columns">
+            <div class="small-12 columns text-center">
               <label>
-                Email
-                <input type="email" ng-model="acc.recover.email" placeholder="you@example.edu">
+                <input type="email" class="neon-input" ng-model="acc.recover.email" placeholder="you@example.edu">
               </label>
             </div>
           </div>
           <div class="row">
             <div class="small-12 columns">
-              <button>Recover</button>
+              <div class="btn" ng-click="acc.recover.submit()">Recover</div>
             </div>
           </div>
-        </form>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="small-12 columns" ng-if="acc.recover.errors">
+        <h2>Error</h2>
+        <ul>
+          <li ng-repeat="e in acc.recover.errors" class="white">{{e}}</li>
+        </ul>
+      </div>
+      <div class="small-12 columns" ng-if="acc.recover.successe">
+        <h2 class="">Success</h2>
+        <p class="white">
+          We've sent you an email with a new temporary passowrd. Please change it as soon as you can.
+        </p>
       </div>
     </div>
   </article>
