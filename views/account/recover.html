@@ -4,12 +4,13 @@
   </header>
   <article>
     <div class="row" ng-if="!acc.recover.successe">
-      <div class="small-12 columns">
+      <div class="small-12 columns content">
           <div class="row">
             <div class="small-12 columns text-center">
-              <label>
-                <input type="email" class="neon-input" ng-model="acc.recover.email" placeholder="you@example.edu">
-              </label>
+              <div class="labeled-input">
+                <input type="email" id="email" class="neon-input" required ng-model="acc.recover.email">
+                <label for="email">YOUR EMAIL</label>
+              </div>
             </div>
           </div>
           <div class="row">

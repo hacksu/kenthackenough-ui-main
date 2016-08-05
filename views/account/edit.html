@@ -1,5 +1,5 @@
 <div id="account">
-  <header>
+  <header class="text-center">
     <h1>KHE | Account Settings</h1>
   </header>
   <article>
@@ -18,30 +18,28 @@
       </div>
     </div>
     <div class="row">
-      <div class="small-12 columns">
-        <form ng-submit="acc.person.update()">
+      <div class="small-12 columns content">
           <div class="row">
-            <div class="small-12 columns">
-              <label>
-                Email (Optional)
-                <input type="email" ng-model="acc.person.email" placeholder="you@example.edu">
-              </label>
+            <div class="small-12 columns text-center">
+              <div class="labeled-input">
+                <input class="neon-input" id="email" required ng-model="acc.person.email">
+                <label for="email">NEW EMAIL</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns text-center">
+              <div class="labeled-input">
+                <input class="neon-input" id="password" type="password" required ng-model="acc.person.password">
+                <label for="password">NEW PASSWORD</label>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="small-12 columns">
-              <label>
-                Password (Optional)
-                <input type="password" ng-model="acc.person.password" placeholder="password">
-              </label>
+              <div class="btn" ng-click="acc.person.update()">Save</div>
             </div>
           </div>
-          <div class="row">
-            <div class="small-12 columns">
-              <button>Save</button>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   </article>

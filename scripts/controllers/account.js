@@ -52,13 +52,15 @@ angular
           password: self.password
         }).
         success(function (data) {
-          self.successes = ['Your account has been updated'];
+          console.log("we got", data);
+
+          self.successe = true;
           if (self.password) {
             self.logout();
-            $location.path('/');
           }
         }).
         error(function (data) {
+          console.log("we had an error");
           self.errors = data.errors || ['An internal error has occurred'];
         });
       },
