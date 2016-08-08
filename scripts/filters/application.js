@@ -39,6 +39,8 @@ angular
           return 'large';
         case 'XL':
           return 'extra large';
+        case 'XXL':
+          return 'extra extra large';
         default:
           return '[size]';
       }
