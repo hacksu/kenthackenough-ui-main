@@ -5,6 +5,7 @@ body {
 	background-color: $black;
 	background-repeat: no-repeat;
 	margin: 0;
+	overflow-x: hidden;
 }
 
 * {
@@ -174,17 +175,28 @@ h1, h2, h3, h4, h5 {
 	}
 }
 
-@media only screen and (max-width: 40em) { #logo{ margin-bottom: 2vh; }}
-
 #waves {
-  position: relative;
-  margin: 20px auto 50px;
+	position: relative;
+	margin: 20px auto 80px;
 	display: block;
-	width: 100%;
-	height: 20vh;
+	width: 133.3vw;//1023px;
+	height: 18.8vw;//18.81vw;//192.4px;
 	max-height: 200px;
 	z-index: 1;
 }
+
+//For Smaller Screens and Below:
+@media only screen and (max-width: 40em) { 
+	#logo{ margin-bottom: 2vh; }
+	#waves{ width:200vw; height: 28.2vw; transform: translateX(0%);}
+}
+
+//Xlarge screens
+@media only screen and (min-width: 90.063em) { 
+	#waves{ width:100vw; height: 14.1vw;}
+}
+
+
 
 #info {
 	position: relative;
