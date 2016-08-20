@@ -32,7 +32,6 @@
     "instafeed.js": "1.3.x",
     "angular-moment": "0.10.x",
     "moment-timezone": "~0.4.0",
-    "threejs": "*",
     "angular-elastic-input": "^2.4.0"
   },
   "resolutions": {

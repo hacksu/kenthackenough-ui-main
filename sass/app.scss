@@ -168,7 +168,13 @@ h1, h2, h3, h4, h5 {
 #logo {
 	margin: 8vh auto;
 	height: auto;
+
+	img {
+		margin: 0 auto;
+	}
 }
+
+@media only screen and (max-width: 40em) { #logo{ margin-bottom: 2vh; }}
 
 #waves {
   position: relative;
