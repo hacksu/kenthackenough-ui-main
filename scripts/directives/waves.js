@@ -41,6 +41,7 @@ function Waves(element, speed) {
 Waves.prototype.drawSegment = function drawSegment(step) {
     var height = this.canvas.height/2;
     if (!this.drawWave('#D21C5A', 9, 2, 0.62, step)) { //Check to see if the slowest wave (Pink) is done drawing
+        return false;
         // done
         /*document.getElementById('logo').style.opacity = 1; //fade in logo
         var fading_elements = document.getElementsByClassName('fade');
@@ -51,14 +52,15 @@ Waves.prototype.drawSegment = function drawSegment(step) {
         }, 500);*/
     }
     else {
-        this.drawWave('#4D7ABD', 10, 8, 0.25, step) //Blue
+        this.drawWave('#4D7ABD', 10, 8, 0.25, step); //Blue
         this.drawWave('#F7961D', 11, 4, 0, step); //Orange
+        return true;
     }
-}
+};
 
 Waves.prototype.animate = function animate(timestamp) {
     var step = 1000/60;
-    if (this.lastTime == undefined) {
+    if (this.lastTime === undefined) {
         this.lastTime = timestamp - step;
     }
     var temp_lastTime = this.lastTime;
@@ -66,25 +68,34 @@ Waves.prototype.animate = function animate(timestamp) {
     for (var i = this.lastStep+1; temp_lastTime < timestamp; ++i) {
         temp_lastTime += step;
         temp_lastStep = i;
-        this.drawSegment(i);
+        if (this.drawSegment(i) === false) {
+            this.stop();
+            return;
+        }
     }
     this.lastTime = temp_lastTime;
     this.lastStep = temp_lastStep;
     requestAnimationFrame(this.animate.bind(this));
-}
+};
+
+Waves.prototype.stop = function stop() {
+    if (this.callback) {
+        this.callback();
+    }
+};
 
 Waves.prototype.start = function start() {
     requestAnimationFrame(this.animate.bind(this));
-}
+};
 
 Waves.prototype.getY = function getY(x, periods, height, offset) {
     x = x + (offset * this.canvas.width / (this.periods / 2));
     return Math.sin((periods * 2) * (x / this.canvas.width) * Math.PI) * (this.canvas.height - this.stroke) / height + this.canvas.height / 2;
-}
+};
 
 Waves.prototype.getX = function getX(step, speed) {
     return (step*speed);
-}
+};
 
 Waves.prototype.drawWave = function drawWave(color, speed, waveHeight, offset, step) {
     //Whoa math!
@@ -111,7 +122,7 @@ Waves.prototype.drawWave = function drawWave(color, speed, waveHeight, offset, s
         return false;
     }
     return true;
-}
+};
 
 angular
 .module('khe')
@@ -124,6 +135,9 @@ angular
         template: '<canvas id="waves"></canvas>',
         link: function (scope, element, attrs) {
             var waves = new Waves(element[0].childNodes[0], 1);
+            waves.callback = function () {
+                console.log("done");
+            }
             waves.start();
             $compile(element.contents())(scope);
 
