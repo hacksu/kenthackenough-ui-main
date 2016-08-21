@@ -133,11 +133,14 @@ angular
 
         restrict: 'E',
         template: '<canvas id="waves"></canvas>',
+        scope: {
+            callback: '&onDone'
+        },
         link: function (scope, element, attrs) {
             var waves = new Waves(element[0].childNodes[0], 1);
             waves.callback = function () {
-                console.log("done");
-            }
+                scope.callback();
+            };
             waves.start();
             $compile(element.contents())(scope);
 

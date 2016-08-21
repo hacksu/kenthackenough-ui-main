@@ -20,6 +20,10 @@ angular
       message: new Message()
     };
 
+    view.wavesDone = function () {
+        console.log("done in home");
+    };
+
     view.user = Models.user.getMe();
 
     /**
@@ -180,4 +184,3 @@ angular
     };
 
   }]);
-  
