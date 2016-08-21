@@ -8,7 +8,7 @@ angular
         controller: 'HomeCtrl as home'
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', function (User, News, Ticket, Application, Message, $location) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", function (User, News, Ticket, Application, Message, $location, $cookieStore) {
 
     var view = this;
 
@@ -19,16 +19,27 @@ angular
       application: new Application(),
       message: new Message()
     };
-
-    view.wavesDone = function () {
+    if ($cookieStore.get("visited")) {
         document.getElementById('logo').style.opacity = 1; //fade in logo
         var fading_elements = document.getElementsByClassName('fade');
-        setTimeout(function() { //Fade in everything else
-            for (var i = 0; i < fading_elements.length; ++i) {
-                fading_elements[i].style.opacity = '1';
-            }
-        }, 500);
-    };
+        for (var i = 0; i < fading_elements.length; ++i) {
+            fading_elements[i].style.opacity = '1';
+        }
+        view.wavesDone = function () {
+            console.log("wave done but not doing anything");
+        }
+    } else {
+        view.wavesDone = function () {
+            document.getElementById('logo').style.opacity = 1; //fade in logo
+            var fading_elements = document.getElementsByClassName('fade');
+            setTimeout(function() { //Fade in everything else
+                for (var i = 0; i < fading_elements.length; ++i) {
+                    fading_elements[i].style.opacity = '1';
+                }
+            }, 500);
+        };
+        $cookieStore.put("visited", true);
+    }
 
     view.user = Models.user.getMe();
 
