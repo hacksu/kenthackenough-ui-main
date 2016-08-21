@@ -24,65 +24,84 @@ if (!window.requestAnimationFrame) {
   offset - periods to offset by. Probably a decimal ex: '0.25'.
   leftToRight [NOT READY YET]-  boolean. True will draw the line left to right. False: right to left
 */
-function drawWave(context, color, speed, height, offset, leftToRight, canvas, periods, stroke, dt) {
-    //Whoa math!
-    var prevX = leftToRight ? ((dt - 1) * speed) : (canvas.width - (dt - 1) * speed);
-    var prevY = Math.sin((periods * 2) * (prevX / canvas.width) * Math.PI) * (canvas.height - stroke) / height + canvas.height / 2;
-    var x = leftToRight ? (dt * speed) : (canvas.width - dt * speed);
-    var y = Math.sin((periods * 2) * (x / canvas.width) * Math.PI) * (canvas.height - stroke) / height + canvas.height / 2;
 
-    //offset
-    x = x - (offset * canvas.width / (periods / 2));
-    prevX = prevX - (offset * canvas.width / (periods / 2));
-    //return before drawing if beyond the width of the canvas
-    if (x > canvas.width) {
+
+function Waves(element, speed) {
+    this.canvas = element;
+    this.context = this.canvas.getContext('2d');
+    this.canvas.width = this.canvas.width * 4;
+    this.canvas.height = this.canvas.height * 4;
+    this.dt = 0;
+    this.last = -1;
+
+    this.stroke = 4;
+    this.periods = 4;
+}
+
+Waves.prototype.resize = function resize() {
+
+}
+
+Waves.prototype.animate = function animate(timestamp) {
+    this.dt = this.dt + 1;
+    var height = this.canvas.height/2;
+    if (!this.drawWave('#D21C5A', 9, 2, 0.62, this.dt)) { //Check to see if the slowest wave (Pink) is done drawing
+        // done
+        /*document.getElementById('logo').style.opacity = 1; //fade in logo
+        var fading_elements = document.getElementsByClassName('fade');
+        setTimeout(function() { //Fade in everything else
+            for (var i = 0; i < fading_elements.length; ++i) {
+                fading_elements[i].style.opacity = '1';
+            }
+        }, 500);*/
+    }
+    else {
+        this.drawWave('#4D7ABD', 10, 8, 0.25, this.dt) //Blue
+        this.drawWave('#F7961D', 11, 4, 0, this.dt); //Orange
+        requestAnimationFrame(this.animate.bind(this));
+    }
+    this.last = this.dt;
+}
+
+Waves.prototype.getY = function getY(x, periods, height, offset) {
+    x = x + (offset * this.canvas.width / (this.periods / 2));
+    return Math.sin((periods * 2) * (x / this.canvas.width) * Math.PI) * (this.canvas.height - this.stroke) / height + this.canvas.height / 2;
+}
+
+Waves.prototype.getX = function getX(step, speed) {
+    return (step*speed);
+}
+
+Waves.prototype.drawWave = function drawWave(color, speed, waveHeight, offset, step) {
+    //Whoa math!
+    var width = this.canvas.width;
+    var prevX = this.getX(step-1, speed);
+    var prevY = this.getY(prevX, this.periods, waveHeight, offset);
+    var x = this.getX(step, speed);
+    var y = this.getY(x, this.periods, waveHeight, offset);
+
+    if (x > this.canvas.width) {
+        x = this.canvas.width;
+        y = this.getY(x, this.periods, waveHeight, offset);
+    }
+
+    //Draw those sexy curves ;)
+    this.context.beginPath();
+    this.context.lineWidth = this.stroke;
+    this.context.strokeStyle = color;
+    this.context.moveTo(x, y);
+    this.context.lineTo(prevX, prevY);
+    this.context.closePath();
+    this.context.stroke();
+    if (x == this.canvas.width) {
         return false;
     }
-    //Draw those sexy curves ;)
-    context.beginPath();
-    context.lineWidth = stroke;
-    context.strokeStyle = color;
-    context.moveTo(x, y);
-    context.lineTo(prevX, prevY);
-    context.closePath();
-    context.stroke();
     return true;
 }
 
-
 angular
 .module('khe')
-.directive('waves', ['$compile', function ($compile) {
-
-    var canvas, context, dt;
-    var stroke = 4;
-    var periods = 3;
-
-    function init(element) {
-        canvas = element;
-        context = canvas.getContext('2d');
-        canvas.width = canvas.width * 4;
-        canvas.height = canvas.height * 4;
-        dt = 0;
-    }
-
-    function animate(timestamp) {
-        dt = dt + 1;
-        if (!drawWave(context, '#D21C5A', 9, 2, 0.62, true, canvas, periods, stroke, dt)) { //Check to see if the slowest wave (Pink) is done drawing
-            document.getElementById('logo').style.opacity = 1; //fade in logo
-            var fading_elements = document.getElementsByClassName('fade');
-            setTimeout(function() { //Fade in everything else
-                for (var i = 0; i < fading_elements.length; ++i) {
-                    fading_elements[i].style.opacity = '1';
-                }
-            }, 500);
-        }
-        else {
-            drawWave(context, '#4D7ABD', 10, 8, 0.25, true, canvas, periods, stroke, dt) //Blue
-            drawWave(context, '#F7961D', 11, 4, 0, true, canvas, periods, stroke, dt); //Orange
-            requestAnimationFrame(animate);
-        }
-    }
+.directive('waves', ['$compile', "$window", function ($compile, $window) {
 
 
     return {
@@ -90,13 +109,16 @@ angular
         restrict: 'E',
         template: '<canvas id="waves"></canvas>',
         link: function (scope, element, attrs) {
-            console.log("ran");
-            console.log(element[0].childNodes[0])
-            init(element[0].childNodes[0]);
-            animate();
+            var waves = new Waves(element[0].childNodes[0], 1);
+            waves.animate(0);
+            element[0].onresize = function() {
+                waves.resize();
+             };
+            angular.element($window).bind('resize', function() {
+                waves.resize();
+            });
             $compile(element.contents())(scope);
 
-            console.log("ran");
         }
     };
 }
