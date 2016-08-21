@@ -21,7 +21,13 @@ angular
     };
 
     view.wavesDone = function () {
-        console.log("done in home");
+        document.getElementById('logo').style.opacity = 1; //fade in logo
+        var fading_elements = document.getElementsByClassName('fade');
+        setTimeout(function() { //Fade in everything else
+            for (var i = 0; i < fading_elements.length; ++i) {
+                fading_elements[i].style.opacity = '1';
+            }
+        }, 500);
     };
 
     view.user = Models.user.getMe();

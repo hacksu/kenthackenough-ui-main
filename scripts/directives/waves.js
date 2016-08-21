@@ -42,14 +42,6 @@ Waves.prototype.drawSegment = function drawSegment(step) {
     var height = this.canvas.height/2;
     if (!this.drawWave('#D21C5A', 9, 2, 0.62, step)) { //Check to see if the slowest wave (Pink) is done drawing
         return false;
-        // done
-        /*document.getElementById('logo').style.opacity = 1; //fade in logo
-        var fading_elements = document.getElementsByClassName('fade');
-        setTimeout(function() { //Fade in everything else
-            for (var i = 0; i < fading_elements.length; ++i) {
-                fading_elements[i].style.opacity = '1';
-            }
-        }, 500);*/
     }
     else {
         this.drawWave('#4D7ABD', 10, 8, 0.25, step); //Blue
