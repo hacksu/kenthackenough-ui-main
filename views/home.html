@@ -25,42 +25,43 @@
     </div>
 </div>
 
-<div class="home">
     <div class="row">
         <div class="small-10 small-centered small-offset-1 large-12 large-offset-0 columns" id="logo">
             <img src="img/blue_logo.svg" class="fade center show-for-medium-up" alt="Kent Hack Enough">
             <img src="img/shortLogo.svg" class="fade small-centered show-for-small-only" alt="Kent Hack Enough">
         </div>
     </div>
-  </div>
+  
   <waves on-done="home.wavesDone()"> </waves>
   <div class="text-center fade">
+        <div class="row">
+            <h2 class="small-12 columns" id="date">October 7-9th, 2016</h2>
+            <h2 class="small-12 columns" id="location">Kent State University Library</h2>
 
-        <h2 id="date">October 7-9th, 2016</h2>
-        <h2 id="location">Kent State University Library</h2>
+            <p class="small-12 columns" id="contact-email"><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
+        </div>
 
-        <p id="contact-email"><a class="center-link" href="mailto:staff@khe.io">staff@khe.io</a></p>
-
-        <div ng-if="!home.user">
-            <a class="center-link" ng-click="home.loginRegister=true">
-                <div class="btn center">Apply</div>
+        <div ng-if="!home.user" class="row">
+            <a class="center-link small-12 columns" ng-click="home.loginRegister=true">
+                <div class="btn">Apply</div>
             </a><br>
-            <a class="center-link" ng-click="home.loginRegister=true; home.login=true;">
-                <div class="btn center">Login</div>
+            <a class="center-link small-12 columns" ng-click="home.loginRegister=true; home.login=true;">
+                <div class="btn">Login</div>
             </a><br>
         </div>
-        <div ng-if="home.user">
-            <a class="center-link" ui-sref="apply.page1">
-                <div class="btn center">Application</div>
+        <div ng-if="home.user" class="row">
+            <a class="center-link small-12 columns" ui-sref="apply.page1">
+                <div class="btn">Application</div>
             </a><br>
-            <a class="center-link" ui-sref="account">
-                <div class="btn center">EDIT ACCOUNT</div>
+            <a class="center-link small-12 columns" ui-sref="account">
+                <div class="btn">EDIT ACCOUNT</div>
             </a><br>
-            <a class="center-link" ng-click="home.person.logout()">
-                <div class="btn center">Logout</div>
+            <a class="center-link small-12 columns" ng-click="home.person.logout()">
+                <div class="btn">Logout</div>
             </a><br>
         </div>
     </div>
+
 
     <div class="info-section fade">
         <div class="row">
@@ -167,22 +168,21 @@
                 </div>
                 <div class="row">
                     <div class="small-12 columns">
-                        <br><br>
-                        <h2>SUPPORTERS</h2>
                         <br>
+                        <h2>SUPPORTERS</h2>
                     </div>
                 </div>
                 <div class="row sponsor-row">
-                    <div class="small-3 columns text-center">
+                    <div class="small-6 columns text-center">
                         <a href="http://www.tech-style-lab.org/"> <img src="/img/sponsors/tsl.png" style="width:50%;" /> </a>
                     </div>
-                    <div class="small-3 columns text-center">
+                    <div class="small-6 columns text-center">
                         <a href="http://www.library.kent.edu/"> <img src="/img/sponsors/university-library.png" /> </a>
                     </div>
-                    <div class="small-3 columns text-center end">
+                    <div class="small-6 columns text-center end">
                         <a href="https://www.kent.edu/cs"> <img src="/img/sponsors/cs.png" /> </a>
                     </div>
-                    <div class="small-3 columns text-center end">
+                    <div class="small-6 columns text-center end">
                         <a href="https://www.kent.edu/launchnet"> <img src="/img/sponsors/LaunchNET_KSU.png" /> </a>
                     </div>
                 </div>
@@ -262,7 +262,7 @@
     </div>
   </div>
 </div>
-  <div class="footer">
+<div class="footer">
       <div id='powered'>
           <h4>Powered by</h4>
           <a href="http://hacksu.cs.kent.edu/" target="_blank"><img src="img/Hacksu_Color.svg" id="hacksu"></a>

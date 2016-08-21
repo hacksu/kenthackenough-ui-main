@@ -1,8 +1,7 @@
 @import 'colors';
 
 body {
-	background-image: linear-gradient( to bottom, black, $black);
-	background-color: $black;
+	background: $black;
 	background-repeat: no-repeat;
 	margin: 0;
 	overflow-x: hidden;
@@ -22,6 +21,7 @@ p {
 
 
 body {
+	height: 100%;
 	font-family: 'Abel', sans-serif;
 }
 
@@ -60,8 +60,6 @@ body {
 #contact-email {
 	font-size: 18pt;
 	color: $teal;
-	line-height: 0.7;
-	margin: 3px;
 }
 
 a {
@@ -111,7 +109,7 @@ $spacing: 25px;
 .center-link {
 	position: relative;
 	display: inline-block;
-	float: none;;
+	float: none;
 	text-align: center;
 }
 
@@ -122,8 +120,7 @@ h1, h2, h3, h4, h5 {
 
 .footer {
 	position: relative;
-	margin: 20px auto;
-	margin-bottom: 0;
+	margin: 20px auto 10px;
 	width: 100%;
 	font-family: 'Abel', sans-serif;
 	overflow: hidden;
@@ -142,7 +139,7 @@ h1, h2, h3, h4, h5 {
 
 #powered {
 	float: right;
-	padding-top: 50px;
+	padding-top: 20px;
 	box-sizing: content-box;
 }
 
@@ -188,18 +185,15 @@ h1, h2, h3, h4, h5 {
 //For Smaller Screens and Below:
 @media only screen and (max-width: 40em) { 
 	#logo{ margin-bottom: 2vh; }
-	#waves{ width:200vw; height: 28.2vw; transform: translateX(0%);}
+	#waves{ width:200vw; height: 28.2vw; margin-bottom: 40px;}
+	#date, #location {font-size: 18pt; margin-bottom: 20px;}
+	#contact-email { font-size: 16pt;}
+	.btn { width: auto !important;}
 }
 
 //Xlarge screens
 @media only screen and (min-width: 90.063em) { 
 	#waves{ width:100vw; height: 14.1vw;}
-}
-
-
-
-#info {
-	position: relative;
 }
 
 .prompt {
@@ -282,13 +276,13 @@ h1, h2, h3, h4, h5 {
 	width: 246px;
 	display: block;
 	border-radius: 5px;
-  padding: 15px 45px;
-  margin: 15px auto 0 auto;
-  font-size: 1.2rem;
-  line-height: 1;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer !important;
+	padding: 15px 45px;
+	margin: 15px auto 0 auto;
+	font-size: 1.2rem;
+	line-height: 1;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer !important;
 	-webkit-box-sizing: content-box !important;
 	box-sizing: content-box !important;
 }
@@ -321,9 +315,10 @@ h1, h2, h3, h4, h5 {
 }
 
 .info-section {
+	background: linear-gradient(black, $black);
 	text-align:  left;
 	color: white;
-	margin-bottom: 40px;
+	padding-bottom: 40px;
 	padding-top: 50px;
 }
 
@@ -364,11 +359,11 @@ h1, h2, h3, h4, h5 {
   margin:auto;
   height: 75%;
   width: 75%;
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
+  -moz-filter: grayscale(100%) brightness(100%);
+  -ms-filter: grayscale(100%) brightness(100%);
+  -webkit-filter: grayscale(100%) brightness(100%);
+  -o-filter: grayscale(100%) brightness(100%);
+  filter: grayscale(100%) brightness(100%);
   margin-top: 2em;
   position: relative;
   top: 50%;
