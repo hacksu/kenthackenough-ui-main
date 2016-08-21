@@ -31,21 +31,16 @@ function Waves(element, speed) {
     this.context = this.canvas.getContext('2d');
     this.canvas.width = this.canvas.width * 4;
     this.canvas.height = this.canvas.height * 4;
-    this.dt = 0;
-    this.last = -1;
+    this.lastTime = undefined;
+    this.lastStep = 0;
 
     this.stroke = 4;
     this.periods = 4;
 }
 
-Waves.prototype.resize = function resize() {
-
-}
-
-Waves.prototype.animate = function animate(timestamp) {
-    this.dt = this.dt + 1;
+Waves.prototype.drawSegment = function drawSegment(step) {
     var height = this.canvas.height/2;
-    if (!this.drawWave('#D21C5A', 9, 2, 0.62, this.dt)) { //Check to see if the slowest wave (Pink) is done drawing
+    if (!this.drawWave('#D21C5A', 9, 2, 0.62, step)) { //Check to see if the slowest wave (Pink) is done drawing
         // done
         /*document.getElementById('logo').style.opacity = 1; //fade in logo
         var fading_elements = document.getElementsByClassName('fade');
@@ -56,11 +51,30 @@ Waves.prototype.animate = function animate(timestamp) {
         }, 500);*/
     }
     else {
-        this.drawWave('#4D7ABD', 10, 8, 0.25, this.dt) //Blue
-        this.drawWave('#F7961D', 11, 4, 0, this.dt); //Orange
-        requestAnimationFrame(this.animate.bind(this));
+        this.drawWave('#4D7ABD', 10, 8, 0.25, step) //Blue
+        this.drawWave('#F7961D', 11, 4, 0, step); //Orange
     }
-    this.last = this.dt;
+}
+
+Waves.prototype.animate = function animate(timestamp) {
+    var step = 1000/60;
+    if (this.lastTime == undefined) {
+        this.lastTime = timestamp - step;
+    }
+    var temp_lastTime = this.lastTime;
+    var temp_lastStep = this.lastStep;
+    for (var i = this.lastStep+1; temp_lastTime < timestamp; ++i) {
+        temp_lastTime += step;
+        temp_lastStep = i;
+        this.drawSegment(i);
+    }
+    this.lastTime = temp_lastTime;
+    this.lastStep = temp_lastStep;
+    requestAnimationFrame(this.animate.bind(this));
+}
+
+Waves.prototype.start = function start() {
+    requestAnimationFrame(this.animate.bind(this));
 }
 
 Waves.prototype.getY = function getY(x, periods, height, offset) {
@@ -110,13 +124,7 @@ angular
         template: '<canvas id="waves"></canvas>',
         link: function (scope, element, attrs) {
             var waves = new Waves(element[0].childNodes[0], 1);
-            waves.animate(0);
-            element[0].onresize = function() {
-                waves.resize();
-             };
-            angular.element($window).bind('resize', function() {
-                waves.resize();
-            });
+            waves.start();
             $compile(element.contents())(scope);
 
         }
