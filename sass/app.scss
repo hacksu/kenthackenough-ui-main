@@ -1,7 +1,7 @@
 @import 'colors';
 
 body {
-	background: $black;
+	background: black;
 	background-repeat: no-repeat;
 	margin: 0;
 	overflow-x: hidden;
@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5 {
 	margin: 20px auto 10px;
 	width: 100%;
 	font-family: 'Abel', sans-serif;
-	overflow: hidden;
+	overflow: visible;
 
 }
 
@@ -157,7 +157,6 @@ h1, h2, h3, h4, h5 {
 }
 
 
-
 #mlh-logo {
 	position: relative;
 	height: 60px;
@@ -182,6 +181,33 @@ h1, h2, h3, h4, h5 {
 	z-index: 1;
 }
 
+#boombox {
+	display: none;
+	z-index: 10;
+	position: absolute;
+	left: 84vw;
+	bottom: 0;
+	height: 750px;
+	width: auto;
+}
+
+#headphones {
+	display: none;
+	z-index: 10;
+	position: absolute;
+	right: 80vw;
+	bottom: 0;
+	height: 750px;
+	width: auto;
+}
+
+#surround-sound {
+    width: 20vw;
+    position: absolute;
+    left: 0;
+    bottom: -5vw;
+}
+
 //For Smaller Screens and Below:
 @media only screen and (max-width: 40em) { 
 	#logo{ margin-bottom: 2vh; }
@@ -194,6 +220,7 @@ h1, h2, h3, h4, h5 {
 //Xlarge screens
 @media only screen and (min-width: 90.063em) { 
 	#waves{ width:100vw; height: 14.1vw;}
+	#headphones, #boombox { display: block;}
 }
 
 .prompt {
@@ -315,6 +342,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .info-section {
+	z-index: 100;
+	position: relative;
 	background: linear-gradient(black, $black);
 	text-align:  left;
 	color: white;
