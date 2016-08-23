@@ -68,13 +68,13 @@ a {
 	text-align: left;
 	position: relative;
 	float: none;
-}
-
-a {
 	text-decoration: none;
 	color:inherit;
 	z-index: 1;
+
+	transition: color ease 250ms;
 }
+
 
 .labeled-input {
 	position: relative;
@@ -313,6 +313,8 @@ h1, h2, h3, h4, h5 {
 	cursor: pointer !important;
 	-webkit-box-sizing: content-box !important;
 	box-sizing: content-box !important;
+
+	transition: border-color ease 250ms, color ease 250ms;
 }
 
 .neon-input {
@@ -389,15 +391,16 @@ h1, h2, h3, h4, h5 {
   margin:auto;
   height: 75%;
   width: 75%;
-  -moz-filter: grayscale(100%) brightness(100%);
-  -ms-filter: grayscale(100%) brightness(100%);
-  -webkit-filter: grayscale(100%) brightness(100%);
-  -o-filter: grayscale(100%) brightness(100%);
-  filter: grayscale(100%) brightness(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
   margin-top: 2em;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  transition: filter ease 500ms, -webkit-filter ease 500ms;
 }
 
 .sponsor-row  img:hover {
