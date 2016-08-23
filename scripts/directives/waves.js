@@ -61,7 +61,7 @@ Waves.prototype.animate = function animate(timestamp) {
         temp_lastTime += step;
         temp_lastStep = i;
         if (this.drawSegment(i) === false) {
-            this.stop();
+            //this.stop();
             return;
         }
     }
@@ -77,7 +77,12 @@ Waves.prototype.stop = function stop() {
 };
 
 Waves.prototype.start = function start() {
+    console.log("made it to start");
+    var self = this;
     requestAnimationFrame(this.animate.bind(this));
+    setTimeout(function () {
+        self.stop();
+    }, ((this.canvas.width*document.body.clientWidth/this.canvas.offsetWidth)/9)*(1000/60));
 };
 
 Waves.prototype.getY = function getY(x, periods, height, offset) {

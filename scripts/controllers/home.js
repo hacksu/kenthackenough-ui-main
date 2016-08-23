@@ -27,7 +27,7 @@ angular
         }
         view.wavesDone = function () {
             console.log("wave done but not doing anything");
-        }
+        };
     } else {
         view.wavesDone = function () {
             document.getElementById('logo').style.opacity = 1; //fade in logo
