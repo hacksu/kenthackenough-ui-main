@@ -120,7 +120,6 @@ angular
 .module('khe')
 .directive('waves', ['$compile', "$window", function ($compile, $window) {
 
-
     return {
 
         restrict: 'E',

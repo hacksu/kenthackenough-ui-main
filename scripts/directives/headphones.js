@@ -5,7 +5,6 @@ angular
     return {
 
       restrict: 'E',
-      replace: true,
       template: '<img src="img/headphones.svg" id="headphones" class="wow slideInLeft animated" data-wow-duration="2s">',
 
       link: function (scope, element, attrs) {
@@ -13,7 +12,7 @@ angular
 
         jQuery(document).ready(function ($) {
 
-          new WOW({offset: 200}).init();
+          new WOW({offset: 500}).init();
 
         });
       }
