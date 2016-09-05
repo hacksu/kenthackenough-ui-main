@@ -1,6 +1,8 @@
 angular
   .module('khe')
-  .config(['$stateProvider', function ($state) {
+  .config(['$stateProvider', '$urlRouterProvider', function ($state) {
+    $url.when('/', '/');
+    $url.when('/paypal', '/');
     $state
       .state('home', {
         url: '/',
@@ -11,7 +13,6 @@ angular
       .state('home.paypal', {
         url: '/paypal',
         templateUrl: '/views/home.html',
-        controller: 'HomeCtrl as home',
         resolve: {paypal: function() { return true } }
       });
   }])
