@@ -7,15 +7,15 @@ angular
         url: '/',
         templateUrl: '/views/home.html',
         controller: 'HomeCtrl as home',
-        resolve: {paypal: function() { return false} }
+        data: {paypal: false }
       })
       .state('home.paypal', {
         url: '/paypal',
         templateUrl: '/views/home.html',
-        resolve: {paypal: function() { return true } }
+        data: {paypal: true }
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", '$resolve', function (User, News, Ticket, Application, Message, $location, $cookieStore, $resolve) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", '$state', function (User, News, Ticket, Application, Message, $location, $cookieStore, $state) {
 
     var view = this;
 
@@ -67,7 +67,7 @@ angular
     }
     getApplication();
 
-    view.paypal = $resolve.paypal;
+    view.paypal = $state.current.data.paypal;
 
     view.person = {
 
