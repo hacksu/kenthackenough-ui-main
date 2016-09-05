@@ -1,6 +1,6 @@
 angular
   .module('khe')
-  .config(['$stateProvider', '$urlRouterProvider', function ($state) {
+  .config(['$stateProvider', '$urlRouterProvider', function ($state, $url) {
     $url.when('/', '/');
     $url.when('/paypal', '/');
     $state
