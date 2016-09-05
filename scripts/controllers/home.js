@@ -5,10 +5,17 @@ angular
       .state('home', {
         url: '/',
         templateUrl: '/views/home.html',
-        controller: 'HomeCtrl as home'
+        controller: 'HomeCtrl as home',
+        resolve: {paypal: function() { return false} }
+      })
+      .state('home.paypal', {
+        url: '/paypal',
+        templateUrl: '/views/home.html',
+        controller: 'HomeCtrl as home',
+        resolve: {paypal: function() { return true } }
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", function (User, News, Ticket, Application, Message, $location, $cookieStore) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", '$resolve', function (User, News, Ticket, Application, Message, $location, $cookieStore, $resolve) {
 
     var view = this;
 
@@ -59,6 +66,8 @@ angular
       }
     }
     getApplication();
+
+    view.paypal = $resolve.paypal;
 
     view.person = {
 
@@ -126,6 +135,7 @@ angular
       clear: function () {
         view.login = false;
         view.loginRegister = false;
+        view.paypal = false;
         this.errors = null;
       },
 
