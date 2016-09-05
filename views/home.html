@@ -1,4 +1,5 @@
 <div class="background" ng-click="home.person.clear()" ng-if="home.loginRegister && !home.user"> </div>
+<div class="background" ng-click="home.person.clear()" ng-if="home.paypal"> </div>
 <div class="prompt" id="login" ng-if="home.loginRegister && !home.user">
     <div class="title-bar" ng-if="!home.login">
         <h1>REGISTER</h1>
@@ -19,6 +20,34 @@
         </div>
         <div ng-if="!home.login" class="btn" ng-click="home.person.register()">REGISTER</div>
         <div ng-if="home.login" class="btn" ng-click="home.person.login()">LOGIN</div>
+    </div>
+    <div class="errors" ng-if="home.person.errors">
+        <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
+    </div>
+</div>
+
+<div class="prompt" id="paypal" ng-if="home.paypal">
+    <div class="title-bar">
+        <h1>Paypal</h1>
+    </div>
+    <div class="content text-center">
+      <p class="white">Thank you for supporting Kent Hack Enough!</p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="WZUGLS6SSH3YC">
+        <table>
+        <tr><td><input type="hidden" name="on0" value="Sponsorship Tiers">Sponsorship Tiers</td></tr><tr><td><select name="os0">
+            <option value="Earbud">Earbud $500.00 USD</option>
+            <option value="Headphone">Headphone $1,000.00 USD</option>
+            <option value="Boombox">Boombox $2,000.00 USD</option>
+            <option value="Stereo">Stereo $3,000.00 USD</option>
+            <option value="Surround">Surround $5,000.00 USD</option>
+        </select> </td></tr>
+        </table>
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
     </div>
     <div class="errors" ng-if="home.person.errors">
         <div ng-repeat="e in home.person.errors" class="error"> {{e}} </div>
@@ -125,6 +154,7 @@
                         Interested in sponsoring KHE 2016? Take a look at our
                         <a target="_blank" href="/SponsorshipPacket.pdf">sponsorship packet</a> and <a href="mailto:staff@khe.io">contact us</a> (staff@khe.io).
                     </p>
+                    <p>Click <a ui-sref="home.paypal" ng-click="home.paypal = true">here</a> to pay using PayPal
                 </div>
             </div>
             <div class="row sponsor-row">
