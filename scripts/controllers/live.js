@@ -18,6 +18,16 @@ angular
       about: new About()
     };
 
+    view.snapchat = {
+        show: function() {
+            view.snapchat.visible = true;
+        },
+        hide: function() {
+            view.snapchat.visible = false;
+        },
+        visible: false
+    };
+
     view.events = {
 
       all: [],
