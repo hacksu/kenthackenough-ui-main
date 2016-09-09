@@ -25,7 +25,7 @@ $color-list: "lightBlue", "darkBlue", "teal", "orange", "pink", "black";
 }
 
 .pink {
-    color: $pink;
+    color: $pink !important;
 }
 
 .black {
