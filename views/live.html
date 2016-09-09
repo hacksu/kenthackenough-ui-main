@@ -1,99 +1,103 @@
-<div class="light-page">
+<div id="live-wrapper">
+<div id="live">
   <header>
-    <div class="row">
-      <div class="small-12 columns">
-        <h1><a href="/">KHE</a> LIVE</h1>
+    <div class="container">
+      <div class="row">
+        <div class="small-4 medium-3 column">
+          <a href="/"><img src="img/shortLogoOnly.svg"></a>
+        </div>
+        <div class="small-4 medium-6 columns">
+          <h1 class="lightBlue">LIVE</h1>
+        </div>
+        <div class="small-4 columns">
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="row full-width">
-    <div class="small-12 medium-4 large-3 columns">
+  <div class="container">
+    <div class="row">
+
       <!-- Schedule -->
-      <h3>
-        SCHEDULE
-        <a ui-sref="schedule" class="small">More Details</a>
-      </h3>
-      <div id="mini-schedule" class="row">
-        <div class="small-12 columns">
-          <div class="row section" ng-if="live.events.happening.length">
-            <div class="small-12 columns">
-              <h5>HAPPENING NOW</h5>
+      <div class="small-12 medium-6 large-3 columns">
+        <div class="section">
+          <h3 class="pink">SCHEDULE</h3>
+
+          <div id="mini-schedule">
+            <div ng-if="live.events.happening.length">
+              <h5 class="pink">HAPPENING NOW</h5>
               <div ng-repeat="event in live.events.happening">
-                <span class="small bold">{{event.title}}<br></span>
-                <span class="grey small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                {{event.title}}<br>
+                <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
                 <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
               </div>
             </div>
-          </div>
-          <div class="row section" ng-if="live.events.upNext.length">
-            <div class="small-12 columns">
-              <h5>NEXT UP</h5>
-              <div ng-repeat="event in live.events.upNext">
-                <span class="small bold">{{event.title}}<br></span>
-                <span class="grey small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
-                <span ng-if="event.location" class="grey small">{{event.location}} <br></span><br>
+            <div ng-if="live.events.upNext.length">
+              <div>
+                <h5 class="pink">NEXT UP</h5>
+                <div ng-repeat="event in live.events.upNext">
+                  {{event.title}}<br>
+                  <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                  <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row section" ng-if="live.events.later.length">
-            <div class="small-12 columns">
-              <h5>LATER</h5>
-              <div ng-repeat="event in live.events.later">
-                <span class="small bold">{{event.title}}<br></span>
-                <span class="grey small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
-                <span ng-if="event.location" class="grey small">{{event.location}} <br></span><br>
+            <div ng-if="live.events.later.length">
+              <div>
+                <h5>LATER</h5>
+                <div ng-repeat="event in live.events.later">
+                  {{event.title}}<br>
+                  <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                  <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row section">
-            <div class="small-12 columns">
+          </div><!-- /#mini-schedule -->
+
+          <div class="text-center">
               <a ui-sref="schedule">View Full Schedule</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="small-12 medium-8 large-9 columns">
-      <div ng-if="live.msg.messages.length" class="row">
-        <div class="small-12 columns">
-          <!-- Updates -->
-          <h3>
-            UPDATES
+        </div><!-- /section -->
+      </div> <!-- /Schedule -->
+
+      <!-- Updates -->
+      <div class="small-12 medium-6 large-6 columns">
+        <div class="section">
+          <div ng-if="live.msg.messages.length">
+            <!-- Updates -->
+            <h3 class="orange">UPDATES</h3>
             <span ng-if="!live.msg.enabled()" class="small">
               <a class="small" ng-click="live.msg.enable()">Enable desktop notifications</a> |
             </span>
             <a class="small" ng-if="live.msg.showing == 'few'" ng-click="live.msg.showAll()">Show all</a>
             <a class="small" ng-if="live.msg.showing == 'all'" ng-click="live.msg.showFew()">Show less</a>
-          </h3>
-          <ul class="messages">
+            <ul class="messages">
             <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
               <span ng-bind-html="message.text|markdown|unsafe"></span>
-              <span class="italic grey small" am-time-ago="message.created"></span>
+              <span class="grey small" am-time-ago="message.created"></span>
             </li>
           </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="small-12 medium-6 columns">
-          <!-- Instagram -->
-          <h3>LINKS</h3>
-          <div id="about-section">
-            <div ng-bind-html="live.about.page.text|markdown|unsafe"></div>
           </div>
-        </div>
-        <div class="small-12 medium-6 columns">
-          <!-- More ways to follow us -->
-          <h3>MORE WAYS TO FOLLOW</h3>
+        </div><!-- /section -->
+      </div><!-- /Updates -->
+
+      <!-- Social -->
+      <div class="small-12 medium-6 large-3 columns">
+        <div class="section">
+          <h3 class="teal">MORE WAYS TO FOLLOW</h3>
           <p><i class="fa fa-android fa-lg"></i> &nbsp;<a href="https://play.google.com/store/apps/details?id=io.khe.kenthackenough">Android</a></p>
           <p><i class="fa fa-windows fa-lg"></i> &nbsp;<a href="https://www.microsoft.com/en-us/store/apps/khe-2015/9nblggh6c3qd">Windows Phone</a></p>
           <p><i class="fa fa-twitter fa-lg"></i> &nbsp;<a href="https://twitter.com/@kenthackenough">Twitter</a></p>
           <p><i class="fa fa-facebook fa-lg"></i> &nbsp;<a href="https://www.facebook.com/kenthackenough">Facebook</a></p>
           <p><i class="fa fa-instagram fa-lg"></i> &nbsp;<a href="https://instagram.com/kenthackenough/">Instagram</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
+        </div><!-- /.section -->
+      </div><!-- /Social -->
+    </div><!-- /row -->
+  </div><!-- /container -->
 
 </div>
+<img src="img/boombox.svg" id="play-boombox">
+<div id="play">
+
+</div>
+</div> <!-- /live-wrapper -->
