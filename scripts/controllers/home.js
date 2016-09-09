@@ -1,14 +1,21 @@
 angular
   .module('khe')
-  .config(['$stateProvider', function ($state) {
+  .config(['$stateProvider', '$urlRouterProvider', function ($state, $url) {
+    $url.when('/paypal', '//paypal');
     $state
       .state('home', {
         url: '/',
         templateUrl: '/views/home.html',
-        controller: 'HomeCtrl as home'
+        controller: 'HomeCtrl as home',
+        data: {paypal: false }
+      })
+      .state('home.paypal', {
+        url: '/paypal',
+        templateUrl: '/views/home.html',
+        data: {paypal: true }
       });
   }])
-  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", function (User, News, Ticket, Application, Message, $location, $cookieStore) {
+  .controller('HomeCtrl', ['User', 'News', 'Ticket', 'Application', 'Message', '$location', "$cookieStore", '$state', function (User, News, Ticket, Application, Message, $location, $cookieStore, $state) {
 
     var view = this;
 
@@ -59,6 +66,8 @@ angular
       }
     }
     getApplication();
+
+    view.paypal = $state.current.data.paypal;
 
     view.person = {
 
@@ -126,6 +135,7 @@ angular
       clear: function () {
         view.login = false;
         view.loginRegister = false;
+        view.paypal = false;
         this.errors = null;
       },
 
