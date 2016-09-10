@@ -2,6 +2,27 @@
 
 // Mobile First
 
+.snapcode {
+	top: 50%;
+	transform: translate(50%, -50%);
+	-webkit-transition: top 1s, transform 1s;; /* Safari */
+	transition: top 1s, transform 1s;
+}
+
+.snapcode.ng-hide {
+	top: 0;
+	transform: translate(50%, -100%);
+}
+
+.snapcode-background {
+	-webkit-transition: opacity 0.75s; /* Safari */
+	transition: opacity 0.75s;
+}
+
+.snapcode-background.ng-hide {
+	opacity: 0.0;
+}
+
 #live-wrapper {
 	// position: fixed;
 	width: 100vw;
@@ -76,7 +97,7 @@
 }
 
 // Medium screens
-@media only screen and (min-width: 40.063em) { 
+@media only screen and (min-width: 40.063em) {
 
 	#play-boombox {
 		display: block;
@@ -91,7 +112,7 @@
 } /* min-width 641px, medium screens */
 
 // Large screens
-@media only screen and (min-width: 64.063em) { 
+@media only screen and (min-width: 64.063em) {
 
 	#live {
 		h1 {

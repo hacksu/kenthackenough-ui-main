@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5 {
 }
 
 //For Smaller Screens and Below:
-@media only screen and (max-width: 40em) { 
+@media only screen and (max-width: 40em) {
 	#logo{ margin-bottom: 2vh; }
 	#waves{ width:200vw; height: 28.2vw; margin-bottom: 40px;}
 	#date, #location {font-size: 18pt; margin-bottom: 20px;}
@@ -219,18 +219,22 @@ h1, h2, h3, h4, h5 {
 }
 
 //Xlarge screens
-@media only screen and (min-width: 90.063em) { 
+@media only screen and (min-width: 90.063em) {
 	#waves{ width:100vw; height: 14.1vw;}
 	#headphones, #boombox { display: block;}
 }
 
-.prompt {
+.static-centered {
 	position: fixed;
 	top: 35%;
 	right: 50%;
 	transform: translate(50%, -50%);
-	background: $black;
 	z-index: 50;
+}
+
+.prompt {
+	@extend .static-centered;
+	background: $black;
 	text-align: left;
 	border: 3px solid $darkBlue;
 	border-radius: 5px;
