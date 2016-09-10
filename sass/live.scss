@@ -5,8 +5,8 @@
 .snapcode {
 	top: 50%;
 	transform: translate(50%, -50%);
-	-webkit-transition: top 1s, transform 1s;; /* Safari */
-	transition: top 1s, transform 1s;
+	-webkit-transition: top 0.5s, transform 0.5s;; /* Safari */
+	transition: top 0.5s, transform 0.5s;
 }
 
 .snapcode.ng-hide {
@@ -15,8 +15,8 @@
 }
 
 .snapcode-background {
-	-webkit-transition: opacity 0.75s; /* Safari */
-	transition: opacity 0.75s;
+	-webkit-transition: opacity 0.5s; /* Safari */
+	transition: opacity 0.5s;
 }
 
 .snapcode-background.ng-hide {
@@ -44,7 +44,6 @@
 	h1 {
 		font-family: 'Oswald', sans-serif;
 		font-weight: extra bold;
-		letter-spacing: 0.5rem;
 		font-size: 2.2rem;
 		width: auto;
 		text-align: center;
@@ -90,17 +89,17 @@
 #play-boombox {
 	display: none;
 	height: 30vh;
-	position: absolute;
-	bottom: 0;
-	left: 80vw;
-	transform: translate(0%, 0%);
 }
 
 // Medium screens
 @media only screen and (min-width: 40.063em) {
 
 	#play-boombox {
+		overflow: hidden;
 		display: block;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%, 0%);
 	}
 
 	#live {
@@ -113,6 +112,12 @@
 
 // Large screens
 @media only screen and (min-width: 64.063em) {
+	#play-boombox {
+		position: absolute;
+		bottom: 0;
+		left: 80vw;
+		transform: translate(0%, 0%);
+	}
 
 	#live {
 		h1 {
