@@ -8,7 +8,7 @@ angular
         controller: 'LiveCtrl as live'
       });
   }])
-  .controller('LiveCtrl', ['Event', 'Message', 'About', '$interval', function (Event, Message, About, $interval) {
+  .controller('LiveCtrl', ['Event', 'Message', 'About', '$interval', '$timeout', '$scope', function (Event, Message, About, $interval, $timeout, $scope) {
 
     var view = this;
 
@@ -21,11 +21,14 @@ angular
     view.snapchat = {
         show: function() {
             view.snapchat.visible = true;
+            view.snapchat.background = true;
         },
         hide: function() {
+            view.snapchat.background = false;
             view.snapchat.visible = false;
         },
-        visible: false
+        visible: false,
+        background: false,
     };
 
     view.events = {
