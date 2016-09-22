@@ -68,10 +68,10 @@
         <!-- Updates -->
         <div class="small-12 medium-6 large-6 columns">
           <div class="section">
+            <!-- Updates -->
+            <h3 class="orange">UPDATES</h3>
+
             <div ng-if="live.msg.messages.length">
-              <!-- Updates -->
-              <h3 class="orange">UPDATES</h3>
-              
               <ul class="messages">
                 <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
                   <span ng-bind-html="message.text|markdown|unsafe"></span>
