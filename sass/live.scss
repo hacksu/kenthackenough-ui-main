@@ -71,6 +71,19 @@
 	.grey {
 		color: darken(white, 20%);
 	}
+
+	.messages {
+		margin-left: 0;
+		list-style-type: none;
+
+		.message {
+			margin-top: 15px;
+		}
+
+		.message * {
+			margin-bottom: 0;
+		}
+	}
 }
 
 #mini-schedule {
