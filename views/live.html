@@ -71,17 +71,21 @@
             <div ng-if="live.msg.messages.length">
               <!-- Updates -->
               <h3 class="orange">UPDATES</h3>
-              <span ng-if="!live.msg.enabled()" class="small">
-                <a class="small" ng-click="live.msg.enable()">Enable desktop notifications</a> |
-              </span>
-              <a class="small" ng-if="live.msg.showing == 'few'" ng-click="live.msg.showAll()">Show all</a>
-              <a class="small" ng-if="live.msg.showing == 'all'" ng-click="live.msg.showFew()">Show less</a>
+              
               <ul class="messages">
                 <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
                   <span ng-bind-html="message.text|markdown|unsafe"></span>
                   <span class="grey small" am-time-ago="message.created"></span>
                 </li>
               </ul>
+
+              <div class="text-center">
+                <span ng-if="!live.msg.enabled()">
+                  <a ng-click="live.msg.enable()">Enable desktop notifications</a> |
+                </span>
+                <a ng-if="live.msg.showing == 'few'" ng-click="live.msg.showAll()">Show all</a>
+                <a ng-if="live.msg.showing == 'all'" ng-click="live.msg.showFew()">Show less</a>
+              </div>
             </div>
           </div><!-- /section -->
         </div><!-- /Updates -->

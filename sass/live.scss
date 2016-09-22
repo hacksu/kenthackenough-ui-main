@@ -75,8 +75,6 @@
 		margin-left: 0;
 		list-style-type: none;
 
-		max-height: auto;
-
 		.message {
 			margin-top: 15px;
 		}
@@ -87,7 +85,7 @@
 	}
 }
 
-#mini-schedule {
+#mini-schedule, .messages {
 	max-height: auto;
 	border-bottom: 1px inset lighten($black, 10%);
 	margin-bottom: 5px;
