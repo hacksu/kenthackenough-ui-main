@@ -12,7 +12,7 @@ angular
 
         jQuery(document).ready(function ($) {
 
-          new WOW({offset: 500}).init();
+          new WOW({offset: 400}).init();
 
         });
       }

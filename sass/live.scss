@@ -31,6 +31,7 @@
 }
 
 #live, #schedule {
+
 	header img {
 		height: 6.2rem;
 		width: auto;
@@ -104,6 +105,10 @@
 
 #schedule{ 
 	background-color: $black;
+
+	header {
+		background-color: #000;
+	}
 
 	h2 {
 		text-align: center;
