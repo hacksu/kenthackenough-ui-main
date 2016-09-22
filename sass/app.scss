@@ -209,6 +209,21 @@ h1, h2, h3, h4, h5 {
     bottom: -5vw;
 }
 
+.schedule-section {
+	background: transparent;
+	padding-top: 20px;
+
+	.btn {
+		border-color: $orange;
+		color: $orange;
+
+		&:hover {
+			border-color: darken($orange, 10%);
+			color: darken($orange, 10%);
+		}
+	}
+}
+
 //For Smaller Screens and Below:
 @media only screen and (max-width: 40em) {
 	#logo{ margin-bottom: 2vh; }
