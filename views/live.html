@@ -49,7 +49,7 @@
             </div>
             <div ng-if="live.events.later.length">
               <div>
-                <h5>LATER</h5>
+                <h5 class="pink">LATER</h5>
                 <div ng-repeat="event in live.events.later">
                   {{event.title}}<br>
                   <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>

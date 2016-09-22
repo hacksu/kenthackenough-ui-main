@@ -1,30 +1,37 @@
-<div class="dark-page">
+<div id="schedule">
   <header>
-    <div class="row">
-      <div class="small-12 columns">
-        <h1><a href="/">KHE</a> SCHEDULE</h1>
+    <div class="container">
+      <div class="row">
+        <div class="small-4 medium-3 column">
+          <a href="/"><img src="img/shortLogoOnly.svg"></a>
+        </div>
+        <div class="small-4 medium-6 columns">
+          <h1>SCHEDULE</h1>
+        </div>
+        <div class="small-4 columns">
+        </div>
       </div>
     </div>
   </header>
 
-  <div ng-repeat="(day, events) in schedule.events.days" class="row schedule align-center">
-    <div class="small-12 columns">
-      <h2 class="white underline">{{day}}</h2>
+  <div class="container">
+    <div ng-repeat="(day, events) in schedule.events.days" class="row align-center">
+      <div class="small-12 columns">
+        <h2>{{day}}</h2>
+      </div>
+      <table class="small-12 columns">
+        <tr ng-repeat="event in events | orderBy:'start':false">
+          <td class="align-right left-col" width="200">
+            <h4 ng-if="!event.singleTime" class="white">{{event.start | amDateFormat:'h:mma'}} - {{event.end | amDateFormat:'h:mma'}}</h4>
+            <h4 ng-if="event.singleTime" class="white">{{event.start | amDateFormat:'h:mma'}}</h4>
+            <span class="orange">{{event.location}}</span>
+          </td>
+          <td class="align-left right-col" width="200">
+            <h3 class="white">{{event.title}}</h3>
+            <span class="teal">{{event.description}}</span>
+          </td>
+        </tr>
+      </table>
     </div>
-    <table class="small-12 columns">
-      <tr ng-repeat="event in events | orderBy:'start':false">
-        <td class="align-right left-col" width="200">
-          <span ng-if="!event.singleTime" class="white bold">{{event.start | amDateFormat:'h:mma'}} - {{event.end | amDateFormat:'h:mma'}}</span>
-          <span ng-if="event.singleTime" class="white bold">{{event.start | amDateFormat:'h:mma'}}</span>
-          <br>
-          <span class="white">{{event.location}}</span>
-        </td>
-        <td class="align-left right-col" width="200">
-          <h4 class="white">{{event.title}}</h4>
-          <span class="white">{{event.description}}</span>
-        </td>
-      </tr>
-    </table>
   </div>
-
 </div>
