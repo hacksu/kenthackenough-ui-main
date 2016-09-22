@@ -41,13 +41,12 @@
 		max-width: 95%;
 	}
 
-	h1 {
+	header h1 {
 		font-family: 'Oswald', sans-serif;
 		font-weight: extra bold;
 		font-size: 2.2rem;
 		width: auto;
 		text-align: center;
-		line-height: 2rem;
 		margin: 2rem 0 1.5rem;
 	}
 
@@ -76,6 +75,8 @@
 		margin-left: 0;
 		list-style-type: none;
 
+		max-height: auto;
+
 		.message {
 			margin-top: 15px;
 		}
@@ -87,8 +88,7 @@
 }
 
 #mini-schedule {
-	max-height: 54vh;
-	overflow-y: scroll;
+	max-height: auto;
 	border-bottom: 1px inset lighten($black, 10%);
 	margin-bottom: 5px;
 }
@@ -142,6 +142,11 @@
 
 // Medium screens
 @media only screen and (min-width: 40.063em) {
+
+	#mini-schedule, .messages {
+		max-height: 54vh;
+		overflow-y: scroll;
+	}
 
 	#play-boombox {
 		overflow: hidden;

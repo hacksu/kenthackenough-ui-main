@@ -1,107 +1,107 @@
 <div class="background snapcode-background" ng-click="live.snapchat.hide()" ng-show="live.snapchat.background"> </div>
 <div class="static-centered snapcode" ng-click="live.snapchat.hide()" ng-show="live.snapchat.visible" style="width: 320px;" >
-    <img src="/img/KHEsnapcode.png" style="width: 320px;"/>
+  <img src="/img/KHEsnapcode.png" style="width: 320px;"/>
 </div>
 
 <div id="live-wrapper">
-<div id="live">
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="small-4 medium-3 column">
-          <a href="/"><img src="img/shortLogoOnly.svg"></a>
-        </div>
-        <div class="small-4 medium-6 columns">
-          <h1 class="lightBlue">LIVE</h1>
-        </div>
-        <div class="small-4 columns">
+  <div id="live">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="small-4 medium-3 column">
+            <a href="/"><img src="img/shortLogoOnly.svg"></a>
+          </div>
+          <div class="small-4 medium-6 columns">
+            <h1 class="lightBlue">LIVE</h1>
+          </div>
+          <div class="small-4 columns">
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <div class="container">
-    <div class="row">
+    <div class="container">
+      <div class="row">
 
-      <!-- Schedule -->
-      <div class="small-12 medium-6 large-3 columns">
-        <div class="section">
-          <h3 class="pink">SCHEDULE</h3>
+        <!-- Schedule -->
+        <div class="small-12 medium-6 large-3 columns">
+          <div class="section">
+            <h3 class="pink">SCHEDULE</h3>
 
-          <div id="mini-schedule">
-            <div ng-if="live.events.happening.length">
-              <h5 class="pink">HAPPENING NOW</h5>
-              <div ng-repeat="event in live.events.happening">
-                {{event.title}}<br>
-                <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
-                <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
-              </div>
-            </div>
-            <div ng-if="live.events.upNext.length">
-              <div>
-                <h5 class="pink">NEXT UP</h5>
-                <div ng-repeat="event in live.events.upNext">
+            <div id="mini-schedule">
+              <div ng-if="live.events.happening.length">
+                <h5 class="pink">HAPPENING NOW</h5>
+                <div ng-repeat="event in live.events.happening">
                   {{event.title}}<br>
                   <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
                   <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
                 </div>
               </div>
-            </div>
-            <div ng-if="live.events.later.length">
-              <div>
-                <h5 class="pink">LATER</h5>
-                <div ng-repeat="event in live.events.later">
-                  {{event.title}}<br>
-                  <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
-                  <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
+              <div ng-if="live.events.upNext.length">
+                <div>
+                  <h5 class="pink">NEXT UP</h5>
+                  <div ng-repeat="event in live.events.upNext">
+                    {{event.title}}<br>
+                    <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                    <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div><!-- /#mini-schedule -->
+              <div ng-if="live.events.later.length">
+                <div>
+                  <h5 class="pink">LATER</h5>
+                  <div ng-repeat="event in live.events.later">
+                    {{event.title}}<br>
+                    <span class="small">{{event.start | amDateFormat:'dddd h:mma'}} - {{event.end | amDateFormat:'h:mma'}}<br></span>
+                    <span ng-if="event.location" class="grey small">{{event.location}}<br></span><br>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /#mini-schedule -->
 
-          <div class="text-center">
+            <div class="text-center">
               <a ui-sref="schedule">View Full Schedule</a>
             </div>
-        </div><!-- /section -->
-      </div> <!-- /Schedule -->
+          </div><!-- /section -->
+        </div> <!-- /Schedule -->
 
-      <!-- Updates -->
-      <div class="small-12 medium-6 large-6 columns">
-        <div class="section">
-          <div ng-if="live.msg.messages.length">
-            <!-- Updates -->
-            <h3 class="orange">UPDATES</h3>
-            <span ng-if="!live.msg.enabled()" class="small">
-              <a class="small" ng-click="live.msg.enable()">Enable desktop notifications</a> |
-            </span>
-            <a class="small" ng-if="live.msg.showing == 'few'" ng-click="live.msg.showAll()">Show all</a>
-            <a class="small" ng-if="live.msg.showing == 'all'" ng-click="live.msg.showFew()">Show less</a>
-            <ul class="messages">
-            <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
-              <span ng-bind-html="message.text|markdown|unsafe"></span>
-              <span class="grey small" am-time-ago="message.created"></span>
-            </li>
-          </ul>
-          </div>
-        </div><!-- /section -->
-      </div><!-- /Updates -->
+        <!-- Updates -->
+        <div class="small-12 medium-6 large-6 columns">
+          <div class="section">
+            <div ng-if="live.msg.messages.length">
+              <!-- Updates -->
+              <h3 class="orange">UPDATES</h3>
+              <span ng-if="!live.msg.enabled()" class="small">
+                <a class="small" ng-click="live.msg.enable()">Enable desktop notifications</a> |
+              </span>
+              <a class="small" ng-if="live.msg.showing == 'few'" ng-click="live.msg.showAll()">Show all</a>
+              <a class="small" ng-if="live.msg.showing == 'all'" ng-click="live.msg.showFew()">Show less</a>
+              <ul class="messages">
+                <li class="message" ng-repeat="message in live.msg.messages | orderBy:'created':true">
+                  <span ng-bind-html="message.text|markdown|unsafe"></span>
+                  <span class="grey small" am-time-ago="message.created"></span>
+                </li>
+              </ul>
+            </div>
+          </div><!-- /section -->
+        </div><!-- /Updates -->
 
-      <!-- Social -->
-      <div class="small-12 medium-6 large-3 columns">
-        <div class="section">
-          <h3 class="teal">MORE WAYS TO FOLLOW</h3>
-          <p><i class="fa fa-twitter fa-lg"></i> &nbsp;<a href="https://twitter.com/@kenthackenough">Twitter</a></p>
-          <p><i class="fa fa-facebook fa-lg"></i> &nbsp;<a href="https://www.facebook.com/kenthackenough">Facebook</a></p>
-          <p><i class="fa fa-instagram fa-lg"></i> &nbsp;<a href="https://instagram.com/kenthackenough/">Instagram</a></p>
-          <p><i class="fa fa-snapchat-ghost fa-lg"></i> &nbsp;<a ng-click="live.snapchat.show()">Snapchat</a></p>
-        </div><!-- /.section -->
-      </div><!-- /Social -->
-    </div><!-- /row -->
-  </div><!-- /container -->
+        <!-- Social -->
+        <div class="small-12 medium-6 large-3 columns">
+          <div class="section">
+            <h3 class="teal">MORE WAYS TO FOLLOW</h3>
+            <p><i class="fa fa-twitter fa-lg"></i> &nbsp;<a href="https://twitter.com/@kenthackenough">Twitter</a></p>
+            <p><i class="fa fa-facebook fa-lg"></i> &nbsp;<a href="https://www.facebook.com/kenthackenough">Facebook</a></p>
+            <p><i class="fa fa-instagram fa-lg"></i> &nbsp;<a href="https://instagram.com/kenthackenough/">Instagram</a></p>
+            <p><i class="fa fa-snapchat-ghost fa-lg"></i> &nbsp;<a ng-click="live.snapchat.show()">Snapchat</a></p>
+          </div><!-- /.section -->
+        </div><!-- /Social -->
+      </div><!-- /row -->
+    </div><!-- /container -->
 
-</div>
-<img src="img/boombox.svg" id="play-boombox">
-<div id="play">
+  </div>
+  <img src="img/boombox.svg" id="play-boombox">
+  <div id="play">
 
-</div>
+  </div>
 </div> <!-- /live-wrapper -->
